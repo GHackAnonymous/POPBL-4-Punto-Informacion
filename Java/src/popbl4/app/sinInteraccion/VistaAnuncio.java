@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author GHackAnonymous
  */
-public class POPBL4AppGrafica extends Application {
+public class VistaAnuncio extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
