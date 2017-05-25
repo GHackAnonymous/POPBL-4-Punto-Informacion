@@ -11,4 +11,52 @@ package popbl4.app.admin;
  */
 public class Log {
     
+    private int idLog = 0;
+    private String contenido = "";
+    private int idTipo = 0;
+    private int idAdmin = 0;
+
+    public Log() {}
+    
+    public Log(int idLog, String contenido, int idTipo, int idAdmin) {
+        this.idLog = idLog;
+        this.contenido = contenido;
+        this.idTipo = idTipo;
+        this.idAdmin = idAdmin;
+    }
+    
+    public int getIdLog() {
+        return idLog;
+    }
+
+    public void setIdLog(int idLog) {
+        this.idLog = idLog;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public int getIdAdmin() {
+        return idAdmin;
+    }
+
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
+    }
+    
+    
+    
 }
