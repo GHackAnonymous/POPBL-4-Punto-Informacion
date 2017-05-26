@@ -7,8 +7,40 @@ package popbl4.app.admin;
 
 /**
  *
- * @author GHackAnonymous
+ * @author Alex
  */
 public class TipoAdministrador {
-    
+    int idTipoAdmin;
+    String tipo;
+    int idAdmin;
+
+    public TipoAdministrador(int idTipoAdmin, String tipo, int idAdmin) {
+        this.idTipoAdmin = idTipoAdmin;
+        this.tipo = tipo;
+        this.idAdmin = idAdmin;
+    }
+
+    public int getIdTipoAdmin() {
+        return idTipoAdmin;
+    }
+
+    public void setIdTipoAdmin(int idTipoAdmin) {
+        this.idTipoAdmin = idTipoAdmin;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getIdAdmin() {
+        return idAdmin;
+    }
+
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
+    }
 }

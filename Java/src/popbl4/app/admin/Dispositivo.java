@@ -5,10 +5,44 @@
  */
 package popbl4.app.admin;
 
+import java.util.Date;
+
 /**
  *
- * @author GHackAnonymous
+ * @author Alex
  */
 public class Dispositivo {
-    
+    int idDispositivo;
+    String nombre;
+    Date fecha;
+
+    public Dispositivo(int idDispositivo, String nombre, Date fecha) {
+        this.idDispositivo = idDispositivo;
+        this.nombre = nombre;
+        this.fecha = fecha;
+    }
+
+    public int getIdDispositivo() {
+        return idDispositivo;
+    }
+
+    public void setIdDispositivo(int idDispositivo) {
+        this.idDispositivo = idDispositivo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }

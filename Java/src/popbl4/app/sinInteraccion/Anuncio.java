@@ -5,10 +5,44 @@
  */
 package popbl4.app.sinInteraccion;
 
+import java.util.Date;
+
 /**
  *
- * @author GHackAnonymous
+ * @author Alex
  */
 public class Anuncio {
-    
+    int idAnuncio;
+    String descripcion;
+    Date fecha;
+
+    public Anuncio(int idAnuncio, String descripcion, Date fecha) {
+        this.idAnuncio = idAnuncio;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+    }
+
+    public int getIdAnuncio() {
+        return idAnuncio;
+    }
+
+    public void setIdAnuncio(int idAnuncio) {
+        this.idAnuncio = idAnuncio;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }

@@ -7,8 +7,40 @@ package popbl4.app.interactuador;
 
 /**
  *
- * @author GHackAnonymous
+ * @author Alex
  */
 public class TipoInformacion {
-    
+    int idTipoInformacion;
+    String tipo;
+    int idInformacion;
+
+    public TipoInformacion(int idTipoInformacion, String tipo, int idInformacion) {
+        this.idTipoInformacion = idTipoInformacion;
+        this.tipo = tipo;
+        this.idInformacion = idInformacion;
+    }
+
+    public int getIdTipoInformacion() {
+        return idTipoInformacion;
+    }
+
+    public void setIdTipoInformacion(int idTipoInformacion) {
+        this.idTipoInformacion = idTipoInformacion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getIdInformacion() {
+        return idInformacion;
+    }
+
+    public void setIdInformacion(int idInformacion) {
+        this.idInformacion = idInformacion;
+    }
 }
