@@ -12,10 +12,12 @@ import java.util.Date;
  * @author Alex
  */
 public class Dispositivo {
-    int idDispositivo;
-    String nombre;
-    Date fecha;
+    private int idDispositivo;
+    private String nombre;
+    private Date fecha;
 
+    public Dispositivo() {}
+    
     public Dispositivo(int idDispositivo, String nombre, Date fecha) {
         this.idDispositivo = idDispositivo;
         this.nombre = nombre;

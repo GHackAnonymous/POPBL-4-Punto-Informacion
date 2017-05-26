@@ -10,11 +10,13 @@ package popbl4.app.admin;
  * @author Alex
  */
 public class Administrador {
-    int idAdministrador;
-    String username, nombre, contraseña;
+    private int idAdministrador;
+    private String username, nombre, contraseña;
 	
-	
-	public Administrador(int idAdministrador, String username, String nombre, String contraseña) {
+    
+    public Administrador() {}
+    
+    public Administrador(int idAdministrador, String username, String nombre, String contraseña) {
         this.idAdministrador = idAdministrador;
         this.username = username;
         this.nombre = nombre;

@@ -10,10 +10,12 @@ package popbl4.app.interactuador;
  * @author Alex
  */
 public class TipoInformacion {
-    int idTipoInformacion;
-    String tipo;
-    int idInformacion;
+    private int idTipoInformacion;
+    private String tipo;
+    private int idInformacion;
 
+    public TipoInformacion() {}
+    
     public TipoInformacion(int idTipoInformacion, String tipo, int idInformacion) {
         this.idTipoInformacion = idTipoInformacion;
         this.tipo = tipo;

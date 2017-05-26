@@ -12,10 +12,12 @@ import java.util.Date;
  * @author Alex
  */
 public class Anuncio {
-    int idAnuncio;
-    String descripcion;
-    Date fecha;
+    private int idAnuncio;
+    private String descripcion;
+    private Date fecha;
 
+    public Anuncio() {}
+    
     public Anuncio(int idAnuncio, String descripcion, Date fecha) {
         this.idAnuncio = idAnuncio;
         this.descripcion = descripcion;

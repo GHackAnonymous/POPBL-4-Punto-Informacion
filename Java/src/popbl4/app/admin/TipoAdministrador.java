@@ -10,10 +10,12 @@ package popbl4.app.admin;
  * @author Alex
  */
 public class TipoAdministrador {
-    int idTipoAdmin;
-    String tipo;
-    int idAdmin;
+    private int idTipoAdmin;
+    private String tipo;
+    private int idAdmin;
 
+    public TipoAdministrador() {}
+    
     public TipoAdministrador(int idTipoAdmin, String tipo, int idAdmin) {
         this.idTipoAdmin = idTipoAdmin;
         this.tipo = tipo;
