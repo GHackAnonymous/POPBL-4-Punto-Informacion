@@ -5,6 +5,8 @@
  */
 package popbl4.app.basedatos;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import  popbl4.app.admin.Administrador;
 import  popbl4.app.admin.Log;
 import  popbl4.app.interactuador.Informacion;
@@ -16,40 +18,68 @@ import  popbl4.app.sinInteraccion.Anuncio;
  */
 public class GeneradorSQL {
     
-    public String generaSelectAdministrador(Administrador adminstrador){
-    
+    public String generaSelectAdministrador(){
+        return "SELECT * FROM administrador";
     }
     public String generaInsertAdministrador(Administrador adminstrador){
-    
+        return "INSERT INTO administrador "
+                + "(id_admin, nick, nombre, clave) "
+                + "VALUES ("+adminstrador.getIdAdministrador()+","
+                + "'"+adminstrador.getUsername()+"',"
+                + "'"+adminstrador.getNombre()+"',"
+                + "'"+adminstrador.getContraseña()+"');";  
     }
     public String generaUpdateAdministrador(Administrador adminstrador){
-    
+        return "UPDATE administrador" +
+                "SET nick = '"+adminstrador.getUsername()+"',"
+                + "nombre = '"+adminstrador.getNombre()+"',"
+                + "clave = '"+adminstrador.getContraseña()+"'" +
+                "WHERE id_admin = "+adminstrador.getIdAdministrador()+";"; 
+        
     }
-    public String generaSelectAnuncios(Anuncio anuncio){
-    
+    public String generaSelectAnuncios(){
+        return "SELECT * FROM anuncios";
     }
     public String generaInsertAnuncios(Anuncio anuncio){
-    
+         return "INSERT INTO administrador "
+                + "(id_anuncios, descripcion , fecha) "
+                + "VALUES ("+anuncio.getIdAnuncio()+","
+                + "'"+anuncio.getDescripcion()+"',"
+                + "'"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+";";  
     }
     public String generaUpdateAnuncios(Anuncio anuncio){
-    
+        return "UPDATE administrador" +
+                "SET descripcion = '"+anuncio.getDescripcion()+"',"
+                + "fecha = '"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"'" +
+                "WHERE id_anuncios = "+anuncio.getIdAnuncio()+";"; 
     }
-    public String generaSelectInformacion(Informacion informacion){
-    
+    public String generaSelectInformacion(){
+        return "SELECT * FROM info";
     }
     public String generaInsertInformacion(Informacion informacion){
-    
+        return "INSERT INTO info "
+                + "(id_info) "
+                + "VALUES ("+informacion.getIdInformacion()+");";  
     }
     public String generaUpdateInformacion(Informacion informacion){
-    
+        return null; //no tiene sentido modificar algo que no tiene mas que un id
     }
-    public String generaSelectLog(Log log){
-    
+    public String generaSelectLog(){
+        return "SELECT * FROM logs";
     }
     public String generaInsertLog(Log log){
-    
+        return "INSERT INTO info "
+                + "(id_log, contenido, id_tipo, id_admin) "
+                + "VALUES ("+log.getIdLog()+","
+                + "'"+log.getContenido()+"',"
+                + ""+log.getIdTipo()+","
+                + ""+log.getIdAdmin()+");";  
     }
     public String generaUpdateLog(Log log){
-    
+        return "UPDATE administrador" +
+                "SET contenido = '"+log.getContenido()+"',"
+                + "id_tipo = "+log.getIdTipo()+","
+                + "id_admin = "+log.getIdAdmin()+","
+                + "WHERE id_log = "+log.getIdLog()+";"; 
     }
 }

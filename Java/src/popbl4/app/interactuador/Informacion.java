@@ -10,6 +10,9 @@ package popbl4.app.interactuador;
  * @author Alex
  */
 public class Informacion {
+    
+    // no deveria tenar algo mas como la descripcion?
+    
     private int idInformacion;
 
     public Informacion() {}
