@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: µVision V5.22.0.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Xabier Gandiaga, Mondragon, LIC=----
+License Information: ee ee, ee, LIC=----
  
 Tool Versions:
 Toolchain:       MDK-Lite  Version: 5.22
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+Toolchain Path:  E:\Archivos de Programas\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 4 (build 422)
 Assembler:       Armasm.exe V5.06 update 4 (build 422)
 Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
@@ -21,22 +21,24 @@ Target DLL:      Segger\JL2CM3.dll V2.99.23.0
 Dialog DLL:      TCM.DLL V1.21.0.0
  
 <h2>Project:</h2>
-C:\Users\Red_Drake\Desktop\LABS PRÁCTICA\04usingUartLibMain\04usingUartLibMain.uvprojx
+E:\GHackAnonymous\Areas de Trabajo IDES\POPBL4WorkSpace\POPBL-4-Punto-Informacion\Micros\04usingUartLibMain.uvprojx
 Project File Date:  05/04/2017
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'E:\Archivos de Programas\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling sysClock.c...
 compiling ourRccGpio.c...
-compiling 04usingUartLibMain.c...
-04usingUartLibMain.c(16): warning:  #177-D: variable "i"  was declared but never referenced
-    int i, n=1, booleano = 1;
+compiling sysClock.c...
 assembling startup_stm32f407xx.s...
+compiling 04usingUartLibMain.c...
+04usingUartLibMain.c(17): warning:  #177-D: variable "i"  was declared but never referenced
+    int i, n=1, booleano = 1;
+04usingUartLibMain.c(17): warning:  #177-D: variable "booleano"  was declared but never referenced
+    int i, n=1, booleano = 1;
 compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=2716 RO-data=424 RW-data=88 ZI-data=2752  
-".\Objects\04usingUartLibMain.axf" - 0 Error(s), 1 Warning(s).
+Program Size: Code=2804 RO-data=424 RW-data=88 ZI-data=2752  
+".\Objects\04usingUartLibMain.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -53,21 +55,21 @@ Package Vendor: Keil
    * Component: Startup Version: 2.6.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Red_Drake\Desktop\LABS PRÁCTICA\04usingUartLibMain\RTE\_Target_1
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
-  C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+  E:\GHackAnonymous\Areas de Trabajo IDES\POPBL4WorkSpace\POPBL-4-Punto-Informacion\Micros\RTE\_Target_1
+  E:\Archivos de Programas\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.0\CMSIS\Include
+  E:\Archivos de Programas\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.0
 
    * Component: Keil::Device:Startup:2.6.0
-      Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
       Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s
+      Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-Build Time Elapsed:  00:00:24
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>
