@@ -14,14 +14,17 @@
 #define USART6_RX_PIN 9 /**< PIN of the USART6 RX on the GPIO. */
 #define BUFFERSIZE 300 /**< Size of the buffer for the received data. */
 
-//#define ADD_RCC 0x40023800
+#define ADD_RCC 0x40023800
+#define OFF_APB1ENBR 0x40
 #define OFF_APB2ENBR 0x44
 #define OFF_AHB1ENBR 0x30
 #define ADD_GPIOC 0x40020800
+#define ADD_GPIOD 0x40020C00
 #define ADD_GPIOG 0x40021800
 #define OFF_MODER 0x00
 #define OFF_AFRL  0x20
 #define OFF_AFRH 0x24
+#define ADD_USART3 0x40004800
 #define ADD_USART6 0x40011400
 #define OFF_CR1 0x0C
 #define OFF_SR  0x00
@@ -31,8 +34,13 @@
 #define PRIO_USART6 71 //Priority 78
 
 #define POS_GPIOC 2
+#define POS_GPIOD 3
 #define POS_GPIOG 6
 #define POS_USART6 5
+#define POS_USART3 18
+
+#define PIN_USART3_TX 8
+#define PIN_USART3_RX 9
 
 
 extern uint8_t usart6_buffer[BUFFERSIZE]; /** The buffer of the USART6. The data received from the USART6 will be saved here. */
@@ -53,6 +61,15 @@ void USART_ConfIRQ_RX(void);
 void USART_setIRQ(func_address_t func);
 
 void USART_transmitString(uint8_t *data, uint8_t size);
+void USART_resetTransmit(void);
+
+void USARTpiztu(void);
+void USARTkonfig (void);
+void USARTGPIOkonf(void);
+void USARTRXkendu(void);
+void USARTbidali(uint8_t *data, uint32_t size);
+
+
 
 
 

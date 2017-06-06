@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "sysClock.h"
+#include "USART.h"
 
 #define CLOCK_FREC  (25000000/8)  //we are going to use (AHB clock / 8 )
 

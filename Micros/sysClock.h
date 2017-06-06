@@ -1,7 +1,7 @@
 #ifndef SYS_CLOCK_H
 #define SYS_CLOCK_H
 
-#define ADD_RCC 0x40023800U
+//#define ADD_RCC 0x40023800U
 #define ADD_SYSTICK 0xE000E010U
 #define FREC_AHB1 25000000 // 25MHz
 #define POS_SYS_AHB1 1

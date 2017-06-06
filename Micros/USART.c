@@ -1,5 +1,6 @@
 #ifndef USART_API_C
 #define USART_API_C
+
 #include "USART.h"
 #include "sysClock.h"
 
@@ -62,7 +63,9 @@ void USART_Conf() {
 	uint32_t *P_USART6;
 	
 	P_USART6 = (uint32_t*) (ADD_USART6+OFF_BRR);
-  *P_USART6 = 0x683;  //9600 bps @PCLK 16Mhz
+  *P_USART6 = (0x11);  //Divider
+	*P_USART6 = (0x1110010 << 4);  //Mantissa
+	//9600 bps @PCLK 16Mhz
 	
 		
 	//30.6.4 Reference Manual
@@ -70,7 +73,6 @@ void USART_Conf() {
 	*P_USART6 |= (0x01 << 13);  //UE, USART ENABLE
 	*P_USART6 |= (0x01 << 3);  //TE, TRANSMITTER ENABLE
 	*P_USART6 |= (0x01 << 2);  //RECEIVER ENABLE
-	//*P_USART6 |= (8204);
 }
 
 /******************************************//**
@@ -133,6 +135,18 @@ void USART6_IRQHandler() {
 	}
 	*P_USART6_SR &= ~(0x01 << 5);  //RXNE = Read data register is not empty
 	//set by hardware to 1, reset to 0
+}
+
+void USART_resetTransmit(){
+	
+	uint32_t *P_USART6_DR;//, *P_USART6_SR;
+	
+	P_USART6_DR = (uint32_t*) (ADD_USART6+OFF_DR);
+	//P_USART6_SR = (uint32_t*) (ADD_USART6+OFF_SR);
+	
+	*P_USART6_DR &= ~(0x01 << 6);
+	*P_USART6_DR &= ~(0x01 << 7);
+	
 }
 
 #endif

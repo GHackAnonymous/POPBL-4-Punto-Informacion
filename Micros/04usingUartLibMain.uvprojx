@@ -399,6 +399,11 @@
               <FileType>1</FileType>
               <FilePath>.\USART.c</FilePath>
             </File>
+            <File>
+              <FileName>USART3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USART3.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -423,6 +428,11 @@
               <FileName>USART.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\USART.h</FilePath>
+            </File>
+            <File>
+              <FileName>OurDefinitions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\OurDefinitions.h</FilePath>
             </File>
           </Files>
         </Group>

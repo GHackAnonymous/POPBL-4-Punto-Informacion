@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "ourRccGpio.h"
+#include "USART.h"
 
 void rcc_enable_gpio(uint32_t selGPIO, uint32_t enable)
 {
