@@ -22,23 +22,20 @@ Dialog DLL:      TCM.DLL V1.21.0.0
  
 <h2>Project:</h2>
 E:\GHackAnonymous\Areas de Trabajo IDES\POPBL4WorkSpace\POPBL-4-Punto-Informacion\Micros\04usingUartLibMain.uvprojx
-Project File Date:  05/04/2017
+Project File Date:  06/05/2017
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'E:\Archivos de Programas\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
-compiling ourRccGpio.c...
 compiling sysClock.c...
+compiling ourRccGpio.c...
 assembling startup_stm32f407xx.s...
+compiling USART.c...
 compiling 04usingUartLibMain.c...
-04usingUartLibMain.c(17): warning:  #177-D: variable "i"  was declared but never referenced
-    int i, n=1, booleano = 1;
-04usingUartLibMain.c(17): warning:  #177-D: variable "booleano"  was declared but never referenced
-    int i, n=1, booleano = 1;
 compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=2804 RO-data=424 RW-data=88 ZI-data=2752  
-".\Objects\04usingUartLibMain.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=1856 RO-data=484 RW-data=20 ZI-data=1972  
+".\Objects\04usingUartLibMain.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,12 +61,12 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.0.0
 
    * Component: Keil::Device:Startup:2.6.0
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s
       Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f407xx.s
       Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

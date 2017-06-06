@@ -394,6 +394,11 @@
               <FileType>1</FileType>
               <FilePath>.\sysClock.c</FilePath>
             </File>
+            <File>
+              <FileName>USART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USART.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -414,17 +419,15 @@
               <FileType>5</FileType>
               <FilePath>.\sysClock.h</FilePath>
             </File>
+            <File>
+              <FileName>USART.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\USART.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>libs</GroupName>
-          <Files>
-            <File>
-              <FileName>02uartLib.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>.\02uartLib.lib</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
