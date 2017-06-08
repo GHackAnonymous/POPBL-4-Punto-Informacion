@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import popbl4.app.controladorMain.Controlador;
 
 /**
  *
@@ -17,16 +18,26 @@ import javafx.stage.Stage;
  */
 public class VistaAnuncio extends Application {
     
+    Controlador cont;
+
+    public void recibirControlador (Controlador controlador){
+        this.cont = cont;
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
+        FXMLLoader loader= new FXMLLoader();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        
+        
+        
         
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
     }
-
+    
     /**
      * @param args the command line arguments
      */

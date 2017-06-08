@@ -13,15 +13,26 @@ import java.util.Date;
  */
 public class Anuncio {
     private int idAnuncio;
+    private String titulo;
+    private String URL_Foto;
+    private String ubicacion;
+    private String contacto;
+    private String horarios;
     private String descripcion;
-    private Date fecha;
+    private String fecha;
 
     public Anuncio() {}
     
-    public Anuncio(int idAnuncio, String descripcion, Date fecha) {
+    public Anuncio(int idAnuncio, String descripcion, String fecha, String titulo,
+            String URL, String Ubicacion, String contacto, String horarios) {
         this.idAnuncio = idAnuncio;
         this.descripcion = descripcion;
         this.fecha = fecha;
+        this.titulo = titulo;
+        this.URL_Foto = URL;
+        this.ubicacion = Ubicacion;
+        this.contacto = contacto;
+        this.horarios = horarios;
     }
 
     public int getIdAnuncio() {
@@ -40,11 +51,17 @@ public class Anuncio {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    @Override
+    public String toString() {
+        return "Anuncio{" + "titulo=" + titulo + ", ubicacion=" + ubicacion + ", contacto=" + contacto + ", horarios=" + horarios + ", descripcion=" + descripcion + '}';
+    }
+    
 }
