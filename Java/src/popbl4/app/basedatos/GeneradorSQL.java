@@ -11,6 +11,7 @@ import  popbl4.app.admin.Administrador;
 import  popbl4.app.admin.Log;
 import  popbl4.app.interactuador.Informacion;
 import  popbl4.app.sinInteraccion.Anuncio;
+import popbl4.app.sinInteraccion.Gastronomia;
 
 /**
  *
@@ -63,6 +64,22 @@ public class GeneradorSQL {
                 + "horarios = '"+anuncio.getHorarios()+"',"
                 + "fecha = '"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"'" +
                 "WHERE id_anuncios = "+anuncio.getIdAnuncio()+";"; 
+    }
+    public String generaSelectGastronomia(){
+        return "SELECT * FROM gastronomia";
+    }
+    public String generaInsertGastronomia(Gastronomia gastronomia){
+         return "INSERT INTO gastronomia "
+                + "(id_gastronomia, id_menu, id_anuncios) "
+                + "VALUES ("+gastronomia.getId_gastronomia()+","
+                + ""+gastronomia.getId_menu()+","
+                + ""+gastronomia.getId_anuncios()+";";  
+    }
+    public String generaUpdateGastronomia(Gastronomia gastronomia){
+        return "UPDATE gastronomia" +
+                "SET  id_menu = "+gastronomia.getId_menu()+"," +
+                "id_anuncios = " +gastronomia.getId_anuncios()+","+
+                "WHERE id_anuncios = "+gastronomia.getIdAnuncio()+";"; 
     }
     public String generaSelectInformacion(){
         return "SELECT * FROM info";
