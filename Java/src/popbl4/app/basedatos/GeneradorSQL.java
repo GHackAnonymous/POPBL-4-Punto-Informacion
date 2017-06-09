@@ -41,15 +41,26 @@ public class GeneradorSQL {
         return "SELECT * FROM anuncios";
     }
     public String generaInsertAnuncios(Anuncio anuncio){
-         return "INSERT INTO administrador "
-                + "(id_anuncios, descripcion , fecha) "
+         return "INSERT INTO anuncios "
+                + "(id_anuncios, titulo, descripcion,"+ 
+                " url_foto, ubicacion, contacto, horarios, fecha) "
                 + "VALUES ("+anuncio.getIdAnuncio()+","
+                + "'"+anuncio.getTitulo()+"',"
                 + "'"+anuncio.getDescripcion()+"',"
+                + "'"+anuncio.getURL_Foto()+"',"
+                + "'"+anuncio.getUbicacion()+"',"
+                + "'"+anuncio.getContacto()+"',"
+                + "'"+anuncio.getHorarios()+"',"
                 + "'"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+";";  
     }
     public String generaUpdateAnuncios(Anuncio anuncio){
-        return "UPDATE administrador" +
-                "SET descripcion = '"+anuncio.getDescripcion()+"',"
+        return "UPDATE anuncios" +
+                "SET titulo = "+anuncio.getTitulo()+"',"
+                + "descripcion = '"+anuncio.getDescripcion()+"',"
+                + "url_foto = '"+anuncio.getURL_Foto()+"',"
+                + "ubicacion = '"+anuncio.getUbicacion()+"',"
+                + "contacto = '"+anuncio.getContacto()+"',"
+                + "horarios = '"+anuncio.getHorarios()+"',"
                 + "fecha = '"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"'" +
                 "WHERE id_anuncios = "+anuncio.getIdAnuncio()+";"; 
     }
