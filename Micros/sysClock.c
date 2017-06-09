@@ -25,18 +25,19 @@ void initSysClock(uint32_t reload, uint32_t clk_src)
 	reg &= ~ 0x00000003;  
 	reg |= 0x00000001;
 	*pRCC_CFGR=reg;  // set HSE as sysclock
-  if(reload!=0)
-  {
+	
+	if(reload!=0)
+	{
 		pLOAD = (uint32_t*)(ADD_SYSTICK + 0x04);
 		
-	  *pLOAD = (uint32_t)(CLOCK_FREC/1000*reload - 1UL); 
+		*pLOAD = (uint32_t)(CLOCK_FREC/1000*reload - 1UL); 
 		
 		pVAL = (uint32_t*)(ADD_SYSTICK + 0x08);
-	  *pVAL = 0UL;
+		*pVAL = 0UL;
 		
 		pCTRL = (uint32_t*)(ADD_SYSTICK + 0x00);
-    *pCTRL |= 0x00000003; //enable, int enable, AHB clock/8
-  }
+		*pCTRL |= 0x00000003; //enable, int enable, AHB clock/8
+	}
 }
 
 void waitSysClockTick(void)

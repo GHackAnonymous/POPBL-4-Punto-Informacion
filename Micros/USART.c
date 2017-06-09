@@ -1,10 +1,7 @@
 #include "USART.h"
-#include <string.h>	//ejbuwobiuwe
+#include <string.h>
 #include <stm32f407xx.h>
 #include "OurDefinitions.h"
-/**
-*	USARTa eta erabilitako gpioak pizten dira
-*/
 
 void USARTpiztu(void){
 	uint32_t *P_RCC_AHB1, *P_RCC_APB1;
@@ -15,11 +12,6 @@ void USARTpiztu(void){
 	*P_RCC_APB1 |= (0x01 << POS_USART3);
 	*P_RCC_AHB1 |= (0x01 << POS_GPIOD);
 }
-
-/**
-*	USARTa 9600 baudiotara jartzen da, 8 biteko paketeak tramitatuz.
-*	Tx eta Rx aktibatzen dira, eta USARTa bera.
-*/
 
 void USARTkonfig (void){	
 	uint32_t * P_USART3_CR1, *P_USART3_BRR;
@@ -34,11 +26,6 @@ void USARTkonfig (void){
 	*P_USART3_BRR |= (0x11010000011 << 0);   //Divider y Mantissa
 }
 
-
-/**
-*	USARTeko gpioak modu alternoan jartzen dira, eta funtzio bat hematen zaie.
-*/
-//ESTA ES LA QUE PETA
 void USARTGPIOkonf(void){
 	uint32_t * P_GPIOD_MODER, *P_GPIOD_AFR;
 	
@@ -55,19 +42,12 @@ void USARTGPIOkonf(void){
 	*P_GPIOD_AFR |= (7 << (4 * (PIN_USART3_TX & 7)));
 }
 
-/**
-*	USARTaren irakurketa desaktibatzen da.
-*/
 void USARTRXkendu(void){
 	uint32_t * P_USART3_CR1;
 	
 	P_USART3_CR1 = (uint32_t*) (ADD_USART3 + OFF_CR1);
 	*P_USART3_CR1 &=~ (0x01 << 2);
 }
-
-/**
-*	Bidaltzeko prest dagoenean, 4x8 biteko pakete bidaltzen ditu ordenan.
-*/
 
 void USARTbidali(uint8_t *data, uint32_t size){
 	uint32_t * P_USART3_SR, *P_USART3_DR;
@@ -77,8 +57,8 @@ void USARTbidali(uint8_t *data, uint32_t size){
 	
 	int i = 0;
 	while(i < size) {
-			while(( *P_USART3_SR & (0x01 << 7)) == 0 );
-			*P_USART3_DR = data[i++];
+		while(( *P_USART3_SR & (0x01 << 7)) == 0 );
+		*P_USART3_DR = data[i++];
 	}
 }
 

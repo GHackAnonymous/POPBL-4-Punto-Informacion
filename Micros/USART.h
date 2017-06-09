@@ -20,7 +20,7 @@
 #define OFF_DR  0x04
 #define OFF_BRR 0x08
 #define ADD_NVIC 0xE000E100U 
-#define PRIO_USART6 71 //Priority 78
+#define PRIO_USART6 71 
 
 #define POS_GPIOC 2
 #define POS_GPIOD 3
@@ -36,9 +36,6 @@ void USARTkonfig (void);
 void USARTGPIOkonf(void);
 void USARTRXkendu(void);
 void USARTbidali(uint8_t *data, uint32_t size);
-
-
-
 
 
 #endif

@@ -17,7 +17,7 @@ int main(void)
 {
 	
 	initGPIO();
-  //initSysClock(1000, POS_SYS_AHB1);
+	//initSysClock(1000, POS_SYS_AHB1);
 	USARTpiztu(); 
 	USARTGPIOkonf();
 	USARTkonfig();
@@ -38,12 +38,10 @@ int main(void)
 void initGPIO(void)
 {
 	//led verde
-  rcc_enable_gpio(POS_GPIOF_AHB1, 1);
-  initGpioPinMod(ADD_GPIOF, LED_PIN, GPIO_MODE_OUTPUT);
+	rcc_enable_gpio(POS_GPIOF_AHB1, 1);
+	initGpioPinMod(ADD_GPIOF, LED_PIN, GPIO_MODE_OUTPUT);
+	
 	//sensor
 	rcc_enable_gpio(POS_GPIOA_AHB1, 1);
 	initGpioPinMod(ADD_GPIOA, PIN_GPIOA0_OUT, GPIO_MODE_INPUT);
 }
-
-
-

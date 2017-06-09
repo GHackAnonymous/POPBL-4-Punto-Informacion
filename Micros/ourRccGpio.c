@@ -38,4 +38,3 @@ void setGpioPinValu(uint32_t hGPIO, uint32_t nPin, uint32_t on){
 	*GPIO_ODR &= ~(0x01 << nPin);
 	*GPIO_ODR |= (on << nPin);
 }
-
