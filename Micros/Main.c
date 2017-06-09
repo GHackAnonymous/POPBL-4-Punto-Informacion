@@ -11,14 +11,13 @@
 
 void initGPIO(void);
 
-char msg[40]; 				/**< The output message of the board. */
+char msg[40];
 
 int main(void)
 {
 	
 	initGPIO();
   //initSysClock(1000, POS_SYS_AHB1);
-	//USART6_Init();
 	USARTpiztu(); 
 	USARTGPIOkonf();
 	USARTkonfig();
@@ -26,12 +25,7 @@ int main(void)
 
   while(1)
   {
-		if(getGpioPinValu(ADD_GPIOA,PIN_GPIOA0_OUT) == 1){//&&(booleano == 1)){
-			//sprintf(str," %d",n);
-			//writeToUart(USED_COM_PORT,(uint8_t *)str,strlen(str));
-			//prepareMsg(msg);
-			//USART_transmitString((uint8_t *)msg, msgLen);
-			//USART_resetTransmit();
+		if(getGpioPinValu(ADD_GPIOA,PIN_GPIOA0_OUT) == 1){
 			sprintf(msg, "u");
 			USARTbidali((uint8_t *)msg, strlen(msg));
 			setGpioPinValu(ADD_GPIOF, LED_PIN,1);

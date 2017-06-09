@@ -2,7 +2,6 @@
 #define OUR_RCC_H
 
 
-//#define ADD_RCC 0x40023800U
 #define ADD_GPIOF 0x40021400U
 #define ADD_GPIOA 0x40020000U
 

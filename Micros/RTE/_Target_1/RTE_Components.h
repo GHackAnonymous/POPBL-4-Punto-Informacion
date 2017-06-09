@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Component Configuration File
  *      *** Do not modify ! ***
  *
- * Project: '04usingUartLibMain' 
+ * Project: 'Main' 
  * Target:  'Target 1' 
  */
 

@@ -380,11 +380,6 @@
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>04usingUartLibMain.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\04usingUartLibMain.c</FilePath>
-            </File>
-            <File>
               <FileName>ourRccGpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\ourRccGpio.c</FilePath>
@@ -400,20 +395,15 @@
               <FilePath>.\USART.c</FilePath>
             </File>
             <File>
-              <FileName>USART3.c</FileName>
+              <FileName>Main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\USART3.c</FilePath>
+              <FilePath>.\Main.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>inc</GroupName>
           <Files>
-            <File>
-              <FileName>ourCom.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ourCom.h</FilePath>
-            </File>
             <File>
               <FileName>ourRccGpio.h</FileName>
               <FileType>5</FileType>
@@ -429,15 +419,7 @@
               <FileType>5</FileType>
               <FilePath>.\USART.h</FilePath>
             </File>
-            <File>
-              <FileName>OurDefinitions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\OurDefinitions.h</FilePath>
-            </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>libs</GroupName>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
