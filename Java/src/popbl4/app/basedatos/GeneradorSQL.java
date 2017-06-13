@@ -12,6 +12,8 @@ import  popbl4.app.admin.Log;
 import  popbl4.app.interactuador.Informacion;
 import  popbl4.app.sinInteraccion.Anuncio;
 import popbl4.app.sinInteraccion.Gastronomia;
+import popbl4.app.sinInteraccion.Productos;
+import popbl4.app.sinInteraccion.Tiendas;
 
 /**
  *
@@ -24,9 +26,8 @@ public class GeneradorSQL {
     }
     public String generaInsertAdministrador(Administrador adminstrador){
         return "INSERT INTO administrador "
-                + "(id_admin, nick, nombre, clave) "
-                + "VALUES ("+adminstrador.getIdAdministrador()+","
-                + "'"+adminstrador.getUsername()+"',"
+                + "(nick, nombre, clave) "
+                + "VALUES ('"+adminstrador.getUsername()+"',"
                 + "'"+adminstrador.getNombre()+"',"
                 + "'"+adminstrador.getContraseña()+"');";  
     }
@@ -42,52 +43,61 @@ public class GeneradorSQL {
         return "SELECT * FROM anuncios";
     }
     public String generaInsertAnuncios(Anuncio anuncio){
-         return "INSERT INTO anuncios "
+        
+        String query = "";
+        
+        query +="BEGIN TRANSACTION"+ 
+        "INSERT INTO anuncios "
                 + "(id_anuncios, titulo, descripcion,"+ 
                 " url_foto, ubicacion, contacto, horarios, fecha) "
-                + "VALUES ("+anuncio.getIdAnuncio()+","
-                + "'"+anuncio.getTitulo()+"',"
+                + "VALUES ('"+anuncio.getTitulo()+"',"
                 + "'"+anuncio.getDescripcion()+"',"
                 + "'"+anuncio.getURL_Foto()+"',"
                 + "'"+anuncio.getUbicacion()+"',"
                 + "'"+anuncio.getContacto()+"',"
                 + "'"+anuncio.getHorarios()+"',"
-                + "'"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+";";  
-    }
+                + ""+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+""+
+                "Select @error01 = @@error";
+                if (anuncio instanceof Gastronomia){
+                    query +="INSERT INTO gastronomia "
+                    + "(id_menu, id_anuncios) "
+                    + "VALUES ("+((Gastronomia)anuncio).getId_menu()+","
+                    + ""+((Gastronomia)anuncio).getId_anuncios()+"";
+                }else if(anuncio instanceof Tiendas){
+                    query +="INSERT INTO tiendas "
+                    + "(nombre,id_producto,id_anuncios) "
+                    + "VALUES ("+((Tiendas)anuncio).getNombre()+","
+                    + ""+((Tiendas)anuncio).getId_producto()+","
+                    + ""+((Tiendas)anuncio).getId_anuncios()+"";
+                }else if(anuncio instanceof Productos){
+                    query +="INSERT INTO productos "
+                    + "(nombre,precio,url_foto,id_anuncios)"
+                    + "VALUES ("+((Productos)anuncio).getNombre()+","
+                    + ""+((Productos)anuncio).getPrecio()+","
+                    + ""+((Productos)anuncio).getUrl_foto_producto()+","
+                    + ""+((Productos)anuncio).getId_anuncios()+"";
+                }
+                query +="Select @error02 = @@error"
+                +"IF @error01 = 0 AND @error02 = 0"
+                +"COMMIT TRANSACTION"
+                +"ELSE"
+                +"ROLLBACK TRANSACTION";
+        
+                return query;
+        }
     public String generaUpdateAnuncios(Anuncio anuncio){
-        return "UPDATE anuncios" +
-                "SET titulo = "+anuncio.getTitulo()+"',"
-                + "descripcion = '"+anuncio.getDescripcion()+"',"
-                + "url_foto = '"+anuncio.getURL_Foto()+"',"
-                + "ubicacion = '"+anuncio.getUbicacion()+"',"
-                + "contacto = '"+anuncio.getContacto()+"',"
-                + "horarios = '"+anuncio.getHorarios()+"',"
-                + "fecha = '"+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"'" +
+        return "UPDATE administrador" +
+                "SET descripcion = '"+anuncio.getDescripcion()+"',"
+                + "fecha = "+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"" +
                 "WHERE id_anuncios = "+anuncio.getIdAnuncio()+";"; 
-    }
-    public String generaSelectGastronomia(){
-        return "SELECT * FROM gastronomia";
-    }
-    public String generaInsertGastronomia(Gastronomia gastronomia){
-         return "INSERT INTO gastronomia "
-                + "(id_gastronomia, id_menu, id_anuncios) "
-                + "VALUES ("+gastronomia.getId_gastronomia()+","
-                + ""+gastronomia.getId_menu()+","
-                + ""+gastronomia.getId_anuncios()+";";  
-    }
-    public String generaUpdateGastronomia(Gastronomia gastronomia){
-        return "UPDATE gastronomia" +
-                "SET  id_menu = "+gastronomia.getId_menu()+"," +
-                "id_anuncios = " +gastronomia.getId_anuncios()+","+
-                "WHERE id_anuncios = "+gastronomia.getIdAnuncio()+";"; 
     }
     public String generaSelectInformacion(){
         return "SELECT * FROM info";
     }
     public String generaInsertInformacion(Informacion informacion){
         return "INSERT INTO info "
-                + "(id_info) "
-                + "VALUES ("+informacion.getIdInformacion()+");";  
+                + "() "
+                + "VALUES ();";  
     }
     public String generaUpdateInformacion(Informacion informacion){
         return null; //no tiene sentido modificar algo que no tiene mas que un id
@@ -97,9 +107,8 @@ public class GeneradorSQL {
     }
     public String generaInsertLog(Log log){
         return "INSERT INTO info "
-                + "(id_log, contenido, id_tipo, id_admin) "
-                + "VALUES ("+log.getIdLog()+","
-                + "'"+log.getContenido()+"',"
+                + "(contenido, id_tipo, id_admin) "
+                + "VALUES ('"+log.getContenido()+"',"
                 + ""+log.getIdTipo()+","
                 + ""+log.getIdAdmin()+");";  
     }

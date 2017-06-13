@@ -9,15 +9,15 @@ package popbl4.app.sinInteraccion;
  *
  * @author GHackAnonymous
  */
-public class tiendas extends Anuncio{
+public class Tiendas extends Anuncio{
     private int id_tiendas;
     private String nombre;
     private String id_producto;
     private int id_anuncios;
 
-    public tiendas() {}
+    public Tiendas() {}
     
-    public tiendas(int id_tiendas, String nombre, String id_producto, 
+    public Tiendas(int id_tiendas, String nombre, String id_producto, 
             int id_anuncios, String descripcion, String fecha, 
             String titulo, String URL, String Ubicacion, String contacto,
             String horarios) {

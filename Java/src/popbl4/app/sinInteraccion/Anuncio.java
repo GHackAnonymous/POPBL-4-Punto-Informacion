@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Alex
  */
-public abstract  class Anuncio {
+public class Anuncio {
     private int idAnuncio;
     private String titulo;
     private String URL_Foto;
@@ -51,6 +51,26 @@ public abstract  class Anuncio {
         this.descripcion = descripcion;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getURL_Foto() {
+        return URL_Foto;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public String getContacto() {
+        return contacto;
+    }
+
+    public String getHorarios() {
+        return horarios;
+    }
+
     public String getFecha() {
         return fecha;
     }
@@ -59,51 +79,9 @@ public abstract  class Anuncio {
         this.fecha = fecha;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getURL_Foto() {
-        return URL_Foto;
-    }
-
-    public void setURL_Foto(String URL_Foto) {
-        this.URL_Foto = URL_Foto;
-    }
-
-    public String getUbicacion() {
-        return ubicacion;
-    }
-
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
-
-    public String getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(String contacto) {
-        this.contacto = contacto;
-    }
-
-    public String getHorarios() {
-        return horarios;
-    }
-
-    public void setHorarios(String horarios) {
-        this.horarios = horarios;
-    }
-    
     @Override
     public String toString() {
-        return "Anuncio{" + "titulo=" + titulo + ", ubicacion=" + ubicacion + 
-                ", contacto=" + contacto + ", horarios=" + horarios + ", "
-                + "descripcion=" + descripcion + '}';
+        return titulo + " - " +contacto + " - " + horarios;
     }
     
 }

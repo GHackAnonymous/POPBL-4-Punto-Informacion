@@ -14,6 +14,8 @@ public class Informacion {
     // no deveria tenar algo mas como la descripcion?
     
     private int idInformacion;
+    private String Descripcion;
+    //private String
 
     public Informacion() {}
     

@@ -28,13 +28,10 @@ public class VistaAnuncio extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader= new FXMLLoader();
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
-        
-        
-        
-        Scene scene = new Scene(root);
-        
+       
+        Scene scene = new Scene(root, 600, 400);
         stage.setScene(scene);
+        
         stage.show();
     }
     

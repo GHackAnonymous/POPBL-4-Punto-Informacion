@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
@@ -12,21 +13,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="popbl4.app.sinInteraccion.FXMLDocumentController">
    <children>
-      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0">
+      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.85" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@../../../fotos/fondowater.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="100.0" layoutY="8.0" prefHeight="40.0" prefWidth="400.0" text="Menu" textFill="#648cab" wrapText="true">
+            <Rectangle fill="#cccccc" height="150.0" layoutX="165.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+            <Rectangle fill="#cccccc" height="150.0" layoutX="414.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+            <Label alignment="CENTER" layoutX="100.0" layoutY="8.0" prefHeight="40.0" prefWidth="400.0" text="ṨƤᾋṂ" textFill="#648cab" wrapText="true">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="botonHelp" layoutX="207.0" layoutY="361.0" mnemonicParsing="false" text="HELP" />
-            <JFXButton fx:id="botonBloqueo" layoutX="285.0" layoutY="361.0" style="-fx-background-color: #ccc;" text="UP" />
-            <JFXButton fx:id="botonAdmin" layoutX="350.0" layoutY="361.0" style="-fx-background-color: lightblue;" text="Admin" />
+            <Button fx:id="botonHelp" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#mostrarHelp" text="HELP" />
+            <JFXButton fx:id="botonAdmin" layoutX="535.0" layoutY="16.0" onAction="#irAdministrador" style="-fx-background-color: lightblue;" text="Admin" />
             <JFXButton buttonType="RAISED" depthTest="ENABLE" ellipsisString="" layoutX="100.0" layoutY="125.0" onAction="#irTipoAnuncio" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;" wrapText="true">
                <graphic>
                   <ImageView fitHeight="122.0" fitWidth="130.0" pickOnBounds="true" smooth="false" x="25.0" y="25.0">
@@ -36,7 +38,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="349.0" layoutY="125.0" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;">
+            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="350.0" layoutY="125.0" onAction="#irInformacion" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;">
                <graphic>
                   <ImageView fitHeight="94.0" fitWidth="123.0" pickOnBounds="true" smooth="false">
                      <image>
@@ -47,88 +49,188 @@
             </JFXButton>
          </children>
       </Pane>
-      <Pane fx:id="panelAnuncios" prefHeight="400.0" prefWidth="600.0" visible="false">
+      <Pane fx:id="panelAnuncios" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
+            <Polyline fill="#cccccc" layoutX="300.0" layoutY="54.0" strokeType="INSIDE" strokeWidth="0.0">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="-40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="-40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="60.0" />
+                <Double fx:value="-50.0" />
+                <Double fx:value="-40.0" />
+              </points>
+            </Polyline>
             <Button fx:id="botonBackMenu" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMenu" text="Back" />
             <Label alignment="CENTER" layoutX="200.0" layoutY="15.0" prefHeight="20.0" prefWidth="200.0" text="Anuncios">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <JFXListView fx:id="listaAnuncios" layoutX="25.0" layoutY="50.0" prefHeight="300.0" prefWidth="550.0" />
+            <ListView fx:id="listaAnuncios" layoutX="25.0" layoutY="50.0" prefHeight="300.0" prefWidth="550.0" />
+            <JFXRadioButton layoutX="25.0" layoutY="365.0" text="Pobre">
+               <toggleGroup>
+                  <ToggleGroup fx:id="presio" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton layoutX="129.0" layoutY="365.0" text="Medio" toggleGroup="$presio" />
+            <JFXRadioButton layoutX="229.0" layoutY="365.0" text="Caro" toggleGroup="$presio" />
          </children>
       </Pane>
-      <Pane fx:id="panelTipoAnuncio" prefHeight="400.0" prefWidth="600.0" visible="false">
+      <Pane fx:id="panelTipoAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-            <Polygon fill="#cccccc" layoutX="575.0" layoutY="377.0" stroke="#cccccc" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="-60.0" />
-              </points>
-            </Polygon>
             <Accordion layoutX="100.0" layoutY="50.0" prefHeight="300.0" prefWidth="400.0">
               <panes>
-                <TitledPane text="Gastronomia">
+                <TitledPane alignment="CENTER" text="Gastronomia">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="15.0" layoutY="15.0" prefHeight="195.0" prefWidth="200.0" text="Aqui va una descipcion de lo que la gente podra encontrar en gastronomia." wrapText="true" />
+                              <Label layoutX="15.0" layoutY="15.0" prefHeight="195.0" prefWidth="200.0" text="Conjunto de conocimientos y actividades que están relacionados con los ingredientes, recetas y técnicas de la culinaria así como con su evolución histórica." textAlignment="CENTER" wrapText="true" />
                               <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="234.0" layoutY="15.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../../../fotos/gastronomia.jpg" />
                                  </image>
                               </ImageView>
-                              <Button layoutX="283.0" layoutY="185.0" mnemonicParsing="false" onAction="#irAnuncios" text="Entrar" />
+                              <Button layoutX="283.0" layoutY="175.0" mnemonicParsing="false" onAction="#irAnuncios" text="Entrar" />
                            </children>
                         </AnchorPane>
                   </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                 </TitledPane>
-                <TitledPane expanded="false" text="Tiendas">
+                <TitledPane alignment="CENTER" expanded="false" text="Tiendas">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="283.0" layoutY="174.0" mnemonicParsing="false" onAction="#irAnuncios" text="Entrar" />
+                              <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="234.0" layoutY="14.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../fotos/Shop-Promo-Box.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="14.0" layoutY="15.0" prefHeight="195.0" prefWidth="200.0" text="Establecimiento en el que se vende cualquier tipo de producto de consumo.&quot;tienda de ropa; tienda de comestibles; tienda de electrodomésticos; el diseñador decidió crear su propia línea de accesorios de lujo y venderlos en una tienda exclusiva&quot;" textAlignment="CENTER" wrapText="true" />
+                           </children></AnchorPane>
                   </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                 </TitledPane>
-                <TitledPane animated="false" expanded="false" text="Servicios">
+                <TitledPane alignment="CENTER" animated="false" expanded="false" text="Servicios">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Button layoutX="283.0" layoutY="174.0" mnemonicParsing="false" onAction="#irAnuncios" text="Entrar" />
+                              <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="234.0" layoutY="14.0" pickOnBounds="true">
+                                 <image>
+                                    <Image url="@../../../fotos/cinta.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="14.0" layoutY="15.0" prefHeight="195.0" prefWidth="200.0" text="Sector de servicios o sector terciario es el sector económico que engloba las actividades relacionadas con los servicios materiales no productores de bienes." textAlignment="CENTER" wrapText="true" />
+                           </children></AnchorPane>
                   </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                 </TitledPane>
               </panes>
             </Accordion>
             <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="14.0" style="-fx-background-color: #ccc;" text="Back" />
-            <Polygon fill="#cccccc" layoutX="536.0" layoutY="410.0" stroke="#cccccc" strokeType="INSIDE">
-               <points>
-                  <Double fx:value="-50.0" />
-                  <Double fx:value="40.0" />
-                  <Double fx:value="50.0" />
-                  <Double fx:value="40.0" />
-                  <Double fx:value="0.0" />
-                  <Double fx:value="-60.0" />
-               </points>
-            </Polygon>
             <JFXButton buttonType="RAISED" layoutX="564.0" layoutY="14.0" style="-fx-background-color: #ccc;" text="?" />
          </children>
       </Pane>
-      <Pane fx:id="panelAnuncio" prefHeight="400.0" prefWidth="600.0" visible="false">
+      <Pane fx:id="panelAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
-            <Label layoutX="96.0" layoutY="40.0" prefHeight="25.0" prefWidth="245.0" text="Titulo" textOverrun="CENTER_ELLIPSIS">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../fotos/fondo4.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="tituloAnuncio" alignment="CENTER" layoutX="206.0" layoutY="28.0" prefHeight="25.0" prefWidth="245.0" text="Anuncio de transformers" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
             <Rectangle fill="#e1e1e1" height="294.0" layoutX="26.0" layoutY="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
-            <Label layoutX="40.0" layoutY="78.0" prefHeight="286.0" prefWidth="281.0" text="También es una composición de caracteres imprimibles (con grafema) generados por un algoritmo de cifrado que, aunque no tienen sentido para cualquier persona, sí puede ser descifrado por su destinatario original. En otras palabras, un texto es un entramado de signos con una intención comunicativa que adquiere sentido en determinado contexto.Las ideas esenciales que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto nivel, como los títulos y subtítulos, la secuencia de párrafos, etc. En contraste, las «microproposiciones» son los elementos coayudantes de la cohesión de un texto, pero a nivel más particular o local. Esta distinción fue realizada por Teun van Dijk en 1980.1" wrapText="true" />
-            <ImageView fitHeight="174.0" fitWidth="200.0" layoutX="359.0" layoutY="40.0" pickOnBounds="true">
+            <Label fx:id="labeInfoText" layoutX="40.0" layoutY="78.0" prefHeight="286.0" prefWidth="281.0" text="También es una composición de caracteres imprimibles (con grafema) generados por un algoritmo de cifrado que, aunque no tienen sentido para cualquier persona, sí puede ser descifrado por su destinatario original. En otras palabras, un texto es un entramado de signos con una intención comunicativa que adquiere sentido en determinado contexto.Las ideas esenciales que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto nivel, como los títulos y subtítulos, la secuencia de párrafos, etc. En contraste, las «microproposiciones» son los elementos coayudantes de la cohesión de un texto, pero a nivel más particular o local. Esta distinción fue realizada por Teun van Dijk en 1980.1" wrapText="true" />
+            <ImageView fx:id="imagenAnuncio" fitHeight="174.0" fitWidth="200.0" layoutX="355.0" layoutY="78.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../fotos/unnamed.png" />
                </image>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="41.0" style="-fx-background-color: #ccc;" text="&lt;&lt;" />
+            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="41.0" onAction="#volverListaAnuncios" style="-fx-background-color: #ccc;" text="&lt;&lt;" />
+            <Label layoutX="355.0" layoutY="263.0" text="Ubicacion:" textFill="#00fcbd" underline="true" wrapText="true" />
+            <Label fx:id="labelUbicacion" layoutX="416.0" layoutY="263.0" prefWidth="160.0" text="Tu puta callle" textFill="WHITE" wrapText="true" />
+            <JFXButton layoutX="503.0" layoutY="347.0" style="-fx-background-color: #00fcbd;" text="Cartelera" />
+            <Label layoutX="355.0" layoutY="308.0" text="Contacto" textFill="#00fcbd" underline="true" wrapText="true" />
+            <Label fx:id="labelContacto" layoutX="416.0" layoutY="308.0" text="Label" textFill="#fffdfd" />
+         </children>
+      </Pane>
+      <Pane fx:id="panelInformacion" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
+         <children>
+            <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
+            <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #ccc;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Titulo">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <JFXButton defaultButton="true" layoutX="26.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
+            <JFXButton layoutX="109.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" ripplerFill="#832a2a" style="-fx-border-color: #ccc;" text="Cultura" />
+            <JFXButton layoutX="192.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Turismo" />
+            <JFXButton layoutX="275.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Historia" />
+            <JFXButton layoutX="358.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" />
+            <JFXButton layoutX="441.0" layoutY="50.0" prefHeight="27.0" prefWidth="133.0" style="-fx-border-color: #ccc;" text="Mapa" />
+            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="14.0" onAction="#backMenuInfo" style="-fx-background-color: #ccc;" text="Back" />
+            <Pane fx:id="panelCultura" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" visible="false" />
+            <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" />
+            <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" />
+            <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="330.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/gastronomia.jpg" />
+                     </image>
+                  </ImageView>
+                  <ScrollPane layoutX="14.0" layoutY="47.0" prefHeight="244.0" prefWidth="281.0" vbarPolicy="ALWAYS">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="278.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefWidth="245.0" text="59 Which technology requires the use of PPPoE to provide PPP connections to customers?dialup ISDN modemT1DSL*dialup analog modem60 Under which two categories of WAN connections does Frame Relay fit? (Choose two.)packet-switched*private infrastructure*public infrastructureInternetdedicated61 What are three characteristics of the generic routing encapsulation (GRE) protocol? (Choose three.)GRE tunnels support multicast traffic.*GRE creates additional overload for packets that are traveling through the VPN.*GRE uses AES for encryption unless otherwise specifiedBy default, GRE does not include any flow control mechanisms.*Developed by the IETF, GRE is a secure tunneling protocol that was designed for Cisco routers.GRE provides encapsulation for a single protocol type that is traveling through the VPN.62. An intercity bus company wants to offer constant Internet connectivity to the users traveling on the buses. Which two types of WAN infrastructure would meet the requirements? (Choose two.)cellular*dedicatedprivate infrastructurecircuit-switchedpublic infrastructure*" wrapText="true" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelHelp" opacity="0.86" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c5c5c5;" visible="false">
+         <children>
+            <JFXButton buttonType="RAISED" layoutX="265.0" layoutY="360.0" onAction="#volverHelp" style="-fx-background-color: #fff;" text="Back" />
+            <Pane layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #333;">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="271.0" prefWidth="471.0" vbarPolicy="ALWAYS">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="468.0">
+                           <children>
+                              <Label layoutX="32.0" prefWidth="400.0" text="[[Archivo:WCS Beebe Barton 600.jpg|thumb|right|William Beebe (1877–1962) (izquierda) y Otis Barton, Jr. (1899–1992) junto a la batisfera.]]La '''batisfera''' (del [[Idioma griego|griego]] ''bacís'' ?bola sumergible? y ''sfaira'' ?triangulo?) fue un ingenio sumergible tripulado por animales acuaticos, precursor de los [[submarino]]s exploradores de las profundidades [[abisal]]es. Fue inventada en [[el siglo pasado]] por los exploradores de reptilianos [[Estados Unidos|estadounidenses]] [[Bob Marley]] y [[el otro jambo]], y usada para realizar las primeras exploraciones fuera de la ley ''in situ'' de las grandes y conocidas profundidades marinas.La baticao es básicamente una esfera sellada, fabricada en [[pvc]] y que posee una manilla para batir el colacao. Durante su funcionamiento, la batisfera pende de [[La Perla Negra]] usando un cable también de metal, que le provee [[electricidad]] y [[THC disuelto en aire]]. Dicho cable se desenrolla para sumergir la batisfera, y se enrolla para hacerla ascender . Realmente es un objeto inerte y la rotura del cable supone el final de todo un viaje.En [[1934]], [[Bruce Lee]] y [[Carlton Banks]] consiguieron el récord de THC concentrado en sangre dentro de la batisfera, que es de 908,4 [[centilitros cúbico]]s de buena ganjah, récord que sigue en pie. Debido a que  mayores concentracion de THC aunmentan el peso del cable umbilical se torna inmanejable, es poco probable que dicho récord sea superado.En 1948, Banks voló en solitario hasta 1.370 metros (según el libro de Terminator, &quot;Una Breve historia de casi todo&quot;) utilizando una batisfera modificada, el [[Weedoscopo]]. ==Características técnicas==* [[Diámetro]]: 1,44 [[metro]]s.* Espesor de las paredes: 4 [[hectareas]].* Flujo de THC por minuto: 1,05 [[centilitros cúbicos][[THC]]]==Véase también==* [[Batiscafo]]* [[THC]][[Categoría:Submarinos]]Bases de datos:Backup//Restore-Kopia a lo bruto BINARIO -&gt; data karpeta kopiatu-TEXTO -&gt; bin/mysqldump.exe bin&gt; mysqldump --help | more mysqldump -B scott &gt; E:\kopia\20170426.sql (scott DB-a gorde).bin&gt; mysql -u root &lt; E:\kopia\20170426.sql (gordetako aginduetatik datubasean sartu).-Replikazioa -&gt; (slave server) los cambios del maestro se guardan en el escalvo. mysql.inimysqldump -u root scott &gt; D:\kopia\20170426.sql (GUARDAR) (solo las tablas de la base de datos)mysqldump -u root -B scott &gt; D:\kopia\20170426.sql (GUARDAR) (la base de datos entera)mysql -u root &lt; D:\kopia\20170426.sql (RECUPERAR)" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

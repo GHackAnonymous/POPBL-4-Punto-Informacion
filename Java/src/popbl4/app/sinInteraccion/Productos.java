@@ -9,16 +9,16 @@ package popbl4.app.sinInteraccion;
  *
  * @author GHackAnonymous
  */
-public class productos extends Anuncio{
+public class Productos extends Anuncio{
     private int id_producto;
     private String nombre;
     private String precio;
-    private String url_foto;
+    private String url_foto_producto;
     private int id_anuncios;
 
-    public productos() {}
+    public Productos() {}
 
-    public productos(int id_producto, String nombre, String precio, 
+    public Productos(int id_producto, String nombre, String precio, 
             String url_foto, int id_anuncios, String descripcion, 
             String fecha, String titulo, String URL, String Ubicacion, 
             String contacto, String horarios) {
@@ -29,7 +29,7 @@ public class productos extends Anuncio{
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.precio = precio;
-        this.url_foto = url_foto;
+        this.url_foto_producto = url_foto;
         this.id_anuncios = id_anuncios;
     }
 
@@ -59,12 +59,12 @@ public class productos extends Anuncio{
         this.precio = precio;
     }
 
-    public String getUrl_foto() {
-        return url_foto;
+    public String getUrl_foto_producto() {
+        return url_foto_producto;
     }
 
-    public void setUrl_foto(String url_foto) {
-        this.url_foto = url_foto;
+    public void setUrl_foto_producto(String url_foto) {
+        this.url_foto_producto = url_foto;
     }
 
     public int getId_anuncios() {
@@ -78,7 +78,7 @@ public class productos extends Anuncio{
     @Override
     public String toString() {
         return "productos{" + "id_producto=" + id_producto + ", nombre=" 
-                + nombre + ", precio=" + precio + ", url_foto=" + url_foto +
+                + nombre + ", precio=" + precio + ", url_foto=" + url_foto_producto +
                 ", id_anuncios=" + id_anuncios + '}';
     }
     
