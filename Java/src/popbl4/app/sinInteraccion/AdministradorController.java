@@ -69,7 +69,7 @@ public class AdministradorController implements Initializable {
             
         } 
        if(lista.size() != listaLog.getItems().size()){ 
-        for(int i = 0; i < lista.size(); i++){
+        for(int i = listaLog.getItems().size(); i < lista.size(); i++){
              listaLog.getItems().add(lista.get(i));
         }
        }
