@@ -68,10 +68,11 @@ public class AdministradorController implements Initializable {
             listaLog.getItems().removeAll(lista);
             
         } 
-        
-       for(int i = 0; i < lista.size(); i++){
-            listaLog.getItems().add(lista.get(i));
+       if(lista.size() != listaLog.getItems().size()){ 
+        for(int i = 0; i < lista.size(); i++){
+             listaLog.getItems().add(lista.get(i));
         }
+       }
         
         panelAdministrador.setVisible(false);
         panelLog.setVisible(true);
