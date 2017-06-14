@@ -10,15 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import popbl4.app.admin.Log;
 import popbl4.app.basedatos.ConexionBD;
+import popbl4.app.basedatos.GeneradorSQL;
 import popbl4.app.olimexRS232.ConexionRS232;
 import popbl4.app.sinInteraccion.Anuncio;
-import popbl4.app.sinInteraccion.FXMLDocumentController;
-import popbl4.app.sinInteraccion.VistaAnuncio;
 
 /**
  *
@@ -29,8 +25,8 @@ public class Controlador {
     
     private ConexionBD conexionBD;
     private ConexionRS232 conexionRS232;
-    private VistaAnuncio vistaAnuncio;
     private List<Anuncio> lista;
+    private GeneradorSQL generadorSQL;
     
 
     public Controlador() throws IOException {
@@ -38,11 +34,11 @@ public class Controlador {
         conexionBD = new ConexionBD();
         conexionBD.IniciarConexion();
         conexionRS232 = new ConexionRS232();
-        vistaAnuncio = new  VistaAnuncio();
+        generadorSQL = new GeneradorSQL();
     }
     
-    public List<Anuncio> InicializarAnuncios(){
-        for(int i = 0; i < 20; i++){
+    public List<Anuncio> InicializarAnuncios() throws SQLException, ClassNotFoundException{
+       /* for(int i = 0; i < 20; i++){
             lista.add(new Anuncio(i, "Mercadona es una compañía española de distribución con sede en el municipio de Tabernes Blanques y origen en Puebla de Farnals, los dos pertenecientes a la provincia de Valencia.\n" +
 "\n" +
 "Mercadona cuenta con 1588 supermercados1 repartidos entre todas las provincias españolas,2 "
@@ -52,8 +48,31 @@ public class Controlador {
                     + "propias marcas blancas, junto con otras marcas comerciales", 
                     "20/1/1111", "Mercadona","img/barPAcko.png"," Mediana y gran distribución. 1588 supermercados", 
                     "900 500 103", "10:00 - 22:00"));
-        }
+        }*/
+       
+       ResultSet rs = conexionBD.genericoSelect(generadorSQL.generaSelectGastronomia());
+       List<Anuncio> listaGastronomia = conexionBD.getAnunciosList("gastronomia",rs);
+       
+       rs = conexionBD.genericoSelect(generadorSQL.generaSelectTiendas());
+       List<Anuncio> listaTiendas = conexionBD.getAnunciosList("tiendas",rs);
+       
+       rs = conexionBD.genericoSelect(generadorSQL.generaSelectServicios());
+       List<Anuncio> listaServicios = conexionBD.getAnunciosList("servicios",rs);
+       
+       List<Anuncio> lista = new ArrayList<>(listaGastronomia);
+       lista.addAll(listaTiendas);
+       lista.addAll(listaServicios);
+
+
+       
         return lista;
+    }
+    public List<Log> InicializarLog() throws SQLException, ClassNotFoundException{
+
+       ResultSet rs = conexionBD.genericoSelect(generadorSQL.generaSelectLog());
+       List<Log> listaLog = conexionBD.getLogList(rs);
+
+        return listaLog;
     }
     
     /*public void obtenerDatos(String a) throws SQLException {

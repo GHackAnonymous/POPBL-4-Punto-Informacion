@@ -12,12 +12,12 @@ package popbl4.app.sinInteraccion;
 public class Tiendas extends Anuncio{
     private int id_tiendas;
     private String nombre;
-    private String id_producto;
+    private Productos producto;
     private int id_anuncios;
 
     public Tiendas() {}
     
-    public Tiendas(int id_tiendas, String nombre, String id_producto, 
+    public Tiendas(int id_tiendas, String nombre, Productos producto, 
             int id_anuncios, String descripcion, String fecha, 
             String titulo, String URL, String Ubicacion, String contacto,
             String horarios) {
@@ -26,7 +26,7 @@ public class Tiendas extends Anuncio{
         
         this.id_tiendas = id_tiendas;
         this.nombre = nombre;
-        this.id_producto = id_producto;
+        this.producto = producto;
         this.id_anuncios = id_anuncios;
     }
 
@@ -46,12 +46,12 @@ public class Tiendas extends Anuncio{
         this.nombre = nombre;
     }
 
-    public String getId_producto() {
-        return id_producto;
+    public Productos getProducto() {
+        return producto;
     }
 
-    public void setId_producto(String id_producto) {
-        this.id_producto = id_producto;
+    public void setProducto(Productos id_producto) {
+        this.producto = id_producto;
     }
 
     public int getId_anuncios() {
@@ -65,7 +65,7 @@ public class Tiendas extends Anuncio{
     @Override
     public String toString() {
         return "tiendas{" + "id_tiendas=" + id_tiendas + ", nombre=" + nombre 
-                + ", id_producto=" + id_producto + ", id_anuncios=" 
+                + ", id_producto=" + producto + ", id_anuncios=" 
                 + id_anuncios + '}';
     }
     

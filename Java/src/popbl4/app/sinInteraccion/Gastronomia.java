@@ -5,18 +5,20 @@
  */
 package popbl4.app.sinInteraccion;
 
+import java.util.List;
+
 /**
  *
  * @author GHackAnonymous
  */
 public class Gastronomia extends Anuncio{
     private int id_gastronomia;
-    private String id_menu;
+    private Menu menu;
     private int id_anuncios;
 
     public Gastronomia() {}
 
-    public Gastronomia(int id_gastronomia, String id_menu, int id_anuncios, 
+    public Gastronomia(int id_gastronomia, Menu menu, int id_anuncios, 
             String descripcion, String fecha, String titulo, 
             String URL, String Ubicacion, String contacto, String horarios) {
         
@@ -24,7 +26,7 @@ public class Gastronomia extends Anuncio{
                 horarios);
         
         this.id_gastronomia = id_gastronomia;
-        this.id_menu = id_menu;
+        this.menu = menu;
         this.id_anuncios = id_anuncios;
     }
     
@@ -36,12 +38,12 @@ public class Gastronomia extends Anuncio{
         this.id_gastronomia = id_gastronomia;
     }
 
-    public String getId_menu() {
-        return id_menu;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setId_menu(String id_menu) {
-        this.id_menu = id_menu;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public int getId_anuncios() {
@@ -55,7 +57,7 @@ public class Gastronomia extends Anuncio{
     @Override
     public String toString() {
         return "Gastronomia{" + "id_gastronomia=" + id_gastronomia + 
-                ", id_menu=" + id_menu + ", id_anuncios=" + id_anuncios + '}';
+                ", id_menu=" + menu + ", id_anuncios=" + id_anuncios + '}';
     }
     
     

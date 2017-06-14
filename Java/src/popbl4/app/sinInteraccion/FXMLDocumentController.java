@@ -6,9 +6,9 @@
 package popbl4.app.sinInteraccion;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -29,8 +28,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -43,6 +44,7 @@ import popbl4.app.controladorMain.Controlador;
 public class FXMLDocumentController implements Initializable {
     Controlador cont;
     List<Anuncio> list;
+    ChangeListener<Anuncio> lineser = null;
     
      @FXML
     private Label tituloAnuncio;
@@ -89,8 +91,17 @@ public class FXMLDocumentController implements Initializable {
      @FXML
     private Pane panelTipoAnuncio;
      
-      @FXML
+    @FXML
     private Pane panelAnuncio;
+    
+    @FXML
+    private TitledPane titleTiendas;
+    
+    @FXML
+    private TitledPane titleServicios;
+    
+    @FXML
+    private TitledPane titleGastronomia;
      
      @FXML
     void backMenuInfo(ActionEvent event) {
@@ -113,6 +124,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     void irAnuncios(ActionEvent event) {
+        if(titleGastronomia.isExpanded()){ //Para saver el tipo selecionado
+            inicializarLista(titleGastronomia.getText());
+        }else if(titleServicios.isExpanded()){
+            inicializarLista(titleServicios.getText());
+        }else if(titleTiendas.isExpanded()){
+            inicializarLista(titleTiendas.getText());
+        }
+        
+        
         animar(panelTipoAnuncio, "leftCenter");
         animar(panelAnuncios, "left");
         //panelTipoAnuncio.setVisible(false);
@@ -126,30 +146,72 @@ public class FXMLDocumentController implements Initializable {
         animar(panelInformacion, "left");
     }
     
-    void inicializarLista() {
+    void inicializarLista(String tipo) {
+      /*  if(listaAnuncios.getItems().size()>0){
+            int a =  0;
+            for(int i = listaAnuncios.getItems().size(); i >= 0; i--){
+                listaAnuncios.getItems().remove(a);
+                a++;
+            }
+        }*/
+        if(listaAnuncios.getItems().size()>0 && listaAnuncios.getItems() != null){
+            listaAnuncios.getItems().removeAll(list);
+            
+        }
+        if(lineser != null){
+                listaAnuncios.getSelectionModel().selectedItemProperty().removeListener(lineser);
+        }else{
+            lineser = new ChangeListener<Anuncio>() {
+                @Override
+                public void changed(ObservableValue<? extends Anuncio> observable, Anuncio oldValue, Anuncio newValue) {
+                    verAnuncio(newValue);
+                } 
+            };
+        }
+        
         for(int i = 0; i < list.size(); i++){
-            listaAnuncios.getItems().add(list.get(i)); 
+            if(tipo.equalsIgnoreCase("Gastronomia")){
+                if(list.get(i) instanceof Gastronomia){
+                    listaAnuncios.getItems().add(list.get(i));
+                }
+            }else if(tipo.equalsIgnoreCase("Tiendas")){
+                if(list.get(i) instanceof Tiendas){
+                    listaAnuncios.getItems().add(list.get(i)); 
+                }
+            }else if(tipo.equalsIgnoreCase("Servicios")){
+                if(list.get(i) instanceof Servicios){
+                   listaAnuncios.getItems().add(list.get(i)); 
+                }
+            }
         }
-        listaAnuncios.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Anuncio>() {
-            @Override
-            public void changed(ObservableValue<? extends Anuncio> observable, Anuncio oldValue, Anuncio newValue) {
-                verAnuncio(newValue);
-            } 
-        });
+        listaAnuncios.getSelectionModel().selectedItemProperty().addListener(lineser);
     }
-    
-    void actualizarLista(List<Anuncio> l){
-        for(int i = 0; i < l.size(); i++){
-            listaAnuncios.getItems().add(l.get(i)); 
-        }
+
+    void actualizarLista(String tipo, List<Anuncio> l){
+         for(int i = 0; i < list.size(); i++){
+            if(tipo.equalsIgnoreCase("Gastronomia")){
+                if(list.get(i) instanceof Gastronomia){
+                    listaAnuncios.getItems().add(list.get(i)); 
+                }
+            }else if(tipo.equalsIgnoreCase("Tiendas")){
+                if(list.get(i) instanceof Tiendas){
+                    listaAnuncios.getItems().add(list.get(i)); 
+                }
+            }else if(tipo.equalsIgnoreCase("Servicios")){
+                if(list.get(i) instanceof Servicios){
+                   listaAnuncios.getItems().add(list.get(i));  
+                }
+            }
+         }
     }
     
      private void verAnuncio(Anuncio newValue) {
-         inicializaAnuncio(newValue);
-         panelAnuncio.setVisible(true);
-           animar(panelAnuncios, "leftCenter");
-           animar(panelAnuncio, "left");
-                
+         if(newValue!= null){
+            inicializaAnuncio(newValue);
+            panelAnuncio.setVisible(true);
+            animar(panelAnuncios, "leftCenter");
+            animar(panelAnuncio, "left");
+         }
        }
      @FXML
     void volverListaAnuncios(ActionEvent event) {
@@ -178,14 +240,25 @@ public class FXMLDocumentController implements Initializable {
     void inicializaAnuncio(Anuncio a) {
         tituloAnuncio.setText(a.getTitulo());
         labeInfoText.setText(a.getDescripcion());
-        //imagenAnuncio.setImage(a.getURL_Foto());
+
+        imagenAnuncio.setImage(new Image("file:.\\src\\fotos\\"+a.getURL_Foto()));
+        
         labelUbicacion.setText(a.getUbicacion()); 
         labelContacto.setText(a.getContacto());
     }
     
     @FXML
     void irAdministrador(ActionEvent event) throws IOException {
-        Parent home_page_parent = FXMLLoader.load(getClass().getResource("Administrador.fxml"));
+        
+        //FXMLLoader fxmlLoader = FXMLLoader(getClass().getResource("Administrador.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Administrador.fxml"));  
+        
+        
+        Parent home_page_parent = (Parent)fxmlLoader.load();
+        
+        AdministradorController controller = fxmlLoader.<AdministradorController>getController();
+        controller.pasarControlador(cont);
+
         Scene home_page_scene = new Scene(home_page_parent);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         
@@ -198,8 +271,12 @@ public class FXMLDocumentController implements Initializable {
         try {
             cont = new Controlador();
             list = cont.InicializarAnuncios();
-            inicializarLista();
+            //inicializarLista();
         } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -256,6 +333,10 @@ public class FXMLDocumentController implements Initializable {
            time.play();
           }
           
+    }
+
+    private FXMLLoader FXMLLoader(URL resource) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private static class ChangeListenerImpl implements ChangeListener<String> {

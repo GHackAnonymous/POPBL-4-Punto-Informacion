@@ -56,7 +56,11 @@ public class Log {
     public void setIdAdmin(int idAdmin) {
         this.idAdmin = idAdmin;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Log{" + "idLog=" + idLog + ", contenido=" + contenido +
+                ", idTipo=" + idTipo + ", idAdmin=" + idAdmin + '}';
+    }
+
 }

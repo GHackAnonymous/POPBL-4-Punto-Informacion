@@ -6,13 +6,12 @@
 package popbl4.app.basedatos;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import  popbl4.app.admin.Administrador;
 import  popbl4.app.admin.Log;
 import  popbl4.app.interactuador.Informacion;
 import  popbl4.app.sinInteraccion.Anuncio;
 import popbl4.app.sinInteraccion.Gastronomia;
-import popbl4.app.sinInteraccion.Productos;
+import popbl4.app.sinInteraccion.Servicios;
 import popbl4.app.sinInteraccion.Tiendas;
 
 /**
@@ -61,21 +60,20 @@ public class GeneradorSQL {
                 if (anuncio instanceof Gastronomia){
                     query +="INSERT INTO gastronomia "
                     + "(id_menu, id_anuncios) "
-                    + "VALUES ("+((Gastronomia)anuncio).getId_menu()+","
+                    + "VALUES ("+((Gastronomia)anuncio).getMenu().getId_menu()+","
                     + ""+((Gastronomia)anuncio).getId_anuncios()+"";
                 }else if(anuncio instanceof Tiendas){
                     query +="INSERT INTO tiendas "
                     + "(nombre,id_producto,id_anuncios) "
                     + "VALUES ("+((Tiendas)anuncio).getNombre()+","
-                    + ""+((Tiendas)anuncio).getId_producto()+","
+                    + ""+((Tiendas)anuncio).getProducto().getId_producto()+","
                     + ""+((Tiendas)anuncio).getId_anuncios()+"";
-                }else if(anuncio instanceof Productos){
-                    query +="INSERT INTO productos "
-                    + "(nombre,precio,url_foto,id_anuncios)"
-                    + "VALUES ("+((Productos)anuncio).getNombre()+","
-                    + ""+((Productos)anuncio).getPrecio()+","
-                    + ""+((Productos)anuncio).getUrl_foto_producto()+","
-                    + ""+((Productos)anuncio).getId_anuncios()+"";
+                }else if(anuncio instanceof Servicios){
+                    query +="INSERT INTO Servicios "
+                    + "(url_foto_servicio,precios,id_anuncios)"
+                    + "VALUES ("+((Servicios)anuncio).getUrl_foto_servicio()+","
+                    + ""+((Servicios)anuncio).getPrecios()+","
+                    + ""+((Servicios)anuncio).getId_anuncios()+"";
                 }
                 query +="Select @error02 = @@error"
                 +"IF @error01 = 0 AND @error02 = 0"
@@ -90,6 +88,20 @@ public class GeneradorSQL {
                 "SET descripcion = '"+anuncio.getDescripcion()+"',"
                 + "fecha = "+new SimpleDateFormat("dd/MM/yyyy").format(anuncio.getFecha())+"" +
                 "WHERE id_anuncios = "+anuncio.getIdAnuncio()+";"; 
+    }
+    public String generaSelectGastronomia(){
+        return "select * from gastronomia G join menu M " +
+                "on M.id_menu = G.id_menu join anuncios A " +
+                "on A.id_anuncios = G.id_anuncios_gastronomia;";
+    }
+    public String generaSelectTiendas(){
+        return "select * from tiendas T join productos P " +
+                "on P.id_producto = T.id_producto join anuncios A " +
+                "on A.id_anuncios = P.id_anuncios_productos;";
+    }
+    public String generaSelectServicios(){
+        return "select * from servicios S join anuncios A " +
+                "on S.id_anuncios_servicios = A.id_anuncios;";
     }
     public String generaSelectInformacion(){
         return "SELECT * FROM info";

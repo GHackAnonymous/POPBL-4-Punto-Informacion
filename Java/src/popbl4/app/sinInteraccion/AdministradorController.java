@@ -5,16 +5,18 @@
  */
 package popbl4.app.sinInteraccion;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXListView;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
+import popbl4.app.admin.Log;
+import popbl4.app.controladorMain.Controlador;
 
 /**
  * FXML Controller class
@@ -23,6 +25,14 @@ import javafx.scene.layout.Pane;
  */
 public class AdministradorController implements Initializable {
 
+    Controlador cont;
+    
+    public void pasarControlador(Controlador cont) {
+        this.cont = cont;
+    }
+
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -46,14 +56,30 @@ public class AdministradorController implements Initializable {
     private ComboBox<?> comboAnuncios;
     @FXML
     private Pane panelTiendas;
+    @FXML
+    private ListView<Log> listaLog;
 
     @FXML
-    void irLog(ActionEvent event) {
+    void irLog(ActionEvent event) throws SQLException, ClassNotFoundException {
+        
+        List<Log> lista = cont.InicializarLog();
+        
+       if(listaLog.getItems().size()>0 && listaLog.getItems() != null){
+            listaLog.getItems().removeAll(lista);
+            
+        } 
+        
+       for(int i = 0; i < lista.size(); i++){
+            listaLog.getItems().add(lista.get(i));
+        }
+        
+        panelAdministrador.setVisible(false);
         panelLog.setVisible(true);
     }
 
     @FXML
     void anadir(ActionEvent event) {
+        panelAdministrador.setVisible(false);
         panelAnadir.setVisible(true);
     }
     

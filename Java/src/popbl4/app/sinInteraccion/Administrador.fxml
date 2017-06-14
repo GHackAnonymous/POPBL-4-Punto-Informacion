@@ -15,18 +15,22 @@
    <children>
       <Pane fx:id="panelAdministrador" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <JFXButton layoutX="100.0" layoutY="125.0" onAction="#irLog" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;" text=" " />
-            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="100.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../fotos/log.png" />
-               </image>
-            </ImageView>
-            <JFXButton layoutX="350.0" layoutY="125.0" onAction="#anadir" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;" />
-            <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="350.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" x="4.0" y="5.0">
-               <image>
-                  <Image url="@../../../fotos/plusgreen.png" />
-               </image>
-            </ImageView>
+            <JFXButton layoutX="100.0" layoutY="125.0" onAction="#irLog" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/log.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton ellipsisString="" layoutX="350.0" layoutY="125.0" onAction="#anadir" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;">
+               <graphic>
+                  <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" x="4.0" y="5.0">
+                     <image>
+                        <Image url="@../../../fotos/plusgreen.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
             <JFXButton layoutX="14.0" layoutY="27.0" onAction="#botonLogout" style="-fx-background-color: #ccc;" text="Logout" />
          </children>
       </Pane>
@@ -37,7 +41,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="334.0" prefWidth="570.0">
                      <children>
-                        <ListView layoutX="6.0" layoutY="6.0" prefHeight="334.0" prefWidth="570.0" />
+                        <ListView fx:id="listaLog" layoutX="6.0" layoutY="6.0" prefHeight="334.0" prefWidth="570.0" />
                      </children>
                   </AnchorPane>
               </content>

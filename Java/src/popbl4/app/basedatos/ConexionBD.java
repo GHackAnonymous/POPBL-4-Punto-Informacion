@@ -11,7 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import popbl4.app.admin.Log;
 import popbl4.app.sinInteraccion.Anuncio;
+import popbl4.app.sinInteraccion.Gastronomia;
+import popbl4.app.sinInteraccion.Menu;
+import popbl4.app.sinInteraccion.Productos;
+import popbl4.app.sinInteraccion.Servicios;
+import popbl4.app.sinInteraccion.Tiendas;
 
 /**
  *
@@ -23,7 +29,7 @@ public class ConexionBD {
     private String ip = "127.0.0.1";
     private String usuario = "root";
     private String contraseña = "";
-    private String nombreBD = "scott";
+    private String nombreBD = "basedatos";
     
     private String driver = "com.mysql.jdbc.Driver";  
     private String urlBD = "jdbc:mysql://"+ip+"/"+nombreBD+"";
@@ -49,42 +55,70 @@ public class ConexionBD {
             Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public List<Anuncio> genericoSelect(String select) {
+    public ResultSet genericoSelect(String select) {
         try {
             orden = conexion.createStatement();
-            try {
-                return getEmployeeList(orden.executeQuery(select));
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            return orden.executeQuery(select);
         } catch (SQLException ex) {
             Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
     
-    private static List<Anuncio> getEmployeeList(ResultSet rs) throws SQLException, ClassNotFoundException {
+    public List<Anuncio> getAnunciosList(String tipo, ResultSet rs) throws SQLException, ClassNotFoundException {
         //Declare a observable List which comprises of Employee objects
-        List<Anuncio> empList = new ArrayList<>();
+        List<Anuncio> listaAnuncios= new ArrayList<>();
  
-        while (rs.next()) {
-            //Employee emp = new Employee();
-            /*emp.setEmployeeId(rs.getInt("EMPLOYEE_ID"));
-            emp.setFirstName(rs.getString("FIRST_NAME"));
-            emp.setLastName(rs.getString("LAST_NAME"));
-            emp.setEmail(rs.getString("EMAIL"));
-            emp.setPhoneNumber(rs.getString("PHONE_NUMBER"));
-            emp.setHireDate(rs.getDate("HIRE_DATE"));
-            emp.setJobId(rs.getString("JOB_ID"));
-            emp.setSalary(rs.getInt("SALARY"));
-            emp.setCommissionPct(rs.getDouble("COMMISSION_PCT"));
-            emp.setManagerId(rs.getInt("MANAGER_ID"));
-            emp.setDepartmantId(rs.getInt("DEPARTMENT_ID"));
+        while (rs != null && rs.next()) {
+            Anuncio aux = null;
+            if(tipo.equalsIgnoreCase("gastronomia")){
+                aux = new Gastronomia();
+                Menu menu = new Menu(); 
+                ((Gastronomia) aux).setId_gastronomia(rs.getInt("id_gastronomia"));
+                menu.setId_menu(rs.getInt("id_menu"));
+                menu.setNombre(rs.getString("nombre_menu"));
+                menu.setIngedientes(rs.getString("ingedientes"));
+                menu.setPrecio(rs.getString("precio"));
+                ((Gastronomia) aux).setMenu(menu);
+                ((Gastronomia) aux).setId_anuncios(rs.getInt("id_anuncios_gastronomia"));
+            }else if(tipo.equalsIgnoreCase("tiendas")){
+                aux = new Tiendas();
+                Productos producto = new Productos();
+                
+                ((Tiendas) aux).setId_tiendas(rs.getInt("id_tiendas"));
+                ((Tiendas) aux).setNombre(rs.getString("nombre_tienda"));
+                
+                producto.setId_producto(rs.getInt("id_producto"));
+                producto.setNombre(rs.getString("nombre_producto"));
+                producto.setPrecio(rs.getString("precio"));
+                producto.setUrl_foto_producto(rs.getString("url_foto_producto"));
+                producto.setId_anuncios(rs.getInt("id_anuncios_productos"));
+                ((Tiendas) aux).setProducto(producto);
+                
+                ((Tiendas) aux).setId_anuncios(rs.getInt("id_anuncios_tiendas"));
+            }else if(tipo.equalsIgnoreCase("servicios")){
+                aux = new Servicios();
+                
+                ((Servicios) aux).setId_servicios(rs.getInt("id_servicios"));
+                ((Servicios) aux).setUrl_foto_servicio(rs.getString("url_foto_servicio"));
+                ((Servicios) aux).setPrecios(rs.getString("precios"));
+                ((Servicios) aux).setId_anuncios(rs.getInt("id_anuncios_servicios"));
+                
+            }
+            aux.setIdAnuncio(rs.getInt("id_anuncios"));
+            aux.setTitulo(rs.getString("titulo"));
+            aux.setDescripcion(rs.getString("descripcion"));
+            aux.setURL_Foto(rs.getString("url_foto_anuncio"));
+            aux.setUbicacion(rs.getString("ubicacion"));
+            aux.setContacto(rs.getString("contacto"));
+            aux.setHorarios(rs.getString("horarios"));
+            aux.setFecha(rs.getString("fecha_anuncio"));
+            
             //Add employee to the ObservableList
-            empList.add(emp);*/
+            listaAnuncios.add(aux);
         }
         //return empList (ObservableList of Employees)
-        return empList;
+        return listaAnuncios;
     }
      public void genericoUpdateInsert(String updateInsert){ 
         //Sirve la misma para update, insert o delete
@@ -94,6 +128,24 @@ public class ConexionBD {
         } catch (SQLException ex) {
             Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public List<Log> getLogList(ResultSet rs) throws SQLException, ClassNotFoundException {
+        //Declare a observable List which comprises of Employee objects
+        List<Log> listaLog= new ArrayList<>();
+ 
+        while (rs != null && rs.next()) {
+            Log aux = new Log();
+            
+            aux.setIdLog(rs.getInt("id_log"));
+            aux.setContenido(rs.getString("contenido"));
+            aux.setIdTipo(rs.getInt("id_tipo"));
+            aux.setIdAdmin(rs.getInt("id_admin"));
+            
+            //Add employee to the ObservableList
+            listaLog.add(aux);
+        }
+        //return empList (ObservableList of Employees)
+        return listaLog;
     }
     public void CerrarConexion(){
         

@@ -59,6 +59,26 @@ public class Anuncio {
         return URL_Foto;
     }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setURL_Foto(String URL_Foto) {
+        this.URL_Foto = URL_Foto;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public void setContacto(String contacto) {
+        this.contacto = contacto;
+    }
+
+    public void setHorarios(String horarios) {
+        this.horarios = horarios;
+    }
+
     public String getUbicacion() {
         return ubicacion;
     }

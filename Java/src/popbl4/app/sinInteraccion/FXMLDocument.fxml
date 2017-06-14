@@ -84,7 +84,7 @@
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
             <Accordion layoutX="100.0" layoutY="50.0" prefHeight="300.0" prefWidth="400.0">
               <panes>
-                <TitledPane alignment="CENTER" text="Gastronomia">
+                <TitledPane fx:id="titleGastronomia" alignment="CENTER" text="Gastronomia">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -102,7 +102,7 @@
                         <Font size="14.0" />
                      </font>
                 </TitledPane>
-                <TitledPane alignment="CENTER" expanded="false" text="Tiendas">
+                <TitledPane fx:id="titleTiendas" alignment="CENTER" expanded="false" text="Tiendas">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -119,7 +119,7 @@
                         <Font size="14.0" />
                      </font>
                 </TitledPane>
-                <TitledPane alignment="CENTER" animated="false" expanded="false" text="Servicios">
+                <TitledPane fx:id="titleServicios" alignment="CENTER" animated="false" expanded="false" text="Servicios">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

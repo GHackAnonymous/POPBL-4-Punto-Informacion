@@ -9,7 +9,7 @@ package popbl4.app.sinInteraccion;
  *
  * @author GHackAnonymous
  */
-public class Productos extends Anuncio{
+public class Productos{
     private int id_producto;
     private String nombre;
     private String precio;
@@ -17,24 +17,16 @@ public class Productos extends Anuncio{
     private int id_anuncios;
 
     public Productos() {}
-
+    
     public Productos(int id_producto, String nombre, String precio, 
-            String url_foto, int id_anuncios, String descripcion, 
-            String fecha, String titulo, String URL, String Ubicacion, 
-            String contacto, String horarios) {
-        
-        super(id_anuncios, descripcion, fecha, titulo, URL, Ubicacion, contacto, 
-                horarios);
-        
+            String url_foto_producto, int id_anuncios) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.precio = precio;
-        this.url_foto_producto = url_foto;
+        this.url_foto_producto = url_foto_producto;
         this.id_anuncios = id_anuncios;
     }
 
-    
-    
     public int getId_producto() {
         return id_producto;
     }
