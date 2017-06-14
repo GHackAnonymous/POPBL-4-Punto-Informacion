@@ -36,6 +36,17 @@ public class ConexionBD {
     
     private Connection conexion = null;
     private Statement orden = null;
+
+    public Connection getConexion() {
+        return conexion;
+    }
+
+    public void setConexion(Connection conexion) {
+        this.conexion = conexion;
+    }
+    
+    
+    
     
     public void IniciarConexion(){
         
@@ -120,13 +131,16 @@ public class ConexionBD {
         //return empList (ObservableList of Employees)
         return listaAnuncios;
     }
-     public void genericoUpdateInsert(String updateInsert){ 
+     public boolean genericoInsert(String Insert){ 
         //Sirve la misma para update, insert o delete
+       
         try {
             orden = conexion.createStatement();
-            orden.executeUpdate(updateInsert);
+            orden.execute(Insert);
+            return true;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionBD.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
     public List<Log> getLogList(ResultSet rs) throws SQLException, ClassNotFoundException {

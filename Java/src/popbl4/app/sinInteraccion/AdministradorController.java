@@ -5,6 +5,8 @@
  */
 package popbl4.app.sinInteraccion;
 
+import com.jfoenix.controls.JFXButton;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,11 +14,14 @@ import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.css.CssMetaData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import popbl4.app.admin.Log;
@@ -62,6 +67,52 @@ public class AdministradorController implements Initializable {
     private Pane panelTiendas;
     @FXML
     private ListView<Log> listaLog;
+    
+    @FXML
+    private JFXButton bAceptar;
+    
+    // Textos de Anuncio
+    @FXML
+    private TextField textTitulo;
+    @FXML
+    private TextField textURLFoto;
+    @FXML
+    private TextField textUbicaccion;
+    @FXML
+    private TextField textContacto;
+    @FXML
+    private TextField textHorarios;
+    @FXML
+    private TextField textDescripcion;
+    @FXML
+    private TextField textFecha;
+    
+    //Servicio
+    @FXML
+    private TextField textURLFotoServicios;
+    @FXML
+    private TextField textPrecio;
+    
+    //Gastronomia
+    @FXML
+    private TextField textNombreMenu;
+    @FXML
+    private TextField textIngredientes;
+    @FXML
+    private TextField textPrecioMenu;
+
+    //Tiendas y Productos
+    //Tienda
+    @FXML
+    private TextField textNombreTienda;
+    //Producto
+    @FXML
+    private TextField textNombreProducto;
+    @FXML
+    private TextField textPrecioProducto;
+    @FXML
+    private TextField textURLFotoProducto;
+
 
     @FXML
     void irLog(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -93,10 +144,105 @@ public class AdministradorController implements Initializable {
     
     @FXML
     void Aceptar(ActionEvent event) {
+        Anuncio aux = null;
+        Menu m = null;
+        Productos p = null;
+        
+        
+        
+        if(comboAnuncios.getSelectionModel().isSelected(2)){
+            //Gastronomia
+            aux = new Gastronomia();
+            if (aux instanceof Gastronomia){
+                m = new Menu();
+                m.setNombre(textNombreMenu.getText());
+                m.setIngedientes(textIngredientes.getText());
+                m.setPrecio(textPrecioMenu.getText());
+                ((Gastronomia)aux).setMenu(m);
+            }
+        }else if(comboAnuncios.getSelectionModel().isSelected(0)){
+            //Tienda
+            
+            aux = new Tiendas();
+            
+            if(aux instanceof Tiendas){
+                ((Tiendas)aux).setNombre(textNombreTienda.getText());
 
+                p = new Productos();
+                p.setNombre(textNombreProducto.getText());
+                p.setPrecio(textPrecioProducto.getText());
+                p.setUrl_foto_producto(textURLFotoProducto.getText()); 
+                ((Tiendas)aux).setProducto(p);
+            }
+        }else if(comboAnuncios.getSelectionModel().isSelected(1)){
+            //servicio
+            
+            aux = new Servicios();
+            
+            if (aux instanceof Servicios){
+                ((Servicios)aux).setUrl_foto_servicio(textURLFotoServicios.getText());
+                ((Servicios)aux).setPrecios(textPrecio.getText());
+            }
+        }
+        
+        aux.setTitulo(textTitulo.getText());
+        aux.setURL_Foto(textURLFoto.getText());
+        aux.setUbicacion(textUbicaccion.getText());
+        aux.setContacto(textContacto.getText());
+        aux.setHorarios(textHorarios.getText());
+        aux.setDescripcion(textDescripcion.getText());
+        aux.setFecha(textFecha.getText());
+        
+        boolean b = cont.InsertatAnuncio(aux,m,p);
+        
+        if(b == true){
+            resetearTextField();
+        
+            bAceptar.setStyle("-fx-background-color:GREEN");
+        }else{
+            bAceptar.setStyle("-fx-background-color:RED");
+        }
+    }
+    private void editableTextField(){
+        textNombreMenu.setEditable(true);
+        textIngredientes.setEditable(true);
+        textPrecioMenu.setEditable(true);
+        textNombreTienda.setEditable(true);
+        textNombreProducto.setEditable(true);
+        textPrecioProducto.setEditable(true);
+        textURLFotoProducto.setEditable(true); 
+        textURLFotoServicios.setEditable(true);
+        textPrecio.setEditable(true);
+        textTitulo.setEditable(true);
+        textURLFoto.setEditable(true);
+        textUbicaccion.setEditable(true);
+        textContacto.setEditable(true);
+        textHorarios.setEditable(true);
+        textDescripcion.setEditable(true);
+        textFecha.setEditable(true);
+    }
+    private void resetearTextField(){
+        textNombreMenu.setText("");
+        textIngredientes.setText("");
+        textPrecioMenu.setText("");
+        textNombreTienda.setText("");
+        textNombreProducto.setText("");
+        textPrecioProducto.setText("");
+        textURLFotoProducto.setText(""); 
+        textURLFotoServicios.setText("");
+        textPrecio.setText("");
+        textTitulo.setText("");
+        textURLFoto.setText("");
+        textUbicaccion.setText("");
+        textContacto.setText("");
+        textHorarios.setText("");
+        textDescripcion.setText("");
+        textFecha.setText("");
+        bAceptar.setStyle("-fx-background-color:#ccc");
     }
     @FXML
     void selectCombo(ActionEvent event) {
+        editableTextField();
         if(comboAnuncios.getSelectionModel().isSelected(2)){
             panelTiendas.setVisible(false);
             panelServicios.setVisible(false);
@@ -121,6 +267,8 @@ public class AdministradorController implements Initializable {
     }
     @FXML
     void botonAtrasAñadir(ActionEvent event) {
+        
+        resetearTextField();
         
         animar(panelAdministrador, "right");
         animar(panelAnadir, "centeRight");       
@@ -183,5 +331,9 @@ public class AdministradorController implements Initializable {
            time.play();
           }
           
+    }
+     @FXML
+    void pulsarBotonLogin(ActionEvent event) {
+
     }
 }

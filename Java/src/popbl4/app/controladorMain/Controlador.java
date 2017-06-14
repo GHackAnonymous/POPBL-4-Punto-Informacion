@@ -15,6 +15,10 @@ import popbl4.app.basedatos.ConexionBD;
 import popbl4.app.basedatos.GeneradorSQL;
 import popbl4.app.olimexRS232.ConexionRS232;
 import popbl4.app.sinInteraccion.Anuncio;
+import popbl4.app.sinInteraccion.Gastronomia;
+import popbl4.app.sinInteraccion.Menu;
+import popbl4.app.sinInteraccion.Productos;
+import popbl4.app.sinInteraccion.Tiendas;
 
 /**
  *
@@ -73,6 +77,15 @@ public class Controlador {
        List<Log> listaLog = conexionBD.getLogList(rs);
 
         return listaLog;
+    }
+    public boolean InsertatAnuncio(Anuncio a, Menu m, Productos p){
+
+        
+        String s = generadorSQL.generaInsertAnuncios(conexionBD.getConexion(),a, m, p);
+        //System.out.println(s);
+        //return conexionBD.genericoInsert(s);
+       return (s != null) ? true : false;
+       
     }
     
     /*public void obtenerDatos(String a) throws SQLException {
