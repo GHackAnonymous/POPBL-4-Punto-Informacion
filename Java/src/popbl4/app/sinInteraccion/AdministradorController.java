@@ -97,7 +97,19 @@ public class AdministradorController implements Initializable {
     }
     @FXML
     void selectCombo(ActionEvent event) {
-        
+        if(comboAnuncios.getSelectionModel().isSelected(2)){
+            panelTiendas.setVisible(false);
+            panelServicios.setVisible(false);
+            panelGastronomia.setVisible(true);
+        }else if(comboAnuncios.getSelectionModel().isSelected(0)){
+            panelServicios.setVisible(false);
+            panelGastronomia.setVisible(false);
+            panelTiendas.setVisible(true);
+        }else if(comboAnuncios.getSelectionModel().isSelected(1)){
+            panelGastronomia.setVisible(false);
+            panelTiendas.setVisible(false);
+            panelServicios.setVisible(true);
+        }
     }
     @FXML
     void botonAtrasLog(ActionEvent event) {
