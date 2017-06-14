@@ -17,7 +17,7 @@ int main(void)
 {
 	
 	initGPIO();
-	//initSysClock(1000, POS_SYS_AHB1);
+	initSysClock(30000, POS_SYS_AHB1);
 	USARTpiztu(); 
 	USARTGPIOkonf();
 	USARTkonfig();
@@ -29,6 +29,7 @@ int main(void)
 			sprintf(msg, "u");
 			USARTbidali((uint8_t *)msg, strlen(msg));
 			setGpioPinValu(ADD_GPIOF, LED_PIN,1);
+			waitSysClockTick();
 		}else{
 			setGpioPinValu(ADD_GPIOF, LED_PIN,0);
 		}

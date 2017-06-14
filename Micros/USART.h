@@ -31,11 +31,11 @@
 #define PIN_USART3_RX 9
 
 
-void USARTpiztu(void);
-void USARTkonfig (void);
-void USARTGPIOkonf(void);
-void USARTRXkendu(void);
-void USARTbidali(uint8_t *data, uint32_t size);
+void initUSART(void);
+void USARTconfig (void);
+void USARTGPIOconf(void);
+void quitarUSARTRX(void);
+void USARTenviar(uint8_t *data, uint32_t size);
 
 
 #endif

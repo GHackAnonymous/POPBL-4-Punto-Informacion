@@ -1,9 +1,8 @@
 #include "USART.h"
 #include <string.h>
 #include <stm32f407xx.h>
-#include "OurDefinitions.h"
 
-void USARTpiztu(void){
+void initUSART(void){
 	uint32_t *P_RCC_AHB1, *P_RCC_APB1;
 	  
 	P_RCC_AHB1 = (uint32_t*) (ADD_RCC + OFF_AHB1ENBR);
@@ -13,7 +12,7 @@ void USARTpiztu(void){
 	*P_RCC_AHB1 |= (0x01 << POS_GPIOD);
 }
 
-void USARTkonfig (void){	
+void USARTconfig (void){	
 	uint32_t * P_USART3_CR1, *P_USART3_BRR;
 	
 	P_USART3_CR1 = (uint32_t*) (ADD_USART3 + OFF_CR1);
@@ -23,10 +22,11 @@ void USARTkonfig (void){
 	*P_USART3_CR1 |= (0x01 << 3);   //TE
 	*P_USART3_CR1 |= (0x01 << 2);   //RE
 	*P_USART3_BRR &= (0x00 << 0);   //Reiniciar lo que se pueda de BRR
-	*P_USART3_BRR |= (0x11010000011 << 0);   //Divider y Mantissa
+	//*P_USART3_BRR |= (0x011010000011 << 0);   //Divider y Mantissa 16MHz
+	*P_USART3_BRR |= (0x101000101100 << 0);   //Divider y Mantissa 25MHz
 }
 
-void USARTGPIOkonf(void){
+void USARTGPIOconf(void){
 	uint32_t * P_GPIOD_MODER, *P_GPIOD_AFR;
 	
 	P_GPIOD_MODER = (uint32_t*) (ADD_GPIOD);
@@ -42,14 +42,14 @@ void USARTGPIOkonf(void){
 	*P_GPIOD_AFR |= (7 << (4 * (PIN_USART3_TX & 7)));
 }
 
-void USARTRXkendu(void){
+void quitarUSARTRX(void){
 	uint32_t * P_USART3_CR1;
 	
 	P_USART3_CR1 = (uint32_t*) (ADD_USART3 + OFF_CR1);
 	*P_USART3_CR1 &=~ (0x01 << 2);
 }
 
-void USARTbidali(uint8_t *data, uint32_t size){
+void USARTenviar(uint8_t *data, uint32_t size){
 	uint32_t * P_USART3_SR, *P_USART3_DR;
 	
 	P_USART3_SR = (uint32_t*) (ADD_USART3 + OFF_SR);
