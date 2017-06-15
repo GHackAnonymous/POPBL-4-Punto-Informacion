@@ -9,16 +9,21 @@ import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
+import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,6 +36,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -45,9 +51,35 @@ public class FXMLDocumentController implements Initializable {
     List<Anuncio> list;
     ChangeListener<Anuncio> lineser = null;
     
+    //Slide define
+    
+    private final double IMG_WIDTH = 600;
+    private final double IMG_HEIGHT = 400;
+    
+    private final int NUM_OF_IMGS = 3;
+    private final int SLIDE_FREQ = 4; //En segundos
+    
     public void pasarControlador(Controlador cont) {
         this.cont = cont;
     }
+    
+    //Slide
+    
+    @FXML
+    private Pane panelSlide;
+    
+    @FXML
+    private HBox imgContainer;
+    
+    @FXML
+    private ImageView imagenSlide1;
+
+    @FXML
+    private ImageView imagenSlide3;
+
+    @FXML
+    private ImageView imagenSlide2;
+
     
      @FXML
     private Label tituloAnuncio;
@@ -278,6 +310,7 @@ public class FXMLDocumentController implements Initializable {
         try {
             cont = new Controlador();
             list = cont.InicializarAnuncios();
+            startAnimation(imgContainer);
             //inicializarLista();
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
@@ -344,6 +377,35 @@ public class FXMLDocumentController implements Initializable {
 
     private FXMLLoader FXMLLoader(URL resource) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    //ANIMACION Slide
+    private void startAnimation(final HBox hbox) {
+        EventHandler<ActionEvent> slideAction = (ActionEvent t) -> {
+            TranslateTransition trans = new TranslateTransition(Duration.seconds(1.5), hbox);
+            trans.setByX(-IMG_WIDTH);
+            trans.setInterpolator(Interpolator.EASE_BOTH);
+            trans.play();
+        };
+        EventHandler<ActionEvent> resetAction = (ActionEvent t) -> {
+            TranslateTransition trans = new TranslateTransition(Duration.seconds(1), hbox);
+            trans.setByX((NUM_OF_IMGS - 1) * IMG_WIDTH);
+            trans.setInterpolator(Interpolator.EASE_BOTH);
+            trans.play();
+        };
+ 
+        List<KeyFrame> keyFrames = new ArrayList<>();
+        for (int i = 1; i <= NUM_OF_IMGS; i++) {
+            if (i == NUM_OF_IMGS) {
+                keyFrames.add(new KeyFrame(Duration.seconds(i * SLIDE_FREQ), resetAction));
+            } else {
+                keyFrames.add(new KeyFrame(Duration.seconds(i * SLIDE_FREQ), slideAction));
+            }
+        }
+        Timeline anim = new Timeline(keyFrames.toArray(new KeyFrame[NUM_OF_IMGS]));
+ 
+        anim.setCycleCount(Timeline.INDEFINITE);
+        anim.playFromStart();
     }
 
     private static class ChangeListenerImpl implements ChangeListener<String> {

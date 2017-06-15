@@ -13,7 +13,30 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="popbl4.app.sinInteraccion.FXMLDocumentController">
    <children>
-      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="panelSlide" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox fx:id="imgContainer" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="imagenSlide1" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/turismo1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imagenSlide2" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/turismo2.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imagenSlide3" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/turismo3.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.85" pickOnBounds="true" smooth="false">
                <image>
