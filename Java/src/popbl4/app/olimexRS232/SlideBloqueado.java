@@ -6,7 +6,6 @@
 package popbl4.app.olimexRS232;
 
 import java.util.Observable;
-import popbl4.app.sinInteraccion.FXMLDocumentController;
 
 /**
  *

@@ -48,6 +48,8 @@ public class VistaAnuncio extends Application {
         
         FXMLDocumentController controller = fxmlLoader.<FXMLDocumentController>getController();
         //controller.pasarControlador(cont);
+        
+        //HiloRS hiloRS = new HiloRS(controller.cont,controller.cont.getConexionRS232(),controller.cont.getSlideBlo());
 
         Scene home_page_scene = new Scene(home_page_parent);
         

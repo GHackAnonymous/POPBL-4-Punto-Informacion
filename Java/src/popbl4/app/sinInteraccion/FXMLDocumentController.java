@@ -161,6 +161,12 @@ public class FXMLDocumentController implements Initializable {
      
      @FXML
     private Pane panelMapa;
+
+    public HBox getImgContainer() {
+        return imgContainer;
+    }
+     
+     
      
      @FXML
     void mostrarInformacion(ActionEvent event) {
@@ -258,13 +264,6 @@ public class FXMLDocumentController implements Initializable {
     }
     
     void inicializarLista(String tipo) {
-      /*  if(listaAnuncios.getItems().size()>0){
-            int a =  0;
-            for(int i = listaAnuncios.getItems().size(); i >= 0; i--){
-                listaAnuncios.getItems().remove(a);
-                a++;
-            }
-        }*/
         if(listaAnuncios.getItems().size()>0 && listaAnuncios.getItems() != null){
             listaAnuncios.getItems().removeAll(list);
             
@@ -392,6 +391,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            startAnimation(imgContainer);
             cont = new Controlador(this);
             
             list = cont.InicializarAnuncios();
@@ -399,7 +399,7 @@ public class FXMLDocumentController implements Initializable {
             panelActual = panelInfoInfo;
             botonActual = btnInfo;
             
-            startAnimation(imgContainer);
+            //startAnimation(imgContainer);
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -467,7 +467,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     //ANIMACION Slide
-    private void startAnimation(final HBox hbox) {
+    public void startAnimation(final HBox hbox) {
         EventHandler<ActionEvent> slideAction = (ActionEvent t) -> {
             TranslateTransition trans = new TranslateTransition(Duration.seconds(1.5), hbox);
             trans.setByX(-IMG_WIDTH);

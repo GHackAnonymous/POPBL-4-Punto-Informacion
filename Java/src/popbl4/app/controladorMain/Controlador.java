@@ -54,6 +54,21 @@ public class Controlador implements Observer{
         slideBlo.addObserver(this);
     }
 
+    public ConexionRS232 getConexionRS232() {
+        return conexionRS232;
+    }
+    
+    public void crearHiloRS(){
+        hiloRS = new HiloRS(this,conexionRS232,slideBlo);
+    }
+    public FXMLDocumentController getO() {
+        return o;
+    }
+
+    public void setO(FXMLDocumentController o) {
+        this.o = o;
+    }
+    
     public HiloRS getHiloRS() {
         return hiloRS;
     }

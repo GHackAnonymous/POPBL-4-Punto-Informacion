@@ -94,13 +94,13 @@
                </font>
             </Label>
             <ListView fx:id="listaAnuncios" layoutX="25.0" layoutY="50.0" prefHeight="300.0" prefWidth="550.0" />
-            <JFXRadioButton layoutX="25.0" layoutY="365.0" text="Pobre">
+            <JFXRadioButton layoutX="25.0" layoutY="365.0" text="Pobre" visible="false">
                <toggleGroup>
                   <ToggleGroup fx:id="presio" />
                </toggleGroup>
             </JFXRadioButton>
-            <JFXRadioButton layoutX="129.0" layoutY="365.0" text="Medio" toggleGroup="$presio" />
-            <JFXRadioButton layoutX="229.0" layoutY="365.0" text="Caro" toggleGroup="$presio" />
+            <JFXRadioButton layoutX="129.0" layoutY="365.0" text="Medio" toggleGroup="$presio" visible="false" />
+            <JFXRadioButton layoutX="229.0" layoutY="365.0" text="Caro" toggleGroup="$presio" visible="false" />
          </children>
       </Pane>
       <Pane fx:id="panelTipoAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
@@ -163,7 +163,7 @@
               </panes>
             </Accordion>
             <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="14.0" onAction="#backMenuPrincipal" style="-fx-background-color: #ccc;" text="Back" />
-            <JFXButton buttonType="RAISED" layoutX="564.0" layoutY="14.0" style="-fx-background-color: #ccc;" text="?" />
+            <JFXButton buttonType="RAISED" layoutX="564.0" layoutY="14.0" style="-fx-background-color: #ccc;" text="?" visible="false" />
          </children>
       </Pane>
       <Pane fx:id="panelAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
@@ -198,11 +198,21 @@
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
             <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;">
                <children>
-                  <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Titulo">
+                  <Label layoutX="99.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Informaciín de Bilbao">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
+                  <TextArea editable="false" layoutX="14.0" layoutY="50.0" prefHeight="237.0" prefWidth="358.0" text="Los cientos de visitantes que se acercan al Museo &#10;Guggenheim Bilbao, cuentan con una oficina ubicada&#10; junto a la entrada de la pinacoteca, que proporciona &#10;información sobre Bilbao, Bizkaia y Euskadi. Además, &#10;ofrece servicio de visitas guiadas, vende la tarjeta turística &#10;Bilbao Card y trabaja en coordinación con la central de &#10;reservas hoteleras. Permanece abierta todo el año y &#10;presta servicio en euskera, castellano, inglés, francés, &#10;alemán e italiano.">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextArea>
+                  <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="379.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/gunne.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <JFXButton fx:id="btnInfo" defaultButton="true" layoutX="26.0" layoutY="49.0" onAction="#mostrarInformacion" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
@@ -213,17 +223,23 @@
             <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="14.0" onAction="#backMenuInfo" style="-fx-background-color: #ccc;" text="Back" />
             <Pane fx:id="panelCultura" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
-                  <Label layoutX="10.0" layoutY="14.0" prefHeight="271.0" prefWidth="281.0" text="     Programar, dirigir y organizar la oferta cultural.    Organizar y coordinar las celebraciones.    Canalizar las fiestas de los barrios.    Colaborar con los grupos y asociaciones del municipio.    Gestionar el equipamiento cultural.    Coordinar la agenda cultural, ofreciendo recursos e infraestructuras.    Reserva de salas en la Casa de Cultura.    Coordinación con la Banda Municipal de Música.    Gestionar las exposiciones de la sala Aroztegi." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
+                  <Label layoutX="10.0" layoutY="14.0" prefHeight="271.0" prefWidth="281.0" text="     Programar, dirigir y organizar la oferta cultural.    Organizar y coordinar las celebraciones.    Canalizar las fiestas de los barrios.    Colaborar con los grupos y asociaciones del municipio.    Gestionar el equipamiento cultural.    Coordinar la agenda cultural, ofreciendo recursos e infraestructuras.    Reserva de salas en la Casa de Cultura.    Coordinación con la Banda Municipal de Música.    Gestionar las exposiciones de la sala Aroztegi." textAlignment="JUSTIFY" textFill="WHITE" visible="false" wrapText="true" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../fotos/ikurrina.jpg" />
                      </image>
                   </ImageView>
+                  <TextArea editable="false" prefHeight="286.0" prefWidth="302.0" text="A lo largo del siglo XX y en la actualidad, los vascos&#10; mantienen una polémica interna y con el resto de&#10; los pueblos con los que se relacionan acerca de la&#10; naturaleza, extensión y consecuencias de la&#10; condición de vasco.&#10;&#10;Las tendencias constitucionalistas, no nacionalistas&#10; vascas y nacionalistas españolas, sostienen que los&#10; vascos son parte integrante de la nación española,&#10; constituidos en las provincias de Álava, Guipúzcoa &#10;y Vizcaya, conforme se recoge en el artículo 7.1 del&#10; Estatuto de Autonomía del País Vasco, que dice:&#10;&#10; &quot;A los efectos del presente Estatuto tendrán la&#10; condición política de vascos quienes tengan la&#10; vecindad administrativa, de acuerdo con las &#10;Leyes generales del Estado, en cualquiera de los&#10; municipios integrados en el territorio de la &#10;Comunidad Autónoma.&quot;" />
                </children></Pane>
             <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Qué ver, hacer, disfrutar" />
 <Label layoutX="14.0" layoutY="38.0" prefHeight="247.0" prefWidth="336.0" text="La visita a Bergara es completamente modulable. Partiendo de una experiencia tranquila -un suave paseo por las calles viejas, relajarse en los jardines, disfrutar del Anillo Verde...- podemos llegar hasta el deporte extremo - subida a Gorla, BBT, piraguismo, rocódromo...-. La intensidad será la que el momento requiera o la que cada cual necesite. Visitas guiadas, exposiciones, pintxo-pote, una vuelta por el monte, cine-club... el paso que nos lleva de ver y participar a vivir con intensidad es pequeño y el agradable ambiente de Bergara contribuye a ello enseguida.Estando en el Pais Vasco no podemos dejar de mencionar la gastronomía. En Bergara los bares y restaurantes están bien representados y cuenta también con opciones para conocer la alta gastronomía.Las especialidades propias y exclusivas las encontramos en la repostería tradicional, artesana que sigue produciento en la Parte Vieja de la villa unos dulces, los rellenos y los tostones, que harán felices a las golosas y golosos. " wrapText="true" />
+                  <ImageView fitHeight="138.0" fitWidth="160.0" layoutX="361.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/puente-de-calatrava.jpg" />
+                     </image>
+                  </ImageView>
                </children></Pane>
             <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
@@ -236,6 +252,8 @@
                   </ImageView>
 <Label layoutX="363.0" layoutY="182.0" text="Pais:" underline="true" />
                   <Label layoutX="361.0" layoutY="222.0" text="Ubicacion:" underline="true" />
+                  <Label layoutX="402.0" layoutY="182.0" text="Pais Vasco" />
+                  <Label layoutX="436.0" layoutY="222.0" text="Zarautz" />
                </children></Pane>
             <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" visible="false">
                <children>

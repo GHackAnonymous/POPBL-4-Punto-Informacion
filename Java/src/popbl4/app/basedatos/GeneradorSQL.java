@@ -71,14 +71,14 @@ public class GeneradorSQL {
             stmt1.executeUpdate();
             if (anuncio instanceof Gastronomia){
                 if(m != null){
-                    stmt2 = c.prepareStatement("INSERT INTO menu (nombre_menu, ingedientes, precio) VALUES ('?', '?', '?');");
+                    stmt2 = c.prepareStatement("INSERT INTO menu (nombre_menu, ingedientes, precio) VALUES (?, ?, ?);");
                     stmt2.setString(1,m.getNombre());
                     stmt2.setString(2,m.getIngedientes());
                     stmt2.setString(3,m.getPrecio());
                     stmt2.executeUpdate();
                 }
             
-                stmt3 = c.prepareStatement("INSERT INTO gastronomia (id_menu, id_anuncios_gastronomia) VALUES ((select id_menu from menu where nombre_menu = '?'),(select id_anuncios from anuncios where titulo = '?'));");
+                stmt3 = c.prepareStatement("INSERT INTO gastronomia (id_menu, id_anuncios_gastronomia) VALUES ((select id_menu from menu where nombre_menu = ?),(select id_anuncios from anuncios where titulo = ?));");
                 stmt3.setString(1,m.getNombre());
                 stmt3.setString(2,anuncio.getTitulo());
                 stmt3.executeUpdate();
