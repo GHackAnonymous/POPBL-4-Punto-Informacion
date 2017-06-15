@@ -236,7 +236,11 @@ public class FXMLDocumentController implements Initializable {
         //panelMenuPrincipal.setVisible(true);
         //panelAnuncios.setVisible(false);
     }
-    
+    @FXML
+    void backMenuPrincipal(ActionEvent event) {
+        animar(panelTipoAnuncio, "leftCenter");
+        animar(panelMenuPrincipal, "left");
+    }
     void inicializaAnuncio(Anuncio a) {
         tituloAnuncio.setText(a.getTitulo());
         labeInfoText.setText(a.getDescripcion());
