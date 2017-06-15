@@ -26,6 +26,7 @@
             <PasswordField fx:id="textClave" layoutX="243.0" layoutY="163.0" />
             <JFXButton layoutX="274.0" layoutY="243.0" onAction="#pulsarBotonLogin" style="-fx-background-color: #ccc;" text="Login" />
             <Label fx:id="labelError" layoutX="238.0" layoutY="289.0" text="Error: Login incorrecto" visible="false" />
+            <JFXButton layoutX="14.0" layoutY="14.0" onAction="#botonAtrasLogin" style="-fx-background-color: #ccc;" text="&lt;&lt;" />
          </children>
       </Pane>
       <Pane fx:id="panelAdministrador" prefHeight="400.0" prefWidth="600.0" visible="false">

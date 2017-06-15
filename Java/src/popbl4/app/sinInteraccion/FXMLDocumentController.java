@@ -31,7 +31,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -45,6 +44,10 @@ public class FXMLDocumentController implements Initializable {
     Controlador cont;
     List<Anuncio> list;
     ChangeListener<Anuncio> lineser = null;
+    
+    public void pasarControlador(Controlador cont) {
+        this.cont = cont;
+    }
     
      @FXML
     private Label tituloAnuncio;
