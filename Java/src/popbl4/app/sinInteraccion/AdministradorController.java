@@ -19,11 +19,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
 import popbl4.app.controladorMain.Controlador;
 
@@ -70,6 +73,16 @@ public class AdministradorController implements Initializable {
     
     @FXML
     private JFXButton bAceptar;
+    
+    // LOGIN
+    @FXML
+    private Pane panelLogin;
+    @FXML
+    private TextField textNick;
+    @FXML
+    private PasswordField textClave;
+    @FXML
+    private Label labelError;
     
     // Textos de Anuncio
     @FXML
@@ -277,7 +290,8 @@ public class AdministradorController implements Initializable {
     }
     @FXML
     void botonLogout(ActionEvent event) {
-
+        animar(panelLogin, "right");
+        animar(panelAdministrador, "centeRight");  
     }
     private void animar(Pane p, String mode) {
           if(mode.equals("top")){
@@ -333,7 +347,26 @@ public class AdministradorController implements Initializable {
           
     }
      @FXML
-    void pulsarBotonLogin(ActionEvent event) {
-
+    void pulsarBotonLogin(ActionEvent event) throws ClassNotFoundException {
+        Administrador aux = new Administrador();
+	aux.setUsername(textNick.getText());
+	aux.setContraseña(textClave.getText());
+        
+        boolean login = cont.login(aux);
+	if(login == true){
+            //Cambiar de pantalla
+            login = false;
+            textNick.setText("");
+            textClave.setText("");
+            
+            labelError.setVisible(false);
+            animar(panelLogin, "leftCenter");
+            animar(panelAdministrador, "left");
+            //panelAdministrador.setVisible(false);
+            panelAdministrador.setVisible(true);
+	}else{
+            labelError.setVisible(true);
+            //Hacer lo que se quiera)
+	}
     }
 }

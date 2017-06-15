@@ -116,41 +116,11 @@ public class GeneradorSQL {
             }
             return null;
         }    
-            
-            
-            /*
-            String query = "";
-            
-            //query +="START TRANSACTION;";
-            query +="INSERT INTO anuncios ( titulo, descripcion, url_foto_anuncio, ubicacion, contacto, horarios, fecha_anuncio)";
-            query +="VALUES ('"+anuncio.getTitulo()+"','"+anuncio.getDescripcion()+"','"+anuncio.getURL_Foto()+"','"+anuncio.getUbicacion()+"','"+anuncio.getContacto()+"','"+anuncio.getHorarios()+"',";
-            query +="'"+anuncio.getFecha()+"');";
-            if (anuncio instanceof Gastronomia){
-            if(m != null){
-            query +="INSERT INTO menu (nombre_menu, ingedientes, precio) ";
-            query +="VALUES ('"+m.getNombre()+"', '"+m.getIngedientes()+"', '"+m.getPrecio()+"');";
-            }
-            query +="INSERT INTO gastronomia (id_menu, id_anuncios_gastronomia) ";
-            query +="VALUES ((select id_menu from menu where nombre_menu = '"+m.getNombre()+"'),";
-            query +="(select id_anuncios from anuncios where titulo = '"+anuncio.getTitulo()+"'));";
-            }else if(anuncio instanceof Tiendas){
-            if(p != null){
-            query +="INSERT INTO productos (nombre_producto, precio, url_foto_producto, id_anuncios_productos)";
-            query +="VALUES ('"+p.getNombre()+"', '"+p.getPrecio()+"', '"+p.getPrecio()+"',";
-            query +="(select id_anuncios from anuncios where titulo = '"+anuncio.getTitulo()+"' ));";  
-            }
-            query +="INSERT INTO tiendas (nombre_tienda,id_producto,id_anuncios_tiendas)";
-            query +="VALUES ('"+((Tiendas)anuncio).getNombre()+"',(select id_producto from productos where nombre_producto = '"+p.getNombre()+"'),";
-            query +="(select id_anuncios from anuncios where titulo = '"+anuncio.getTitulo()+"'));";
-            }else if(anuncio instanceof Servicios){
-            query +="INSERT INTO Servicios (url_foto_servicio,precios,id_anuncios_servicios)";
-            query +="VALUES ('"+((Servicios)anuncio).getUrl_foto_servicio()+"','"+((Servicios)anuncio).getPrecios()+"',";
-            query +="(select id_anuncios from anuncios where titulo = '"+anuncio.getTitulo()+"'));";
-            }
-            //query += "COMMIT; ";
-            
-            return query;*/
-
+    }
+    public String generaSelectComprobarAdmin(Administrador admin){
+        return "Select nick,clave from administradores " 
+	+"where nick = '" + admin.getUsername()+"'"
+	+ " AND clave = '" + admin.getContraseña() + "';";
     }
     public String generaUpdateAnuncios(Anuncio anuncio){
         return "UPDATE administrador" +

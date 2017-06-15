@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
 import popbl4.app.sinInteraccion.Anuncio;
 import popbl4.app.sinInteraccion.Gastronomia;
@@ -161,6 +162,26 @@ public class ConexionBD {
         //return empList (ObservableList of Employees)
         return listaLog;
     }
+    public Administrador getLoginList(ResultSet rs) throws SQLException, ClassNotFoundException {
+        //Declare a observable List which comprises of Employee objects
+        Administrador aux = new Administrador();
+ 
+        while(rs.next()){
+            aux.setUsername(rs.getString("nick"));
+            aux.setContraseña(rs.getString("clave"));
+        }
+        return aux;
+    }
+    public boolean login(Administrador admin, String nick, String clave) throws SQLException {
+       
+        if(admin.getUsername().equals(nick) && 
+                 admin.getContraseña().equals(clave)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
     public void CerrarConexion(){
         
         

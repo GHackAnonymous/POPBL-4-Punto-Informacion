@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
 import popbl4.app.basedatos.ConexionBD;
 import popbl4.app.basedatos.GeneradorSQL;
@@ -95,6 +98,24 @@ public class Controlador {
             set.getArray(a);
         }
     }*/
+
+    public boolean login(Administrador admin) throws ClassNotFoundException {
+        
+        System.out.println(generadorSQL.generaSelectComprobarAdmin(admin)); 
+       ResultSet login = conexionBD.genericoSelect(generadorSQL.generaSelectComprobarAdmin(admin));
+      
+        try {
+            
+            Administrador lista = conexionBD.getLoginList(login);
+            return conexionBD.login(admin, lista.getUsername(), lista.getContraseña());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        // return (login != null) ? true : false;
+        
+    }
 
     
 }
