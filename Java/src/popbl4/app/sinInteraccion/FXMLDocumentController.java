@@ -11,6 +11,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +20,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -50,7 +50,7 @@ public class FXMLDocumentController implements Initializable {
     Controlador cont;
     List<Anuncio> list;
     ChangeListener<Anuncio> lineser = null;
-    
+
     //Slide define
     
     private final double IMG_WIDTH = 600;
@@ -308,10 +308,11 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            cont = new Controlador();
+            cont = new Controlador(this);
+            
             list = cont.InicializarAnuncios();
+            
             startAnimation(imgContainer);
-            //inicializarLista();
         } catch (IOException ex) {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -320,58 +321,61 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    @FXML
+    void empezarDetector(ActionEvent event) {
+        cont.getHiloRS().run();
+    }
+    private void animar(Pane p, String mode) {
+      if(mode.equals("top")){
+       p.setLayoutX(0.0d);
+       p.setLayoutY(-400.0d);
+       Timeline time = new Timeline();
+       time.getKeyFrames().addAll(
+       new KeyFrame(Duration.ZERO, new KeyValue(p.layoutYProperty(), -400.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutYProperty(), 0.0d)));
+       time.play();
+      }
+      if(mode.equals("left")){
+            p.setLayoutX(600.0d);
+            p.setLayoutY(0.0d);
+            Timeline time = new Timeline();
+            time.getKeyFrames().addAll(
+            new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 600.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 0.0d)));
+            time.play();
+      }
+        if(mode.equals("leftCenter")){
+            p.setLayoutX(0.0d);
+            p.setLayoutY(0.0d);
+           Timeline time = new Timeline();
+       time.getKeyFrames().addAll(
+       new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), -600.0d)));
+       time.play();
+      }
+      if(mode.equals("up")){
+       p.setLayoutX(0.0d);
+       p.setLayoutY(0.0d);
+       Timeline time = new Timeline();
+       time.getKeyFrames().addAll(
+       new KeyFrame(Duration.ZERO, new KeyValue(p.layoutYProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutYProperty(), -400.0d)));
+       time.play();
+      }
 
-        private void animar(Pane p, String mode) {
-          if(mode.equals("top")){
-           p.setLayoutX(0.0d);
-           p.setLayoutY(-400.0d);
-           Timeline time = new Timeline();
-           time.getKeyFrames().addAll(
-           new KeyFrame(Duration.ZERO, new KeyValue(p.layoutYProperty(), -400.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutYProperty(), 0.0d)));
-           time.play();
-          }
-          if(mode.equals("left")){
-                p.setLayoutX(600.0d);
-                p.setLayoutY(0.0d);
-                Timeline time = new Timeline();
-                time.getKeyFrames().addAll(
-                new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 600.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 0.0d)));
-                time.play();
-          }
-            if(mode.equals("leftCenter")){
-                p.setLayoutX(0.0d);
-                p.setLayoutY(0.0d);
-               Timeline time = new Timeline();
-           time.getKeyFrames().addAll(
-           new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), -600.0d)));
-           time.play();
-          }
-          if(mode.equals("up")){
-           p.setLayoutX(0.0d);
-           p.setLayoutY(0.0d);
-           Timeline time = new Timeline();
-           time.getKeyFrames().addAll(
-           new KeyFrame(Duration.ZERO, new KeyValue(p.layoutYProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutYProperty(), -400.0d)));
-           time.play();
-          }
-          
-          if(mode.equals("centeRight")){
-           p.setLayoutX(0.0d);
-           p.setLayoutY(0.0d);
-           Timeline time = new Timeline();
-           time.getKeyFrames().addAll(
-           new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 600.0d)));
-           time.play();
-          }
-          
-           if(mode.equals("right")){
-           p.setLayoutX(-600.0d);
-           p.setLayoutY(0.0d);
-           Timeline time = new Timeline();
-           time.getKeyFrames().addAll(
-           new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), -600.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 0.0d)));
-           time.play();
-          }
+      if(mode.equals("centeRight")){
+       p.setLayoutX(0.0d);
+       p.setLayoutY(0.0d);
+       Timeline time = new Timeline();
+       time.getKeyFrames().addAll(
+       new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), 0.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 600.0d)));
+       time.play();
+      }
+
+       if(mode.equals("right")){
+       p.setLayoutX(-600.0d);
+       p.setLayoutY(0.0d);
+       Timeline time = new Timeline();
+       time.getKeyFrames().addAll(
+       new KeyFrame(Duration.ZERO, new KeyValue(p.layoutXProperty(), -600.0d)), new KeyFrame(Duration.millis(300.d), new KeyValue(p.layoutXProperty(), 0.0d)));
+       time.play();
+      }
           
     }
 
@@ -407,6 +411,24 @@ public class FXMLDocumentController implements Initializable {
         anim.setCycleCount(Timeline.INDEFINITE);
         anim.playFromStart();
     }
+    public void salirSlide(){
+        if(cont.getSlideBlo().isSlideActivo() == true){
+           System.out.println("Entra if");
+            panelSlide.setVisible(false); 
+            panelMenuPrincipal.setVisible(true);
+            //animar(panelSlide, "centeRight");
+            //animar(panelMenuPrincipal, "right");
+       }else{
+           System.out.println("Entra else");
+            panelSlide.setVisible(true);
+            panelInformacion.setVisible(false);
+            panelHelp.setVisible(false);
+            panelMenuPrincipal.setVisible(false);
+            panelAnuncios.setVisible(false);
+            panelTipoAnuncio.setVisible(false);
+            panelAnuncio.setVisible(false);
+       }
+    }
 
     private static class ChangeListenerImpl implements ChangeListener<String> {
 
@@ -424,5 +446,4 @@ public class FXMLDocumentController implements Initializable {
         public ChangeListenerImplImpl() {
         }
     }
-    
 }

@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import popbl4.app.admin.Administrador;
@@ -17,45 +19,50 @@ import popbl4.app.admin.Log;
 import popbl4.app.basedatos.ConexionBD;
 import popbl4.app.basedatos.GeneradorSQL;
 import popbl4.app.olimexRS232.ConexionRS232;
+import popbl4.app.olimexRS232.HiloRS;
+import popbl4.app.olimexRS232.SlideBloqueado;
 import popbl4.app.sinInteraccion.Anuncio;
-import popbl4.app.sinInteraccion.Gastronomia;
+import popbl4.app.sinInteraccion.FXMLDocumentController;
 import popbl4.app.sinInteraccion.Menu;
 import popbl4.app.sinInteraccion.Productos;
-import popbl4.app.sinInteraccion.Tiendas;
 
 /**
  *
  * @author GHackAnonymous
  */
-public class Controlador {
-    
+public class Controlador implements Observer{
     
     private ConexionBD conexionBD;
     private ConexionRS232 conexionRS232;
     private List<Anuncio> lista;
     private GeneradorSQL generadorSQL;
+    private SlideBloqueado slideBlo;
+    private HiloRS hiloRS;
+    private FXMLDocumentController o;
     
 
-    public Controlador() throws IOException {
+    public Controlador(FXMLDocumentController o) throws IOException {
+        this.o = o;
         lista = new ArrayList<>();
         conexionBD = new ConexionBD();
         conexionBD.IniciarConexion();
         conexionRS232 = new ConexionRS232();
         generadorSQL = new GeneradorSQL();
+        slideBlo = new SlideBloqueado();
+        hiloRS = new HiloRS(this,conexionRS232,slideBlo);
+        System.out.println("Añado Observer");
+        slideBlo.addObserver(this);
     }
-    
+
+    public HiloRS getHiloRS() {
+        return hiloRS;
+    }
+
+    public SlideBloqueado getSlideBlo() {
+        return slideBlo;
+    }
+
     public List<Anuncio> InicializarAnuncios() throws SQLException, ClassNotFoundException{
-       /* for(int i = 0; i < 20; i++){
-            lista.add(new Anuncio(i, "Mercadona es una compañía española de distribución con sede en el municipio de Tabernes Blanques y origen en Puebla de Farnals, los dos pertenecientes a la provincia de Valencia.\n" +
-"\n" +
-"Mercadona cuenta con 1588 supermercados1 repartidos entre todas las provincias españolas,2 "
-                    + "con una sala de ventas de una superficie media de 1300 m², que responden al "
-                    + "modelo llamado comercio urbano de proximidad, y mantienen un surtido en a"
-                    + "limentación, droguería, perfumería y complementos donde incluyen sus "
-                    + "propias marcas blancas, junto con otras marcas comerciales", 
-                    "20/1/1111", "Mercadona","img/barPAcko.png"," Mediana y gran distribución. 1588 supermercados", 
-                    "900 500 103", "10:00 - 22:00"));
-        }*/
        
        ResultSet rs = conexionBD.genericoSelect(generadorSQL.generaSelectGastronomia());
        List<Anuncio> listaGastronomia = conexionBD.getAnunciosList("gastronomia",rs);
@@ -69,8 +76,6 @@ public class Controlador {
        List<Anuncio> lista = new ArrayList<>(listaGastronomia);
        lista.addAll(listaTiendas);
        lista.addAll(listaServicios);
-
-
        
         return lista;
     }
@@ -90,14 +95,6 @@ public class Controlador {
        return (s != null) ? true : false;
        
     }
-    
-    /*public void obtenerDatos(String a) throws SQLException {
-        
-        ResultSet set = conexionBD.genericoSelect(a);
-        for(int i = 0; i < set.getMetaData().getColumnCount(); i++){
-            set.getArray(a);
-        }
-    }*/
 
     public boolean login(Administrador admin) throws ClassNotFoundException {
         
@@ -112,10 +109,12 @@ public class Controlador {
         } catch (SQLException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }
-        // return (login != null) ? true : false;
-        
-    }
+        } 
+    } 
 
-    
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("Entra Update");
+        this.o.salirSlide();
+    }
 }

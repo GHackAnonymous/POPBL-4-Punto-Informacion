@@ -14,10 +14,9 @@ import jssc.SerialPortList;
  *
  * @author GHackAnonymous
  */
-public class ConexionRS232 {
-
-    public ConexionRS232() {
-    }
+public class ConexionRS232{
+    
+    public ConexionRS232() {}
     
     private String puertoConectado(){
 
@@ -29,7 +28,7 @@ public class ConexionRS232 {
 	}
 
 	public String leerUsart(){
-
+                System.out.println("LectoraUsart");
 		SerialPort serialPort = new SerialPort(puertoConectado());
 		String buffer = null;
 		
@@ -42,6 +41,7 @@ public class ConexionRS232 {
 		catch (SerialPortException ex) {
 			System.out.println(ex);
 		}
+                System.out.println("buffer: "+buffer);
 		return buffer;
 	}
 
