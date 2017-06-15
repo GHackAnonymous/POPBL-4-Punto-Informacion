@@ -117,4 +117,12 @@ public class Controlador implements Observer{
         System.out.println("Entra Update");
         this.o.salirSlide();
     }
+
+    public void insertaLog(int intcontador) {
+        Log log = new Log();
+        log.setContenido(""+intcontador);
+        log.setIdAdmin(1);
+        log.setIdTipo(1);
+       conexionBD.genericoInsert(generadorSQL.generaInsertLog(log));
+    }
 }

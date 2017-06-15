@@ -157,7 +157,7 @@ public class GeneradorSQL {
         return "SELECT * FROM logs";
     }
     public String generaInsertLog(Log log){
-        return "INSERT INTO info "
+        return "INSERT INTO logs "
                 + "(contenido, id_tipo, id_admin) "
                 + "VALUES ('"+log.getContenido()+"',"
                 + ""+log.getIdTipo()+","

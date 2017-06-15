@@ -7,7 +7,6 @@ package popbl4.app.sinInteraccion;
 
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.css.CssMetaData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,13 +26,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
 import popbl4.app.controladorMain.Controlador;
+
 
 /**
  * FXML Controller class
@@ -354,6 +352,7 @@ public class AdministradorController implements Initializable {
     }
     @FXML
     void botonAtrasLogin(ActionEvent event) throws IOException {
+        cont.getSlideBlo().setSlideActivo(false);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));  
         
         
@@ -361,11 +360,16 @@ public class AdministradorController implements Initializable {
         
         FXMLDocumentController controller = fxmlLoader.<FXMLDocumentController>getController();
         controller.pasarControlador(cont);
+        
+        controller.panelSlide.setVisible(false);
+        controller.panelMenuPrincipal.setVisible(true);
 
         Scene home_page_scene = new Scene(home_page_parent);
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         
         stage.setScene(home_page_scene);
+
+        
         stage.show();
     }
     @FXML

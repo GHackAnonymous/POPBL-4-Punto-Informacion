@@ -24,7 +24,7 @@ public class VistaAnuncio extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-       // Controlador cont = new Controlador();
+        //Controlador cont = new Controlador();
         /*ConexionRS232 conexionRS232 = new ConexionRS232();
         SlideBloqueado slideBlo = new SlideBloqueado();
         HiloRS hiloRS = new HiloRS(cont,conexionRS232,slideBlo); 
@@ -63,6 +63,7 @@ public class VistaAnuncio extends Application {
      */
 
     public static void main(String[] args) {
+        
         launch(args);
     }
     

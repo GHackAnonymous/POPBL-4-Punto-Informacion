@@ -50,6 +50,7 @@ public class FXMLDocumentController implements Initializable {
     Controlador cont;
     List<Anuncio> list;
     ChangeListener<Anuncio> lineser = null;
+    Contador contador;
 
     //Slide define
     
@@ -66,7 +67,7 @@ public class FXMLDocumentController implements Initializable {
     //Slide
     
     @FXML
-    private Pane panelSlide;
+    public Pane panelSlide;
     
     @FXML
     private HBox imgContainer;
@@ -118,7 +119,7 @@ public class FXMLDocumentController implements Initializable {
     private Pane panelHelp;
 
     @FXML
-    private Pane panelMenuPrincipal;
+    public Pane panelMenuPrincipal;
     
      @FXML
     private Pane panelAnuncios;
@@ -137,7 +138,82 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TitledPane titleGastronomia;
+    
+    //panel informacion
+    
+    @FXML
+    private Button  btnInfo, btnCultura, btnTurismo,btnHistoria, btnMap;
+    
+    private Button botonActual;
+    private Pane panelActual;
+    
+    @FXML
+     private Pane panelHistoria;
      
+     @FXML
+    private Pane panelInfoInfo;
+     
+     @FXML
+    private Pane panelTurismo;
+     
+     @FXML
+    private Pane panelCultura;
+     
+     @FXML
+    private Pane panelMapa;
+     
+     @FXML
+    void mostrarInformacion(ActionEvent event) {
+        panelActual.setVisible(false);
+        panelActual = panelInfoInfo;
+        botonActual.setStyle("-fx-background-color: #fff;");
+        botonActual = btnInfo;
+        botonActual.setStyle("-fx-background-color: #ccc;");
+        panelInfoInfo.setVisible(true);
+        
+        
+    }
+    
+      @FXML
+    void mostrarCultura(ActionEvent event) {
+        panelActual.setVisible(false);
+        panelActual = panelCultura;
+        botonActual.setStyle("-fx-background-color: #fff;");
+        botonActual = btnCultura;
+        botonActual.setStyle("-fx-background-color: #ccc;");
+        panelCultura.setVisible(true);
+    }
+    
+       @FXML
+    void mostrarTurismo(ActionEvent event) {
+        panelActual.setVisible(false);
+        panelActual = panelTurismo;
+        botonActual.setStyle("-fx-background-color: #fff;");
+        botonActual = btnTurismo;
+        botonActual.setStyle("-fx-background-color: #ccc;");
+        panelTurismo.setVisible(true);
+    }
+    
+       @FXML
+    void mostrarHistoria(ActionEvent event) {
+        panelActual.setVisible(false);
+        panelActual = panelHistoria;
+        botonActual.setStyle("-fx-background-color: #fff;");
+        botonActual = btnHistoria;
+        botonActual.setStyle("-fx-background-color: #ccc;");
+        panelHistoria.setVisible(true);
+    }
+    
+         @FXML
+    void mostarMapa(ActionEvent event) {
+        panelActual.setVisible(false);
+        panelActual = panelMapa;
+        botonActual.setStyle("-fx-background-color: #fff;");
+        botonActual = btnMap;
+        botonActual.setStyle("-fx-background-color: #ccc;");
+        panelMapa.setVisible(true);
+    }
+    
      @FXML
     void backMenuInfo(ActionEvent event) {
         animar(panelInformacion, "leftCenter");
@@ -289,6 +365,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void irAdministrador(ActionEvent event) throws IOException {
         
+        int intcontador = contador.getCont();
+        
+        cont.insertaLog(intcontador);
+        
+        contador.setCont(0);
+        contador.setCuento(false);
+        
+        
         //FXMLLoader fxmlLoader = FXMLLoader(getClass().getResource("Administrador.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Administrador.fxml"));  
         
@@ -311,6 +395,9 @@ public class FXMLDocumentController implements Initializable {
             cont = new Controlador(this);
             
             list = cont.InicializarAnuncios();
+            
+            panelActual = panelInfoInfo;
+            botonActual = btnInfo;
             
             startAnimation(imgContainer);
         } catch (IOException ex) {
@@ -379,10 +466,6 @@ public class FXMLDocumentController implements Initializable {
           
     }
 
-    private FXMLLoader FXMLLoader(URL resource) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     //ANIMACION Slide
     private void startAnimation(final HBox hbox) {
         EventHandler<ActionEvent> slideAction = (ActionEvent t) -> {
@@ -413,6 +496,7 @@ public class FXMLDocumentController implements Initializable {
     }
     public void salirSlide(){
         if(cont.getSlideBlo().isSlideActivo() == true){
+            contador = new Contador();
            System.out.println("Entra if");
             panelSlide.setVisible(false); 
             panelMenuPrincipal.setVisible(true);
@@ -438,12 +522,6 @@ public class FXMLDocumentController implements Initializable {
         @Override
         public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
-
-    private static class ChangeListenerImplImpl extends ChangeListenerImpl {
-
-        public ChangeListenerImplImpl() {
         }
     }
 }

@@ -193,10 +193,10 @@
             <Label fx:id="labelContacto" layoutX="416.0" layoutY="308.0" text="Label" textFill="#fffdfd" />
          </children>
       </Pane>
-      <Pane fx:id="panelInformacion" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
+     <Pane fx:id="panelInformacion" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-            <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #ccc;">
+            <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Titulo">
                      <font>
@@ -205,32 +205,45 @@
                   </Label>
                </children>
             </Pane>
-            <JFXButton defaultButton="true" layoutX="26.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
-            <JFXButton layoutX="109.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" ripplerFill="#832a2a" style="-fx-border-color: #ccc;" text="Cultura" />
-            <JFXButton layoutX="192.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Turismo" />
-            <JFXButton layoutX="275.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Historia" />
-            <JFXButton layoutX="358.0" layoutY="50.0" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" />
-            <JFXButton layoutX="441.0" layoutY="50.0" prefHeight="27.0" prefWidth="133.0" style="-fx-border-color: #ccc;" text="Mapa" />
+            <JFXButton fx:id="btnInfo" defaultButton="true" layoutX="26.0" layoutY="49.0" onAction="#mostrarInformacion" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
+            <JFXButton fx:id="btnCultura" layoutX="142.0" layoutY="49.0" onAction="#mostrarCultura" prefHeight="25.0" prefWidth="133.0" ripplerFill="#832a2a" style="-fx-border-color: #ccc; -fx-border-width: 1;" text="Cultura" />
+            <JFXButton fx:id="btnTurismo" layoutX="275.0" layoutY="49.0" onAction="#mostrarTurismo" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Turismo" />
+            <JFXButton fx:id="btnHistoria" layoutX="358.0" layoutY="49.0" onAction="#mostrarHistoria" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Historia" />
+            <JFXButton fx:id="btnMap" layoutX="441.0" layoutY="49.0" onAction="#mostarMapa" prefHeight="25.0" prefWidth="133.0" style="-fx-border-color: #ccc;" text="Mapa" />
             <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="14.0" onAction="#backMenuInfo" style="-fx-background-color: #ccc;" text="Back" />
-            <Pane fx:id="panelCultura" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" visible="false" />
-            <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" />
-            <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" />
-            <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0">
+            <Pane fx:id="panelCultura" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="330.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <Label layoutX="10.0" layoutY="14.0" prefHeight="271.0" prefWidth="281.0" text="     Programar, dirigir y organizar la oferta cultural.    Organizar y coordinar las celebraciones.    Canalizar las fiestas de los barrios.    Colaborar con los grupos y asociaciones del municipio.    Gestionar el equipamiento cultural.    Coordinar la agenda cultural, ofreciendo recursos e infraestructuras.    Reserva de salas en la Casa de Cultura.    Coordinación con la Banda Municipal de Música.    Gestionar las exposiciones de la sala Aroztegi." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../fotos/gastronomia.jpg" />
+                        <Image url="@../../../fotos/ikurrina.jpg" />
                      </image>
                   </ImageView>
-                  <ScrollPane layoutX="14.0" layoutY="47.0" prefHeight="244.0" prefWidth="281.0" vbarPolicy="ALWAYS">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="278.0">
-                           <children>
-                              <Label layoutX="14.0" layoutY="14.0" prefWidth="245.0" text="59 Which technology requires the use of PPPoE to provide PPP connections to customers?dialup ISDN modemT1DSL*dialup analog modem60 Under which two categories of WAN connections does Frame Relay fit? (Choose two.)packet-switched*private infrastructure*public infrastructureInternetdedicated61 What are three characteristics of the generic routing encapsulation (GRE) protocol? (Choose three.)GRE tunnels support multicast traffic.*GRE creates additional overload for packets that are traveling through the VPN.*GRE uses AES for encryption unless otherwise specifiedBy default, GRE does not include any flow control mechanisms.*Developed by the IETF, GRE is a secure tunneling protocol that was designed for Cisco routers.GRE provides encapsulation for a single protocol type that is traveling through the VPN.62. An intercity bus company wants to offer constant Internet connectivity to the users traveling on the buses. Which two types of WAN infrastructure would meet the requirements? (Choose two.)cellular*dedicatedprivate infrastructurecircuit-switchedpublic infrastructure*" wrapText="true" />
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </ScrollPane>
+               </children></Pane>
+            <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Qué ver, hacer, disfrutar" />
+<Label layoutX="14.0" layoutY="38.0" prefHeight="247.0" prefWidth="336.0" text="La visita a Bergara es completamente modulable. Partiendo de una experiencia tranquila -un suave paseo por las calles viejas, relajarse en los jardines, disfrutar del Anillo Verde...- podemos llegar hasta el deporte extremo - subida a Gorla, BBT, piraguismo, rocódromo...-. La intensidad será la que el momento requiera o la que cada cual necesite. Visitas guiadas, exposiciones, pintxo-pote, una vuelta por el monte, cine-club... el paso que nos lleva de ver y participar a vivir con intensidad es pequeño y el agradable ambiente de Bergara contribuye a ello enseguida.Estando en el Pais Vasco no podemos dejar de mencionar la gastronomía. En Bergara los bares y restaurantes están bien representados y cuenta también con opciones para conocer la alta gastronomía.Las especialidades propias y exclusivas las encontramos en la repostería tradicional, artesana que sigue produciento en la Parte Vieja de la villa unos dulces, los rellenos y los tostones, que harán felices a las golosas y golosos. " wrapText="true" />
+               </children></Pane>
+            <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Zarautz" underline="true" />
+                  <Label layoutX="14.0" layoutY="40.0" prefHeight="247.0" prefWidth="336.0" text="Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa turística situada en el centro de la costa de la provincia y territorio histórico de Guipúzcoa, en el País Vasco (España). Limita al este y al sur con Aya y al oeste con Guetaria. Posee cuatro enclaves que limitan con los anteriores municipios: Alkortiaga, Elkano, Sola y Arbestain. Este último limita también con Aizarnazábal. En 2016 (INE) tenía 23.117 habitantes, pero en la época estival alcanza frecuentemente los 35.000. Se encuentra a unos 15 km. de la capital provincial, San Sebastián y forma parte de su área metropolitana.Zarauz fue fundada como villa en 1237 por Fernando III de Castilla. Hasta el siglo XVI, sus habitantes se dedicaban a la pesca, especialmente la de ballena. Después, con la desaparición de la ballena del Cantábrico, los zarauztarras fueron dedicándose a otros menesteres como la agricultura, la industria textil o la fabricación de muebles o barcos. La leyenda cuenta que en los astilleros de Zarauz, de los que no queda ni rastro, se construyó la primera nave que dio la vuelta al Mundo, la nao Victoria, comandada por Juan Sebastián Elcano, nacido en la localidad vecina de Guetaria, a 3 km de Zarauz.La playa de Zarauz es la más extensa del País Vasco y una de las más largas del Cantábrico; por esta razón es conocida con el sobrenombre de &quot;La Reina de las Playas&quot;. La zona próxima al paseo marítimo destacaba por la presencia de palacetes y viviendas construidas por la alta burguesía durante el siglo XIX, que han sido sustituidas progresivamente por edificios de viviendas de tres a cinco plantas. El Palacio de Narros, situado frente a la gran playa (2,8 km), fue lugar de veraneo de la reina Isabel II de España, así como de la reina consorte de Bélgica Fabiola de Bélgica.En el extremo oriental de la playa, rodeando un campo de golf, se encuentra el biotopo protegido de Iñurritza, destacando la conjunción de dunas, marismas y acantilados, haciendo que se reúnan en este lugar especies florísticas y faunísticas con requerimientos diversos y de las dunas de arena conservadas del País Vasco, junto con las de las playas vizcaínas de La Arena en Musques, Barinatxe en Guecho, y Górliz." textAlignment="JUSTIFY" wrapText="true" />
+                  <ImageView fitHeight="150.0" fitWidth="173.0" layoutX="363.0" layoutY="23.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../fotos/toldo.jpg" />
+                     </image>
+                  </ImageView>
+<Label layoutX="363.0" layoutY="182.0" text="Pais:" underline="true" />
+                  <Label layoutX="361.0" layoutY="222.0" text="Ubicacion:" underline="true" />
+               </children></Pane>
+            <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" visible="false">
+               <children>
+                  <ImageView fitHeight="271.0" fitWidth="522.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../../fotos/mapa.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
