@@ -37,6 +37,7 @@ public class ConexionRS232{
 			serialPort.setParams(9600, 8, 1, 0);//Set params.
 			buffer = serialPort.readString(4);//Read 10 bytes from serial port
 			serialPort.closePort();//Close serial port
+			System.out.println("Se ha cerrado el puerto serial");
 		}
 		catch (SerialPortException ex) {
 			System.out.println(ex);
@@ -59,6 +60,8 @@ public class ConexionRS232{
 			serialPort.setParams(9600, 8, 1, 0);
 			serialPort.writeBytes(texto.getBytes());//Write data to port
 			serialPort.closePort();//Close serial port
+			System.out.println("Se ha cerrado el puerto serial");
+			
 		}
 		catch (SerialPortException ex) {
 			System.out.println(ex);

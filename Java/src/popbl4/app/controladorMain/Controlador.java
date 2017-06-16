@@ -49,7 +49,7 @@ public class Controlador implements Observer{
         conexionRS232 = new ConexionRS232();
         generadorSQL = new GeneradorSQL();
         slideBlo = new SlideBloqueado();
-        hiloRS = new HiloRS(this,conexionRS232,slideBlo);
+       hiloRS = new HiloRS(this,conexionRS232,slideBlo);
         System.out.println("Añado Observer");
         slideBlo.addObserver(this);
     }
