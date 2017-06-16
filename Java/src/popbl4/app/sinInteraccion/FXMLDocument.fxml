@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="popbl4.app.sinInteraccion.FXMLDocumentController">
    <children>
-      <Pane fx:id="panelSlide" prefHeight="400.0" prefWidth="600.0">
+      <Pane fx:id="panelSlide" prefHeight="400.0" prefWidth="600.0" visible="false">
          <children>
             <HBox fx:id="imgContainer" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -38,7 +38,7 @@
             <JFXButton onAction="#empezarDetector" style="-fx-background-color: #ccc;" text="Sensor" />
          </children>
       </Pane>
-      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.56" pickOnBounds="true" smooth="false">
                <image>
@@ -301,17 +301,17 @@
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
             <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;">
                <children>
-                  <Label layoutX="99.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Informaciín de Bilbao">
+                  <Label layoutX="99.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Información de Bilbao">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <TextArea editable="false" layoutX="14.0" layoutY="50.0" prefHeight="237.0" prefWidth="358.0" text="Los cientos de visitantes que se acercan al Museo &#10;Guggenheim Bilbao, cuentan con una oficina ubicada&#10; junto a la entrada de la pinacoteca, que proporciona &#10;información sobre Bilbao, Bizkaia y Euskadi. Además, &#10;ofrece servicio de visitas guiadas, vende la tarjeta turística &#10;Bilbao Card y trabaja en coordinación con la central de &#10;reservas hoteleras. Permanece abierta todo el año y &#10;presta servicio en euskera, castellano, inglés, francés, &#10;alemán e italiano.">
+                  <TextArea fx:id="textInformacion" editable="false" layoutX="14.0" layoutY="50.0" prefHeight="237.0" prefWidth="358.0" text="Los cientos de visitantes que se acercan al Museo &#10;Guggenheim Bilbao, cuentan con una oficina ubicada&#10; junto a la entrada de la pinacoteca, que proporciona &#10;información sobre Bilbao, Bizkaia y Euskadi. Además, &#10;ofrece servicio de visitas guiadas, vende la tarjeta turística &#10;Bilbao Card y trabaja en coordinación con la central de &#10;reservas hoteleras. Permanece abierta todo el año y &#10;presta servicio en euskera, castellano, inglés, francés, &#10;alemán e italiano.">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </TextArea>
-                  <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="379.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenInformacion" fitHeight="128.0" fitWidth="150.0" layoutX="379.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../fotos/gunne.jpg" />
                      </image>
@@ -334,18 +334,18 @@
             <Pane fx:id="panelCultura" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="10.0" layoutY="14.0" prefHeight="271.0" prefWidth="281.0" text="     Programar, dirigir y organizar la oferta cultural.    Organizar y coordinar las celebraciones.    Canalizar las fiestas de los barrios.    Colaborar con los grupos y asociaciones del municipio.    Gestionar el equipamiento cultural.    Coordinar la agenda cultural, ofreciendo recursos e infraestructuras.    Reserva de salas en la Casa de Cultura.    Coordinación con la Banda Municipal de Música.    Gestionar las exposiciones de la sala Aroztegi." textAlignment="JUSTIFY" textFill="WHITE" visible="false" wrapText="true" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagenCultura" fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../fotos/ikurrina.jpg" />
                      </image>
                   </ImageView>
-                  <TextArea editable="false" layoutX="10.0" layoutY="15.0" prefHeight="271.0" prefWidth="292.0" text="A lo largo del siglo XX y en la actualidad, los vascos&#10; mantienen una polémica interna y con el resto de&#10; los pueblos con los que se relacionan acerca de la&#10; naturaleza, extensión y consecuencias de la&#10; condición de vasco.&#10;&#10;Las tendencias constitucionalistas, no nacionalistas&#10; vascas y nacionalistas españolas, sostienen que los&#10; vascos son parte integrante de la nación española,&#10; constituidos en las provincias de Álava, Guipúzcoa &#10;y Vizcaya, conforme se recoge en el artículo 7.1 del&#10; Estatuto de Autonomía del País Vasco, que dice:&#10;&#10; &quot;A los efectos del presente Estatuto tendrán la&#10; condición política de vascos quienes tengan la&#10; vecindad administrativa, de acuerdo con las &#10;Leyes generales del Estado, en cualquiera de los&#10; municipios integrados en el territorio de la &#10;Comunidad Autónoma.&quot;" />
+                  <TextArea fx:id="textCurtura" editable="false" layoutX="10.0" layoutY="15.0" prefHeight="271.0" prefWidth="292.0" text="A lo largo del siglo XX y en la actualidad, los vascos&#10; mantienen una polémica interna y con el resto de&#10; los pueblos con los que se relacionan acerca de la&#10; naturaleza, extensión y consecuencias de la&#10; condición de vasco.&#10;&#10;Las tendencias constitucionalistas, no nacionalistas&#10; vascas y nacionalistas españolas, sostienen que los&#10; vascos son parte integrante de la nación española,&#10; constituidos en las provincias de Álava, Guipúzcoa &#10;y Vizcaya, conforme se recoge en el artículo 7.1 del&#10; Estatuto de Autonomía del País Vasco, que dice:&#10;&#10; &quot;A los efectos del presente Estatuto tendrán la&#10; condición política de vascos quienes tengan la&#10; vecindad administrativa, de acuerdo con las &#10;Leyes generales del Estado, en cualquiera de los&#10; municipios integrados en el territorio de la &#10;Comunidad Autónoma.&quot;" />
                </children></Pane>
             <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Qué ver, hacer, disfrutar" />
-<Label layoutX="14.0" layoutY="38.0" prefHeight="247.0" prefWidth="336.0" text="La visita a Bergara es completamente modulable. Partiendo de una experiencia tranquila -un suave paseo por las calles viejas, relajarse en los jardines, disfrutar del Anillo Verde...- podemos llegar hasta el deporte extremo - subida a Gorla, BBT, piraguismo, rocódromo...-. La intensidad será la que el momento requiera o la que cada cual necesite. Visitas guiadas, exposiciones, pintxo-pote, una vuelta por el monte, cine-club... el paso que nos lleva de ver y participar a vivir con intensidad es pequeño y el agradable ambiente de Bergara contribuye a ello enseguida.Estando en el Pais Vasco no podemos dejar de mencionar la gastronomía. En Bergara los bares y restaurantes están bien representados y cuenta también con opciones para conocer la alta gastronomía.Las especialidades propias y exclusivas las encontramos en la repostería tradicional, artesana que sigue produciento en la Parte Vieja de la villa unos dulces, los rellenos y los tostones, que harán felices a las golosas y golosos. " wrapText="true" />
-                  <ImageView fitHeight="138.0" fitWidth="160.0" layoutX="361.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                  <TextArea fx:id="textTurismo" layoutX="14.0" layoutY="31.0" prefHeight="254.0" prefWidth="336.0" text="La visita a Bergara es completamente modulable. &#10;Partiendo de una experiencia tranquila -un suave paseo &#10;por las calles viejas, relajarse en los jardines, disfrutar del &#10;Anillo Verde...- podemos llegar hasta el deporte extremo&#10; - subida a Gorla, BBT, piraguismo, rocódromo...-. &#10;La intensidad será la que el momento requiera o la que &#10;cada cual necesite. Visitas guiadas, exposiciones, &#10;pintxo-pote, una vuelta por el monte, cine-club... el paso&#10; que nos lleva de ver y participar a vivir con intensidad es &#10;pequeño y el agradable ambiente de Bergara contribuye a&#10; ello enseguida.Estando en el Pais Vasco no podemos dejar&#10; de mencionar la gastronomía. En Bergara los bares y &#10;restaurantes están bien representados y cuenta también&#10; con opciones para conocer la alta gastronomía.Las &#10;especialidades propias y exclusivas las encontramos en&#10; la repostería tradicional, artesana que sigue produciento&#10; en la Parte Vieja de la villa unos dulces, los rellenos y los&#10; tostones, que harán felices a las golosas y golosos. " />
+                  <ImageView fx:id="imagenTurismo" fitHeight="138.0" fitWidth="160.0" layoutX="361.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../fotos/puente-de-calatrava.jpg" />
                      </image>
@@ -354,20 +354,16 @@
             <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Zarautz" underline="true" />
-                  <Label layoutX="14.0" layoutY="40.0" prefHeight="247.0" prefWidth="336.0" text="Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa turística situada en el centro de la costa de la provincia y territorio histórico de Guipúzcoa, en el País Vasco (España). Limita al este y al sur con Aya y al oeste con Guetaria. Posee cuatro enclaves que limitan con los anteriores municipios: Alkortiaga, Elkano, Sola y Arbestain. Este último limita también con Aizarnazábal. En 2016 (INE) tenía 23.117 habitantes, pero en la época estival alcanza frecuentemente los 35.000. Se encuentra a unos 15 km. de la capital provincial, San Sebastián y forma parte de su área metropolitana.Zarauz fue fundada como villa en 1237 por Fernando III de Castilla. Hasta el siglo XVI, sus habitantes se dedicaban a la pesca, especialmente la de ballena. Después, con la desaparición de la ballena del Cantábrico, los zarauztarras fueron dedicándose a otros menesteres como la agricultura, la industria textil o la fabricación de muebles o barcos. La leyenda cuenta que en los astilleros de Zarauz, de los que no queda ni rastro, se construyó la primera nave que dio la vuelta al Mundo, la nao Victoria, comandada por Juan Sebastián Elcano, nacido en la localidad vecina de Guetaria, a 3 km de Zarauz.La playa de Zarauz es la más extensa del País Vasco y una de las más largas del Cantábrico; por esta razón es conocida con el sobrenombre de &quot;La Reina de las Playas&quot;. La zona próxima al paseo marítimo destacaba por la presencia de palacetes y viviendas construidas por la alta burguesía durante el siglo XIX, que han sido sustituidas progresivamente por edificios de viviendas de tres a cinco plantas. El Palacio de Narros, situado frente a la gran playa (2,8 km), fue lugar de veraneo de la reina Isabel II de España, así como de la reina consorte de Bélgica Fabiola de Bélgica.En el extremo oriental de la playa, rodeando un campo de golf, se encuentra el biotopo protegido de Iñurritza, destacando la conjunción de dunas, marismas y acantilados, haciendo que se reúnan en este lugar especies florísticas y faunísticas con requerimientos diversos y de las dunas de arena conservadas del País Vasco, junto con las de las playas vizcaínas de La Arena en Musques, Barinatxe en Guecho, y Górliz." textAlignment="JUSTIFY" wrapText="true" />
-                  <ImageView fitHeight="150.0" fitWidth="173.0" layoutX="363.0" layoutY="23.0" pickOnBounds="true">
+                  <TextArea fx:id="textHistoria" layoutX="14.0" layoutY="47.0" prefHeight="237.0" prefWidth="336.0" text="Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa&#10; turística situada en el centro de la costa de la provincia&#10; y territorio histórico de Guipúzcoa, en el &#10;País Vasco (España). Limita al este y al sur con Aya y al &#10;oeste con Guetaria. Posee cuatro enclaves que limitan con&#10; los anteriores municipios: Alkortiaga, Elkano, Sola y &#10;Arbestain. Este último limita también con Aizarnazábal. &#10;En 2016 (INE) tenía 23.117 habitantes, pero en la época&#10; estival alcanza frecuentemente los 35.000. Se encuentra&#10; a unos 15 km. de la capital provincial, San Sebastián y&#10; forma parte de su área metropolitana.Zarauz fue fundada &#10;como villa en 1237 por Fernando III de Castilla. Hasta el &#10;siglo XVI, sus habitantes se dedicaban a la pesca, &#10;especialmente la de ballena. Después, con la &#10;desaparición de la ballena del Cantábrico, los &#10;zarauztarras fueron dedicándose a otros menesteres &#10;como la agricultura, la industria textil o la fabricación de &#10;muebles o barcos. La leyenda cuenta que en los &#10;astilleros de Zarauz, de los que no queda ni rastro, se &#10;construyó la primera nave que dio la vuelta al Mundo, la&#10; nao Victoria, comandada por Juan Sebastián Elcano,&#10; nacido en la localidad vecina de Guetaria, a 3 km de &#10;Zarauz.La playa de Zarauz es la más extensa del País &#10;Vasco y una de las más largas del Cantábrico; por esta &#10;razón es conocida con el sobrenombre de &quot;La Reina de &#10;las Playas&quot;. La zona próxima al paseo marítimo destacaba&#10; por la presencia de palacetes y viviendas construidas &#10;por la alta burguesía durante el siglo XIX, que han sido &#10;sustituidas progresivamente por edificios de viviendas&#10; de tres a cinco plantas. El Palacio de Narros, situado &#10;frente a la gran playa (2,8 km), fue lugar de veraneo de &#10;la reina Isabel II de España, así como de la reina consorte&#10; de Bélgica Fabiola de Bélgica.En el extremo oriental de &#10;la playa, rodeando un campo de golf, se encuentra el&#10; biotopo protegido de Iñurritza, destacando la &#10;conjunción de dunas, marismas y acantilados, haciendo&#10; que se reúnan en este lugar especies florísticas y &#10;faunísticas con requerimientos diversos y de las dunas de&#10; arena conservadas del País Vasco, junto con las de las &#10;playas vizcaínas de La Arena en Musques, Barinatxe en &#10;Guecho, y Górliz." />
+                  <ImageView fx:id="imagenHistoria" fitHeight="150.0" fitWidth="173.0" layoutX="363.0" layoutY="72.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../fotos/toldo.jpg" />
                      </image>
                   </ImageView>
-<Label layoutX="363.0" layoutY="182.0" text="Pais:" underline="true" />
-                  <Label layoutX="361.0" layoutY="222.0" text="Ubicacion:" underline="true" />
-                  <Label layoutX="402.0" layoutY="182.0" text="Pais Vasco" />
-                  <Label layoutX="436.0" layoutY="222.0" text="Zarautz" />
                </children></Pane>
             <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-border-color: back;" visible="false">
                <children>
-                  <ImageView fitHeight="271.0" fitWidth="522.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true">
+                  <ImageView fx:id="imagenMapa" fitHeight="271.0" fitWidth="522.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../fotos/mapa.jpg" />
                      </image>

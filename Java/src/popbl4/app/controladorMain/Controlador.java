@@ -18,6 +18,7 @@ import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
 import popbl4.app.basedatos.ConexionBD;
 import popbl4.app.basedatos.GeneradorSQL;
+import popbl4.app.interactuador.Informacion;
 import popbl4.app.olimexRS232.ConexionRS232;
 import popbl4.app.olimexRS232.HiloRS;
 import popbl4.app.olimexRS232.SlideBloqueado;
@@ -49,7 +50,7 @@ public class Controlador implements Observer{
         conexionRS232 = new ConexionRS232();
         generadorSQL = new GeneradorSQL();
         slideBlo = new SlideBloqueado();
-       hiloRS = new HiloRS(this,conexionRS232,slideBlo);
+        hiloRS = new HiloRS(this,conexionRS232,slideBlo);
         System.out.println("Añado Observer");
         slideBlo.addObserver(this);
     }
@@ -76,7 +77,18 @@ public class Controlador implements Observer{
     public SlideBloqueado getSlideBlo() {
         return slideBlo;
     }
-
+    public Informacion obtenerInformacion(int tipo){
+        ResultSet rs = conexionBD.genericoSelect(generadorSQL.generaSelectInformacion(tipo));
+        try {
+            return conexionBD.getInformacion(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
     public List<Anuncio> InicializarAnuncios() throws SQLException, ClassNotFoundException{
        
        ResultSet rs = conexionBD.genericoSelect(generadorSQL.generaSelectGastronomia());

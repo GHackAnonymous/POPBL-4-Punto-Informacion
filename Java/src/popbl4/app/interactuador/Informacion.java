@@ -14,8 +14,8 @@ public class Informacion {
     // no deveria tenar algo mas como la descripcion?
     
     private int idInformacion;
-    private String Descripcion;
-    //private String
+    private String descripcionInformacion;
+    private String fotoInformacion;
 
     public Informacion() {}
     
@@ -30,4 +30,21 @@ public class Informacion {
     public void setIdInformacion(int idInformacion) {
         this.idInformacion = idInformacion;
     }
+
+    public String getDescripcionInformacion() {
+        return descripcionInformacion;
+    }
+
+    public void setDescripcionInformacion(String descripcionInformacion) {
+        this.descripcionInformacion = descripcionInformacion;
+    }
+
+    public String getFotoInformacion() {
+        return fotoInformacion;
+    }
+
+    public void setFotoInformacion(String fotoInformacion) {
+        this.fotoInformacion = fotoInformacion;
+    }
+    
 }

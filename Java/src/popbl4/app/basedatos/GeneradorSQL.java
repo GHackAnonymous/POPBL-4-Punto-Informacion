@@ -142,8 +142,9 @@ public class GeneradorSQL {
         return "select * from servicios S join anuncios A " +
                 "on S.id_anuncios_servicios = A.id_anuncios;";
     }
-    public String generaSelectInformacion(){
-        return "SELECT * FROM info";
+    public String generaSelectInformacion(int tipo){
+        return "SELECT * FROM info where id_info = "+tipo+";";
+        
     }
     public String generaInsertInformacion(Informacion informacion){
         return "INSERT INTO info "

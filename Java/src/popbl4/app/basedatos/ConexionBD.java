@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import popbl4.app.admin.Administrador;
 import popbl4.app.admin.Log;
+import popbl4.app.interactuador.Informacion;
 import popbl4.app.sinInteraccion.Anuncio;
 import popbl4.app.sinInteraccion.Gastronomia;
 import popbl4.app.sinInteraccion.Menu;
@@ -131,6 +132,16 @@ public class ConexionBD {
         }
         //return empList (ObservableList of Employees)
         return listaAnuncios;
+    }
+    public Informacion getInformacion(ResultSet rs) throws SQLException, ClassNotFoundException {
+        Informacion info = null;
+        while (rs != null && rs.next()) {
+            info = new Informacion();
+            info.setIdInformacion(rs.getInt("id_info"));
+            info.setDescripcionInformacion(rs.getString("tipo"));
+            info.setFotoInformacion(rs.getString("url_foto_info"));
+        }
+        return info;
     }
      public boolean genericoInsert(String Insert){ 
         //Sirve la misma para update, insert o delete

@@ -11,7 +11,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +32,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -41,6 +41,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import popbl4.app.controladorMain.Controlador;
+import popbl4.app.interactuador.Informacion;
 
 /**
  *
@@ -161,27 +162,66 @@ public class FXMLDocumentController implements Initializable {
      
      @FXML
     private Pane panelMapa;
+     
+    // contenedores de informacin
+     
+    @FXML
+    private TextArea textInformacion;
+
+    @FXML
+    private ImageView imagenInformacion;
+
+    @FXML
+    private TextArea textCurtura;
+	
+    @FXML
+    private ImageView imagenCultura;
+	
+    @FXML
+    private TextArea textTurismo;
+
+    @FXML
+    private ImageView imagenTurismo;
+	
+    @FXML
+    private TextArea textHistoria;
+	
+    @FXML
+    private ImageView imagenHistoria;
+
+    @FXML
+    private ImageView imagenMapa;
+    
 
     public HBox getImgContainer() {
         return imgContainer;
     }
-     
-     
-     
+
      @FXML
     void mostrarInformacion(ActionEvent event) {
+        
+        Informacion info = cont.obtenerInformacion(1);
+
+        
+        textInformacion.setText(info.getDescripcionInformacion());
+        imagenInformacion.setImage(new Image("file:.\\src\\fotos\\"+info.getFotoInformacion())); 
+        
         panelActual.setVisible(false);
         panelActual = panelInfoInfo;
         botonActual.setStyle("-fx-background-color: #fff;");
         botonActual = btnInfo;
         botonActual.setStyle("-fx-background-color: #ccc;");
         panelInfoInfo.setVisible(true);
-        
-        
     }
     
       @FXML
     void mostrarCultura(ActionEvent event) {
+        
+        Informacion info = cont.obtenerInformacion(2);
+        
+        textCurtura.setText(info.getDescripcionInformacion());
+        imagenCultura.setImage(new Image("file:.\\src\\fotos\\"+info.getFotoInformacion())); 
+        
         panelActual.setVisible(false);
         panelActual = panelCultura;
         botonActual.setStyle("-fx-background-color: #fff;");
@@ -192,6 +232,12 @@ public class FXMLDocumentController implements Initializable {
     
        @FXML
     void mostrarTurismo(ActionEvent event) {
+        
+        Informacion info = cont.obtenerInformacion(3);
+        
+        textTurismo.setText(info.getDescripcionInformacion());
+        imagenTurismo.setImage(new Image("file:.\\src\\fotos\\"+info.getFotoInformacion())); 
+        
         panelActual.setVisible(false);
         panelActual = panelTurismo;
         botonActual.setStyle("-fx-background-color: #fff;");
@@ -202,6 +248,12 @@ public class FXMLDocumentController implements Initializable {
     
        @FXML
     void mostrarHistoria(ActionEvent event) {
+        
+        Informacion info = cont.obtenerInformacion(4);
+        
+        textHistoria.setText(info.getDescripcionInformacion());
+        imagenHistoria.setImage(new Image("file:.\\src\\fotos\\"+info.getFotoInformacion())); 
+        
         panelActual.setVisible(false);
         panelActual = panelHistoria;
         botonActual.setStyle("-fx-background-color: #fff;");
@@ -212,6 +264,11 @@ public class FXMLDocumentController implements Initializable {
     
          @FXML
     void mostarMapa(ActionEvent event) {
+        
+        Informacion info = cont.obtenerInformacion(5);
+        
+        imagenMapa.setImage(new Image("file:.\\src\\fotos\\"+info.getFotoInformacion()));
+        
         panelActual.setVisible(false);
         panelActual = panelMapa;
         botonActual.setStyle("-fx-background-color: #fff;");
