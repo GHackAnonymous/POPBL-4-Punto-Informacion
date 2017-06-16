@@ -32,13 +32,6 @@ CREATE TABLE logs
 		REFERENCES administradores(id_admin)
 );
 
-CREATE TABLE tipos_de_tipos_anuncios
-(
-	id_tipos_de_tipos_anuncios int(10) NOT NULL AUTO_INCREMENT,
-	descripcion varchar(300),
-	CONSTRAINT tipos_de_tipos_anuncios_pk PRIMARY KEY(id_tipos_de_tipos_anuncios)
-);
-
 CREATE TABLE anuncios
 (
 	id_anuncios int(10) NOT NULL AUTO_INCREMENT,
@@ -123,14 +116,4 @@ CREATE TABLE info
 	tipo varchar(100),
 	url_foto_info varchar(100),
 	CONSTRAINT id_info_pk PRIMARY KEY(id_info)
-);
-
-CREATE TABLE tipoInformacion
-(
-	id_tipoInformacion int(10) AUTO_INCREMENT,
-	tipo varchar(100),
-	id_info int(10),
-	CONSTRAINT id_tipoInformacion_pk PRIMARY KEY(id_tipoInformacion),
-	CONSTRAINT id_info_fk FOREIGN KEY(id_info)
-		REFERENCES info(id_info)
 );

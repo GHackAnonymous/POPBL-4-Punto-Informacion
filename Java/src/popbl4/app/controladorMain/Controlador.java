@@ -14,18 +14,18 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import popbl4.app.admin.Administrador;
-import popbl4.app.admin.Log;
-import popbl4.app.basedatos.ConexionBD;
-import popbl4.app.basedatos.GeneradorSQL;
-import popbl4.app.interactuador.Informacion;
-import popbl4.app.olimexRS232.ConexionRS232;
-import popbl4.app.olimexRS232.HiloRS;
-import popbl4.app.olimexRS232.SlideBloqueado;
-import popbl4.app.sinInteraccion.Anuncio;
-import popbl4.app.sinInteraccion.FXMLDocumentController;
-import popbl4.app.sinInteraccion.Menu;
-import popbl4.app.sinInteraccion.Productos;
+import popbl4.app.modelo.admin.Administrador;
+import popbl4.app.modelo.admin.Log;
+import popbl4.app.modelo.basedatos.ConexionBD;
+import popbl4.app.modelo.basedatos.GeneradorSQL;
+import popbl4.app.modelo.interactuador.Informacion;
+import popbl4.app.modelo.olimexRS232.ConexionRS232;
+import popbl4.app.modelo.olimexRS232.HiloRS;
+import popbl4.app.modelo.olimexRS232.SlideBloqueado;
+import popbl4.app.modelo.anuncios.Anuncio;
+import popbl4.app.vista.FXMLDocumentController;
+import popbl4.app.modelo.anuncios.Menu;
+import popbl4.app.modelo.anuncios.Productos;
 
 /**
  *
@@ -117,8 +117,7 @@ public class Controlador implements Observer{
 
         
         String s = generadorSQL.generaInsertAnuncios(conexionBD.getConexion(),a, m, p);
-        //System.out.println(s);
-        //return conexionBD.genericoInsert(s);
+
        return (s != null) ? true : false;
        
     }

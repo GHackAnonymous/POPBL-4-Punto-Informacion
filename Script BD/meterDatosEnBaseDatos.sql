@@ -32,9 +32,6 @@ INSERT INTO logs (contenido, id_tipo, id_admin) VALUES ('comentarioalgo8', 8, 8)
 INSERT INTO logs (contenido, id_tipo, id_admin) VALUES ('comentarioalgo9', 9, 9);
 INSERT INTO logs (contenido, id_tipo, id_admin) VALUES ('comentarioalgo10', 10, 10);
 
-INSERT INTO tipos_de_tipos_anuncios (descripcion) VALUES ('Descripcionalgo1');
-INSERT INTO tipos_de_tipos_anuncios (descripcion) VALUES ('Descripcionalgo2');
-INSERT INTO tipos_de_tipos_anuncios (descripcion) VALUES ('Descripcionalgo3');
 
 INSERT INTO anuncios (titulo, descripcion, url_foto_anuncio, ubicacion, contacto, horarios, fecha_anuncio) 
 	VALUES ('tituloalgo1', 'Descripcionalgo1', 'log.png', 'Bilbo', 'eder', '09:00 - 22:00', '06/23/2017');
@@ -100,9 +97,4 @@ INSERT INTO info (tipo, url_foto_info) VALUES ('La visita a Bergara es completam
 INSERT INTO info (tipo, url_foto_info) VALUES ('Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa\r\n turística situada en el centro de la costa de la provincia\r\n y territorio histórico de Guipúzcoa, en el \r\nPaís Vasco (España). Limita al este y al sur con Aya y al \r\noeste con Guetaria. Posee cuatro enclaves que limitan con\r\n los anteriore', 'toldo.jpg');
 INSERT INTO info (tipo, url_foto_info) VALUES ('', 'mapa.jpg');
 
-INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo1', 1);
-INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo2', 2);
-INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo3', 2);
-INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo4', 3);
-INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo5', 3);
 INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo6', 4);
