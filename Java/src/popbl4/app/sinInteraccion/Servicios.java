@@ -14,6 +14,7 @@ public class Servicios extends Anuncio{
     private String url_foto_servicio;
     private String precios;
     private int id_anuncios;
+    private String titulo;
 
     
     public Servicios() {}
@@ -28,6 +29,7 @@ public class Servicios extends Anuncio{
         this.url_foto_servicio = url_foto_servicio;
         this.precios = precios;
         this.id_anuncios = id_anuncios;
+        this.titulo = titulo;
     }
 
     public int getId_servicios() {
@@ -64,8 +66,6 @@ public class Servicios extends Anuncio{
 
     @Override
     public String toString() {
-        return "Servicios{" + "id_servicios=" + id_servicios + 
-                ", url_foto_servicio=" + url_foto_servicio + 
-                ", precios=" + precios + ", id_anuncios=" + id_anuncios + '}';
+        return "Servicios: "+ id_servicios+"-"+titulo+  "(precios=" + precios + ")";
     }
 }

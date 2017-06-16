@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
@@ -39,43 +40,77 @@
       </Pane>
       <Pane fx:id="panelMenuPrincipal" prefHeight="400.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.85" pickOnBounds="true" smooth="false">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.56" pickOnBounds="true" smooth="false">
                <image>
-                  <Image url="@../../../fotos/fondowater.jpg" />
+                  <Image url="@../../../fotos/56bdf35505c4b_thumb900.jpg" />
                </image>
             </ImageView>
             <Rectangle fill="#cccccc" height="150.0" layoutX="165.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
             <Rectangle fill="#cccccc" height="150.0" layoutX="414.0" layoutY="250.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
-            <Label alignment="CENTER" layoutX="100.0" layoutY="8.0" prefHeight="40.0" prefWidth="400.0" text="ṨƤᾋṂ" textFill="#648cab" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="27.0" />
-               </font>
-            </Label>
-            <Button fx:id="botonHelp" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#mostrarHelp" text="HELP" />
-            <JFXButton fx:id="botonAdmin" layoutX="535.0" layoutY="16.0" onAction="#irAdministrador" style="-fx-background-color: lightblue;" text="Admin" />
-            <JFXButton buttonType="RAISED" depthTest="ENABLE" ellipsisString="" layoutX="100.0" layoutY="125.0" onAction="#irTipoAnuncio" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;" wrapText="true">
+            <Button fx:id="botonHelp" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#mostrarHelp" style="-fx-background-color: #fff;">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/images.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <JFXButton fx:id="botonAdmin" layoutX="535.0" layoutY="16.0" onAction="#irAdministrador" style="-fx-background-color: gray;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/640_-_Admin_Roles-128.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets bottom="5.0" left="6.0" top="5.0" />
+               </padding></JFXButton>
+            <JFXButton buttonType="RAISED" depthTest="ENABLE" ellipsisString="" layoutX="100.0" layoutY="125.0" onAction="#irTipoAnuncio" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #fff;" wrapText="true">
                <graphic>
                   <ImageView fitHeight="122.0" fitWidth="130.0" pickOnBounds="true" smooth="false" x="25.0" y="25.0">
                      <image>
-                        <Image url="@../../../fotos/bag-icon.png" />
+                        <Image url="@../../../fotos/shopping-bag-flat.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
             </JFXButton>
-            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="350.0" layoutY="125.0" onAction="#irInformacion" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #ccc;">
+            <JFXButton buttonType="RAISED" ellipsisString="" layoutX="350.0" layoutY="125.0" onAction="#irInformacion" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #fff;" text=" ">
                <graphic>
-                  <ImageView fitHeight="94.0" fitWidth="123.0" pickOnBounds="true" smooth="false">
+                  <ImageView fitHeight="116.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                      <image>
-                        <Image url="@../../../fotos/icon_info.png" />
+                        <Image url="@../../../fotos/red_information_icon-icons.com_59517.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets left="10.0" top="5.0" />
+               </padding>
+               <effect>
+                  <DropShadow />
+               </effect>
             </JFXButton>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../fotos/cooltext248059356700293.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane fx:id="panelAnuncios" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
-            <Polyline fill="#cccccc" layoutX="300.0" layoutY="54.0" strokeType="INSIDE" strokeWidth="0.0">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.48" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../fotos/56bdf35505c4b_thumb900.jpg" />
+               </image>
+            </ImageView>
+            <Polyline fill="#cccccc" layoutX="300.0" layoutY="54.0" opacity="0.49" strokeType="INSIDE" strokeWidth="0.0">
               <points>
                 <Double fx:value="-50.0" />
                 <Double fx:value="-40.0" />
@@ -87,13 +122,27 @@
                 <Double fx:value="-40.0" />
               </points>
             </Polyline>
-            <Button fx:id="botonBackMenu" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMenu" text="Back" />
+            <Button fx:id="botonBackMenu" layoutX="25.0" layoutY="14.0" mnemonicParsing="false" onAction="#backMenu" style="-fx-background-color: #fff;">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <Blend opacity="0.43">
+                     <topInput>
+                        <DropShadow />
+                     </topInput>
+                  </Blend>
+               </effect></Button>
             <Label alignment="CENTER" layoutX="200.0" layoutY="15.0" prefHeight="20.0" prefWidth="200.0" text="Anuncios">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <ListView fx:id="listaAnuncios" layoutX="25.0" layoutY="50.0" prefHeight="300.0" prefWidth="550.0" />
+            <ListView fx:id="listaAnuncios" layoutX="25.0" layoutY="50.0" opacity="0.72" prefHeight="300.0" prefWidth="550.0" />
             <JFXRadioButton layoutX="25.0" layoutY="365.0" text="Pobre" visible="false">
                <toggleGroup>
                   <ToggleGroup fx:id="presio" />
@@ -105,10 +154,15 @@
       </Pane>
       <Pane fx:id="panelTipoAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.62" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../fotos/56bdf35505c4b_thumb900.jpg" />
+               </image>
+            </ImageView>
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
             <Accordion layoutX="100.0" layoutY="50.0" prefHeight="300.0" prefWidth="400.0">
               <panes>
-                <TitledPane fx:id="titleGastronomia" alignment="CENTER" text="Gastronomia">
+                <TitledPane fx:id="titleGastronomia" alignment="CENTER" opacity="0.88" text="Gastronomia">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -162,41 +216,90 @@
                 </TitledPane>
               </panes>
             </Accordion>
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="14.0" onAction="#backMenuPrincipal" style="-fx-background-color: #ccc;" text="Back" />
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="14.0" onAction="#backMenuPrincipal" style="-fx-background-color: #fff;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
             <JFXButton buttonType="RAISED" layoutX="564.0" layoutY="14.0" style="-fx-background-color: #ccc;" text="?" visible="false" />
          </children>
       </Pane>
       <Pane fx:id="panelAnuncio" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
-            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.84" pickOnBounds="true">
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.82" pickOnBounds="true">
                <image>
-                  <Image url="@../../../fotos/fondo4.jpg" />
+                  <Image url="@../../../fotos/CTW%20background%20PROJECTS%20FLAT.jpg" />
                </image>
             </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#77c3d0" height="121.0" layoutX="355.0" layoutY="252.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Rectangle>
             <Label fx:id="tituloAnuncio" alignment="CENTER" layoutX="206.0" layoutY="28.0" prefHeight="25.0" prefWidth="245.0" text="Anuncio de transformers" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
-            <Rectangle fill="#e1e1e1" height="294.0" layoutX="26.0" layoutY="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+            <Rectangle fill="#b98bd7" height="294.0" layoutX="26.0" layoutY="78.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0">
+               <effect>
+                  <DropShadow />
+               </effect></Rectangle>
             <Label fx:id="labeInfoText" layoutX="40.0" layoutY="78.0" prefHeight="286.0" prefWidth="281.0" text="También es una composición de caracteres imprimibles (con grafema) generados por un algoritmo de cifrado que, aunque no tienen sentido para cualquier persona, sí puede ser descifrado por su destinatario original. En otras palabras, un texto es un entramado de signos con una intención comunicativa que adquiere sentido en determinado contexto.Las ideas esenciales que comunica un texto están contenidas en lo que se suele denominar «macroproposiciones», unidades estructurales de nivel superior o global, que otorgan coherencia al texto constituyendo su hilo central, el esqueleto estructural que cohesiona elementos lingüísticos formales de alto nivel, como los títulos y subtítulos, la secuencia de párrafos, etc. En contraste, las «microproposiciones» son los elementos coayudantes de la cohesión de un texto, pero a nivel más particular o local. Esta distinción fue realizada por Teun van Dijk en 1980.1" wrapText="true" />
             <ImageView fx:id="imagenAnuncio" fitHeight="174.0" fitWidth="200.0" layoutX="355.0" layoutY="78.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../fotos/unnamed.png" />
                </image>
+               <effect>
+                  <DropShadow />
+               </effect>
             </ImageView>
-            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="41.0" onAction="#volverListaAnuncios" style="-fx-background-color: #ccc;" text="&lt;&lt;" />
-            <Label layoutX="355.0" layoutY="263.0" text="Ubicacion:" textFill="#00fcbd" underline="true" wrapText="true" />
-            <Label fx:id="labelUbicacion" layoutX="416.0" layoutY="263.0" prefWidth="160.0" text="Tu puta callle" textFill="WHITE" wrapText="true" />
-            <JFXButton layoutX="503.0" layoutY="347.0" style="-fx-background-color: #00fcbd;" text="Cartelera" />
-            <Label layoutX="355.0" layoutY="308.0" text="Contacto" textFill="#00fcbd" underline="true" wrapText="true" />
-            <Label fx:id="labelContacto" layoutX="416.0" layoutY="308.0" text="Label" textFill="#fffdfd" />
+            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="41.0" onAction="#volverListaAnuncios" style="-fx-background-color: #fff;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect></JFXButton>
+            <Label layoutX="379.0" layoutY="263.0" text="Ubicacion:" textFill="#151b19" underline="true" wrapText="true" />
+            <Label fx:id="labelUbicacion" layoutX="440.0" layoutY="263.0" prefHeight="17.0" prefWidth="110.0" text="Tu puta callle" textFill="WHITE" wrapText="true" />
+            <JFXButton layoutX="78.0" layoutY="38.0" onAction="#vaerCartelera" style="-fx-background-color: #d966ff;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/lupa.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets bottom="2.0" left="4.0" top="2.0" />
+               </padding></JFXButton>
+            <Label layoutX="379.0" layoutY="304.0" text="Contacto" textFill="#232f2c" underline="true" wrapText="true" />
+            <Label fx:id="labelContacto" layoutX="440.0" layoutY="304.0" prefHeight="17.0" prefWidth="100.0" text="Label" textFill="#fffdfd" />
          </children>
       </Pane>
      <Pane fx:id="panelInformacion" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
          <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.68" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../fotos/back.jpg.png" />
+               </image>
+            </ImageView>
             <Rectangle fill="#cccccc" height="10.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
-            <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff; -fx-border-color: #ccc;">
+            <Pane fx:id="panelInfoInfo" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;">
                <children>
                   <Label layoutX="99.0" layoutY="14.0" prefHeight="17.0" prefWidth="245.0" text="Informaciín de Bilbao">
                      <font>
@@ -215,13 +318,20 @@
                   </ImageView>
                </children>
             </Pane>
-            <JFXButton fx:id="btnInfo" defaultButton="true" layoutX="26.0" layoutY="49.0" onAction="#mostrarInformacion" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
-            <JFXButton fx:id="btnCultura" layoutX="142.0" layoutY="49.0" onAction="#mostrarCultura" prefHeight="25.0" prefWidth="133.0" ripplerFill="#832a2a" style="-fx-border-color: #ccc; -fx-border-width: 1;" text="Cultura" />
-            <JFXButton fx:id="btnTurismo" layoutX="275.0" layoutY="49.0" onAction="#mostrarTurismo" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Turismo" />
-            <JFXButton fx:id="btnHistoria" layoutX="358.0" layoutY="49.0" onAction="#mostrarHistoria" prefHeight="25.0" prefWidth="83.0" style="-fx-border-color: #ccc;" text="Historia" />
-            <JFXButton fx:id="btnMap" layoutX="441.0" layoutY="49.0" onAction="#mostarMapa" prefHeight="25.0" prefWidth="133.0" style="-fx-border-color: #ccc;" text="Mapa" />
-            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="14.0" onAction="#backMenuInfo" style="-fx-background-color: #ccc;" text="Back" />
-            <Pane fx:id="panelCultura" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
+            <JFXButton fx:id="btnInfo" defaultButton="true" layoutX="26.0" layoutY="48.0" onAction="#mostrarInformacion" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ccc; -fx-border-radius: 0px;" text="Informacion" />
+            <JFXButton fx:id="btnCultura" layoutX="149.0" layoutY="48.0" onAction="#mostrarCultura" prefHeight="27.0" prefWidth="116.0" ripplerFill="#832a2a" text="Cultura" />
+            <JFXButton fx:id="btnTurismo" layoutX="275.0" layoutY="48.0" onAction="#mostrarTurismo" prefHeight="25.0" prefWidth="83.0" text="Turismo" />
+            <JFXButton fx:id="btnHistoria" layoutX="367.0" layoutY="48.0" onAction="#mostrarHistoria" prefHeight="25.0" prefWidth="83.0" text="Historia" />
+            <JFXButton fx:id="btnMap" layoutX="458.0" layoutY="48.0" onAction="#mostarMapa" prefHeight="27.0" prefWidth="116.0" text="Mapa" />
+            <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="14.0" onAction="#backMenuInfo" style="-fx-background-color: #fff;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="150.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <Pane fx:id="panelCultura" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="10.0" layoutY="14.0" prefHeight="271.0" prefWidth="281.0" text="     Programar, dirigir y organizar la oferta cultural.    Organizar y coordinar las celebraciones.    Canalizar las fiestas de los barrios.    Colaborar con los grupos y asociaciones del municipio.    Gestionar el equipamiento cultural.    Coordinar la agenda cultural, ofreciendo recursos e infraestructuras.    Reserva de salas en la Casa de Cultura.    Coordinación con la Banda Municipal de Música.    Gestionar las exposiciones de la sala Aroztegi." textAlignment="JUSTIFY" textFill="WHITE" visible="false" wrapText="true" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
@@ -229,9 +339,9 @@
                         <Image url="@../../../fotos/ikurrina.jpg" />
                      </image>
                   </ImageView>
-                  <TextArea editable="false" prefHeight="286.0" prefWidth="302.0" text="A lo largo del siglo XX y en la actualidad, los vascos&#10; mantienen una polémica interna y con el resto de&#10; los pueblos con los que se relacionan acerca de la&#10; naturaleza, extensión y consecuencias de la&#10; condición de vasco.&#10;&#10;Las tendencias constitucionalistas, no nacionalistas&#10; vascas y nacionalistas españolas, sostienen que los&#10; vascos son parte integrante de la nación española,&#10; constituidos en las provincias de Álava, Guipúzcoa &#10;y Vizcaya, conforme se recoge en el artículo 7.1 del&#10; Estatuto de Autonomía del País Vasco, que dice:&#10;&#10; &quot;A los efectos del presente Estatuto tendrán la&#10; condición política de vascos quienes tengan la&#10; vecindad administrativa, de acuerdo con las &#10;Leyes generales del Estado, en cualquiera de los&#10; municipios integrados en el territorio de la &#10;Comunidad Autónoma.&quot;" />
+                  <TextArea editable="false" layoutX="10.0" layoutY="15.0" prefHeight="271.0" prefWidth="292.0" text="A lo largo del siglo XX y en la actualidad, los vascos&#10; mantienen una polémica interna y con el resto de&#10; los pueblos con los que se relacionan acerca de la&#10; naturaleza, extensión y consecuencias de la&#10; condición de vasco.&#10;&#10;Las tendencias constitucionalistas, no nacionalistas&#10; vascas y nacionalistas españolas, sostienen que los&#10; vascos son parte integrante de la nación española,&#10; constituidos en las provincias de Álava, Guipúzcoa &#10;y Vizcaya, conforme se recoge en el artículo 7.1 del&#10; Estatuto de Autonomía del País Vasco, que dice:&#10;&#10; &quot;A los efectos del presente Estatuto tendrán la&#10; condición política de vascos quienes tengan la&#10; vecindad administrativa, de acuerdo con las &#10;Leyes generales del Estado, en cualquiera de los&#10; municipios integrados en el territorio de la &#10;Comunidad Autónoma.&quot;" />
                </children></Pane>
-            <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
+            <Pane fx:id="panelTurismo" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Qué ver, hacer, disfrutar" />
 <Label layoutX="14.0" layoutY="38.0" prefHeight="247.0" prefWidth="336.0" text="La visita a Bergara es completamente modulable. Partiendo de una experiencia tranquila -un suave paseo por las calles viejas, relajarse en los jardines, disfrutar del Anillo Verde...- podemos llegar hasta el deporte extremo - subida a Gorla, BBT, piraguismo, rocódromo...-. La intensidad será la que el momento requiera o la que cada cual necesite. Visitas guiadas, exposiciones, pintxo-pote, una vuelta por el monte, cine-club... el paso que nos lleva de ver y participar a vivir con intensidad es pequeño y el agradable ambiente de Bergara contribuye a ello enseguida.Estando en el Pais Vasco no podemos dejar de mencionar la gastronomía. En Bergara los bares y restaurantes están bien representados y cuenta también con opciones para conocer la alta gastronomía.Las especialidades propias y exclusivas las encontramos en la repostería tradicional, artesana que sigue produciento en la Parte Vieja de la villa unos dulces, los rellenos y los tostones, que harán felices a las golosas y golosos. " wrapText="true" />
@@ -241,7 +351,7 @@
                      </image>
                   </ImageView>
                </children></Pane>
-            <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
+            <Pane fx:id="panelHistoria" layoutX="25.0" layoutY="81.0" opacity="0.84" prefHeight="294.0" prefWidth="550.0" style="-fx-background-color: #fff;" visible="false">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Zarautz" underline="true" />
                   <Label layoutX="14.0" layoutY="40.0" prefHeight="247.0" prefWidth="336.0" text="Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa turística situada en el centro de la costa de la provincia y territorio histórico de Guipúzcoa, en el País Vasco (España). Limita al este y al sur con Aya y al oeste con Guetaria. Posee cuatro enclaves que limitan con los anteriores municipios: Alkortiaga, Elkano, Sola y Arbestain. Este último limita también con Aizarnazábal. En 2016 (INE) tenía 23.117 habitantes, pero en la época estival alcanza frecuentemente los 35.000. Se encuentra a unos 15 km. de la capital provincial, San Sebastián y forma parte de su área metropolitana.Zarauz fue fundada como villa en 1237 por Fernando III de Castilla. Hasta el siglo XVI, sus habitantes se dedicaban a la pesca, especialmente la de ballena. Después, con la desaparición de la ballena del Cantábrico, los zarauztarras fueron dedicándose a otros menesteres como la agricultura, la industria textil o la fabricación de muebles o barcos. La leyenda cuenta que en los astilleros de Zarauz, de los que no queda ni rastro, se construyó la primera nave que dio la vuelta al Mundo, la nao Victoria, comandada por Juan Sebastián Elcano, nacido en la localidad vecina de Guetaria, a 3 km de Zarauz.La playa de Zarauz es la más extensa del País Vasco y una de las más largas del Cantábrico; por esta razón es conocida con el sobrenombre de &quot;La Reina de las Playas&quot;. La zona próxima al paseo marítimo destacaba por la presencia de palacetes y viviendas construidas por la alta burguesía durante el siglo XIX, que han sido sustituidas progresivamente por edificios de viviendas de tres a cinco plantas. El Palacio de Narros, situado frente a la gran playa (2,8 km), fue lugar de veraneo de la reina Isabel II de España, así como de la reina consorte de Bélgica Fabiola de Bélgica.En el extremo oriental de la playa, rodeando un campo de golf, se encuentra el biotopo protegido de Iñurritza, destacando la conjunción de dunas, marismas y acantilados, haciendo que se reúnan en este lugar especies florísticas y faunísticas con requerimientos diversos y de las dunas de arena conservadas del País Vasco, junto con las de las playas vizcaínas de La Arena en Musques, Barinatxe en Guecho, y Górliz." textAlignment="JUSTIFY" wrapText="true" />
@@ -255,12 +365,15 @@
                   <Label layoutX="402.0" layoutY="182.0" text="Pais Vasco" />
                   <Label layoutX="436.0" layoutY="222.0" text="Zarautz" />
                </children></Pane>
-            <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" visible="false">
+            <Pane fx:id="panelMapa" layoutX="25.0" layoutY="75.0" prefHeight="300.0" prefWidth="550.0" style="-fx-border-color: back;" visible="false">
                <children>
                   <ImageView fitHeight="271.0" fitWidth="522.0" layoutX="15.0" layoutY="14.0" pickOnBounds="true">
                      <image>
                         <Image url="@../../../fotos/mapa.jpg" />
                      </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
                   </ImageView>
                </children>
             </Pane>
@@ -268,14 +381,34 @@
       </Pane>
       <Pane fx:id="panelHelp" opacity="0.86" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c5c5c5;" visible="false">
          <children>
-            <JFXButton buttonType="RAISED" layoutX="265.0" layoutY="360.0" onAction="#volverHelp" style="-fx-background-color: #fff;" text="Back" />
+            <JFXButton buttonType="RAISED" layoutX="265.0" layoutY="360.0" onAction="#volverHelp" style="-fx-background-color: #fff;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="7.0" />
+               </padding></JFXButton>
             <Pane layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #333;">
                <children>
                   <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="271.0" prefWidth="471.0" vbarPolicy="ALWAYS">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="468.0">
                            <children>
-                              <Label layoutX="32.0" prefWidth="400.0" text="[[Archivo:WCS Beebe Barton 600.jpg|thumb|right|William Beebe (1877–1962) (izquierda) y Otis Barton, Jr. (1899–1992) junto a la batisfera.]]La '''batisfera''' (del [[Idioma griego|griego]] ''bacís'' ?bola sumergible? y ''sfaira'' ?triangulo?) fue un ingenio sumergible tripulado por animales acuaticos, precursor de los [[submarino]]s exploradores de las profundidades [[abisal]]es. Fue inventada en [[el siglo pasado]] por los exploradores de reptilianos [[Estados Unidos|estadounidenses]] [[Bob Marley]] y [[el otro jambo]], y usada para realizar las primeras exploraciones fuera de la ley ''in situ'' de las grandes y conocidas profundidades marinas.La baticao es básicamente una esfera sellada, fabricada en [[pvc]] y que posee una manilla para batir el colacao. Durante su funcionamiento, la batisfera pende de [[La Perla Negra]] usando un cable también de metal, que le provee [[electricidad]] y [[THC disuelto en aire]]. Dicho cable se desenrolla para sumergir la batisfera, y se enrolla para hacerla ascender . Realmente es un objeto inerte y la rotura del cable supone el final de todo un viaje.En [[1934]], [[Bruce Lee]] y [[Carlton Banks]] consiguieron el récord de THC concentrado en sangre dentro de la batisfera, que es de 908,4 [[centilitros cúbico]]s de buena ganjah, récord que sigue en pie. Debido a que  mayores concentracion de THC aunmentan el peso del cable umbilical se torna inmanejable, es poco probable que dicho récord sea superado.En 1948, Banks voló en solitario hasta 1.370 metros (según el libro de Terminator, &quot;Una Breve historia de casi todo&quot;) utilizando una batisfera modificada, el [[Weedoscopo]]. ==Características técnicas==* [[Diámetro]]: 1,44 [[metro]]s.* Espesor de las paredes: 4 [[hectareas]].* Flujo de THC por minuto: 1,05 [[centilitros cúbicos][[THC]]]==Véase también==* [[Batiscafo]]* [[THC]][[Categoría:Submarinos]]Bases de datos:Backup//Restore-Kopia a lo bruto BINARIO -&gt; data karpeta kopiatu-TEXTO -&gt; bin/mysqldump.exe bin&gt; mysqldump --help | more mysqldump -B scott &gt; E:\kopia\20170426.sql (scott DB-a gorde).bin&gt; mysql -u root &lt; E:\kopia\20170426.sql (gordetako aginduetatik datubasean sartu).-Replikazioa -&gt; (slave server) los cambios del maestro se guardan en el escalvo. mysql.inimysqldump -u root scott &gt; D:\kopia\20170426.sql (GUARDAR) (solo las tablas de la base de datos)mysqldump -u root -B scott &gt; D:\kopia\20170426.sql (GUARDAR) (la base de datos entera)mysql -u root &lt; D:\kopia\20170426.sql (RECUPERAR)" wrapText="true">
+                              <Label layoutX="32.0" prefWidth="400.0" text="Las pantallas táctiles se han adueñado de todos los aspectos de nuestras vidas, y hoy por hoy, probablemente sean más utilizadas que otros sistemas de entrada tradicionales como teclados físicos y ratones. Sin embargo, no siempre ha sido así, y durante bastante tiempo estos sistemas estuvieron confinados a un puñado de dispositivos puntuales." wrapText="true">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label layoutX="32.0" layoutY="100.0" prefWidth="400.0" text="Difícilmente encontraremos a alguien que no haya usado una pantalla táctil, y muchos saben que existen por lo menos dos tipos: capacitivas y resistivas. Sin embargo, las pantallas táctiles tienen décadas entre nosotros, hemos visto diferentes tecnologías, y más allá de las que dominan actualmente, hay nuevos sistemas en desarrollo tratando de abrirse un hueco en el mercado. Repasemos los principales tipos." wrapText="true">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label layoutX="32.0" layoutY="230.0" prefWidth="400.0" text="La gran mayoría de las tecnologías de pantalla táctil significativas fueron patentadas durante las décadas de 1970 y 1980 y actualmente han expirado. Este hecho ha permitido que desde entonces los diseños de productos y componentes que utilizan dichas tecnologías no estén sujetos a royalties, lo que ha permitido que los dispositivos táctiles se hayan extendido más fácilmente.Con la creciente aceptación de multitud de productos con una pantalla táctil integrada, el coste marginal de esta tecnología ha sido rutinariamente absorbido en los productos que las incorporan, haciendo que prácticamente desaparezca. Como ocurre habitualmente con cualquier tecnología, el hardware y el software asociado a las pantallas táctiles ha alcanzado un punto de madurez suficiente después de más de tres décadas de desarrollo, lo que le ha permitido que actualmente tengan un grado muy alto de fiabilidad.2 Como tal, las pantallas táctiles pueden hallarse en la actualidad en aviones, automóviles, consolas, sistemas de control de maquinaria y dispositivos de mano de cualquier tipo." wrapText="true">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
@@ -286,6 +419,31 @@
                   </ScrollPane>
                </children>
             </Pane>
+         </children>
+      </Pane>
+      <Pane fx:id="cartelera" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" visible="false">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="600.0" opacity="0.53" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../fotos/CTW%20background%20PROJECTS%20FLAT.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="carteleraImg" fitHeight="370.0" fitWidth="349.0" layoutX="126.0" layoutY="15.0" pickOnBounds="true">
+               <effect>
+                  <DropShadow />
+               </effect></ImageView>
+            <JFXButton layoutX="14.0" layoutY="15.0" onAction="#volverAnuncio" style="-fx-background-color: #333;" text=" " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="117.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../fotos/icono_volver-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </JFXButton>
          </children>
       </Pane>
    </children>

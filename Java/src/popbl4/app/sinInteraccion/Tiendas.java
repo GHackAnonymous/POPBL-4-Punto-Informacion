@@ -64,9 +64,7 @@ public class Tiendas extends Anuncio{
 
     @Override
     public String toString() {
-        return "tiendas{" + "id_tiendas=" + id_tiendas + ", nombre=" + nombre 
-                + ", id_producto=" + producto + ", id_anuncios=" 
-                + id_anuncios + '}';
+        return "Tiendas: " + id_tiendas + "-" + nombre;
     }
     
     

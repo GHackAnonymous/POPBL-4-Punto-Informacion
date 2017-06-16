@@ -89,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
     private Label labeInfoText;
      
      @FXML
-    private ImageView imagenAnuncio;
+    private ImageView imagenAnuncio, carteleraImg;
      
       @FXML
     private Label labelUbicacion;
@@ -151,7 +151,7 @@ public class FXMLDocumentController implements Initializable {
      private Pane panelHistoria;
      
      @FXML
-    private Pane panelInfoInfo;
+    private Pane panelInfoInfo, cartelera;
      
      @FXML
     private Pane panelTurismo;
@@ -283,14 +283,17 @@ public class FXMLDocumentController implements Initializable {
             if(tipo.equalsIgnoreCase("Gastronomia")){
                 if(list.get(i) instanceof Gastronomia){
                     listaAnuncios.getItems().add(list.get(i));
+                    carteleraImg.setImage(new Image("file:.\\src\\fotos\\menu.jpg"));
                 }
             }else if(tipo.equalsIgnoreCase("Tiendas")){
                 if(list.get(i) instanceof Tiendas){
                     listaAnuncios.getItems().add(list.get(i)); 
+                    carteleraImg.setImage(new Image("file:.\\src\\fotos\\productos.jpg"));
                 }
             }else if(tipo.equalsIgnoreCase("Servicios")){
                 if(list.get(i) instanceof Servicios){
                    listaAnuncios.getItems().add(list.get(i)); 
+                   carteleraImg.setImage(new Image("file:.\\src\\fotos\\cine.png"));
                 }
             }
         }
@@ -302,17 +305,30 @@ public class FXMLDocumentController implements Initializable {
             if(tipo.equalsIgnoreCase("Gastronomia")){
                 if(list.get(i) instanceof Gastronomia){
                     listaAnuncios.getItems().add(list.get(i)); 
+                    carteleraImg.setImage(new Image("file:.\\src\\fotos\\menu.jpg"));
                 }
             }else if(tipo.equalsIgnoreCase("Tiendas")){
                 if(list.get(i) instanceof Tiendas){
                     listaAnuncios.getItems().add(list.get(i)); 
+                    carteleraImg.setImage(new Image("file:.\\src\\fotos\\productos.jpg"));
                 }
             }else if(tipo.equalsIgnoreCase("Servicios")){
                 if(list.get(i) instanceof Servicios){
                    listaAnuncios.getItems().add(list.get(i));  
+                   carteleraImg.setImage(new Image("file:.\\src\\fotos\\cine.png"));
                 }
             }
          }
+    }
+    
+     @FXML
+    void vaerCartelera(ActionEvent event) {
+        cartelera.setVisible(true);
+    }
+    
+    @FXML 
+    void volverAnuncio(ActionEvent event) {
+        cartelera.setVisible(false);
     }
     
      private void verAnuncio(Anuncio newValue) {
@@ -354,9 +370,7 @@ public class FXMLDocumentController implements Initializable {
     void inicializaAnuncio(Anuncio a) {
         tituloAnuncio.setText(a.getTitulo());
         labeInfoText.setText(a.getDescripcion());
-
         imagenAnuncio.setImage(new Image("file:.\\src\\fotos\\"+a.getURL_Foto()));
-        
         labelUbicacion.setText(a.getUbicacion()); 
         labelContacto.setText(a.getContacto());
     }

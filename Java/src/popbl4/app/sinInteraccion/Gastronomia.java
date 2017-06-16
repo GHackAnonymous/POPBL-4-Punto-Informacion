@@ -15,6 +15,7 @@ public class Gastronomia extends Anuncio{
     private int id_gastronomia;
     private Menu menu;
     private int id_anuncios;
+    private String titulo;
 
     public Gastronomia() {}
 
@@ -28,6 +29,7 @@ public class Gastronomia extends Anuncio{
         this.id_gastronomia = id_gastronomia;
         this.menu = menu;
         this.id_anuncios = id_anuncios;
+        this.titulo = titulo;
     }
     
     public int getId_gastronomia() {
@@ -56,8 +58,7 @@ public class Gastronomia extends Anuncio{
 
     @Override
     public String toString() {
-        return "Gastronomia{" + "id_gastronomia=" + id_gastronomia + 
-                ", id_menu=" + menu + ", id_anuncios=" + id_anuncios + '}';
+        return "Gastronomia: " + id_gastronomia +   "-" + titulo ;
     }
     
     
