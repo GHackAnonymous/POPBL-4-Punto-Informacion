@@ -120,6 +120,8 @@ CREATE TABLE dispositivo
 CREATE TABLE info
 (
 	id_info int(10) AUTO_INCREMENT,
+	tipo varchar(100),
+	url_foto_info varchar(100),
 	CONSTRAINT id_info_pk PRIMARY KEY(id_info)
 );
 

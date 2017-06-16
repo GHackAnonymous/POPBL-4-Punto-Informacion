@@ -94,10 +94,11 @@ INSERT INTO dispositivo (nombre_dispositivo, fecha_dispositivo) VALUES ('NombreA
 INSERT INTO dispositivo (nombre_dispositivo, fecha_dispositivo) VALUES ('NombreAlgo5', '06/23/2017');
 INSERT INTO dispositivo (nombre_dispositivo, fecha_dispositivo) VALUES ('NombreAlgo6', '06/23/2017');
 
-INSERT INTO info () VALUES ();
-INSERT INTO info () VALUES ();
-INSERT INTO info () VALUES ();
-INSERT INTO info () VALUES ();
+INSERT INTO info (tipo, url_foto_info) VALUES ('Los cientos de visitantes que se acercan al Museo \r\nGuggenheim Bilbao, cuentan con una oficina ubicada\r\n junto a la entrada de la pinacoteca, que proporciona \r\ninformación sobre Bilbao, Bizkaia y Euskadi. Además, \r\nofrece servicio de visitas guiadas, vende la tarjeta turística \r\nBilbao Card y trabaj', 'gunne.jpg');
+INSERT INTO info (tipo, url_foto_info) VALUES ('A lo largo del siglo XX y en la actualidad, los vascos\r\n mantienen una polémica interna y con el resto de\r\n los pueblos con los que se relacionan acerca de la\r\n naturaleza, extensión y consecuencias de la\r\n condición de vasco.\r\n\r\nLas tendencias constitucionalistas, no nacionalistas\r\n vascas y nacion', 'gunne.jpg');
+INSERT INTO info (tipo, url_foto_info) VALUES ('La visita a Bergara es completamente modulable. \r\nPartiendo de una experiencia tranquila -un suave paseo \r\npor las calles viejas, relajarse en los jardines, disfrutar del \r\nAnillo Verde...- podemos llegar hasta el deporte extremo\r\n - subida a Gorla, BBT, piraguismo, rocódromo...-. \r\nLa intensidad se', 'puente-de-calatrava.jpg');
+INSERT INTO info (tipo, url_foto_info) VALUES ('Zarauz3 1 (en euskera y oficialmente Zarautz) es una villa\r\n turística situada en el centro de la costa de la provincia\r\n y territorio histórico de Guipúzcoa, en el \r\nPaís Vasco (España). Limita al este y al sur con Aya y al \r\noeste con Guetaria. Posee cuatro enclaves que limitan con\r\n los anteriore', 'toldo.jpg');
+INSERT INTO info (tipo, url_foto_info) VALUES ('', 'mapa.jpg');
 
 INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo1', 1);
 INSERT INTO tipoInformacion (tipo, id_info) VALUES ('TipoAlgo2', 2);
